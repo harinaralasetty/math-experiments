@@ -1,0 +1,7 @@
+{
+  "number": 374681,
+  "name": "Number of integer compositions of n whose leaders of anti-runs are weakly increasing.",
+  "data": "1,1,2,4,7,14,27,50,96,185,353,672,1289,2466,4722,9052,17342,33244,63767,122325,234727,450553,864975,1660951,3190089,6128033",
+  "offset": "0,3",
+  "keyword": "nonn,more"
+}

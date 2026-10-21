@@ -1,35 +1,58 @@
-"""Capture already completed verification output without inventing test results."""
+"""Capture completed verification logs without inventing results."""
 import json
 from pathlib import Path
+from site_data import load_verification
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    checks = [
+        ('Build', 'make build', 'build', 'Generated'),
+        ('Site, FAQ, provenance, metadata, links and privacy', 'make verify-site', 'site', 'PASS all site checks'),
+        ('Complete mathematical verification', 'make verify-math', 'math', 'PASS 15 exact verifier cases'),
+    ]
     logs = {}
-    for key, marker in [('site','PASS all site checks'),('oeis-full','PASS all extended b-files recomputed by both methods'),
-                        ('bb6','controls only, no new decisions'),('horizonmath','PASS 15 exact verifier cases')]:
-        text = (ROOT/'.verification'/f'{key}.log').read_text()
-        assert marker in text, f'{key}: completion marker missing'
-        assert 'Traceback' not in text
-        logs[key] = text
+    for _, _, key, marker in checks:
+        logs[key] = (ROOT/'.verification'/f'{key}.log').read_text()
+        assert marker in logs[key] and 'Traceback' not in logs[key], key
+    assert 'PASS all extended b-files recomputed by both methods' in logs['math']
+    assert 'PASS stage2c local lemmas=118 corruptions_rejected=470 concrete_replays=3973; registered decisions=0' in logs['math']
     manifest = json.loads((ROOT/'sources.json').read_text())
-    assert 'PASS stage2c local lemmas=118 corruptions_rejected=470 concrete_replays=3973; registered decisions=0' in logs['bb6']
-    report = '# Verification report\n\nThe repository and static site were refreshed locally from the final committed batch C and BB6 stage 2c source snapshots. No commit, push, publication or OEIS submission was performed. Only allowlisted committed source blobs and the authorized record-status note were imported.\n\n'
-    report += '## Source revisions\n\n'+''.join(f'- `{repo}`: `{rev}`\n' for repo,rev in manifest['revisions'].items())
-    report += '\n## Scope\n\nThe full OEIS run below recomputes all distributed extended rows with both original methods. Its wall seconds are actual measurements of this build. Page timing tables retain the separately identified historical source run. The BB6 portable target replays the local proof objects, corruption controls and concrete instances, plus authentic small-machine certificate fixtures. It does not rerun the full historical simulator campaign or claim a global decision. HorizonMath runs exact positive and negative construction checks, without vendoring the upstream benchmark.\n\n'
-    report += 'HTML validation uses the repository\'s strict local validator for the HTML5 subset used by this generator. It checks explicit nesting, supported elements/attributes and content models, plus metadata, links and structure. It is not the Nu HTML Checker. Mutation tests exercise malformed nesting, invalid paragraph contents, unknown elements, missing alt text and duplicate attributes. Further tests alter real generated pages to check rejection of a changed research number, broken link, duplicate title, malformed JSON-LD and omitted sitemap entry.\n\n'
-    report += 'The final BB6 stage 2c result is no global decision after the six-hour interval, with 118 additional local rules, 470 rejected corruptions and 3973 concrete instantiations. These are additional to the earlier 48 lemmas and 198 corruption controls. Batch C retained W(7,2) colouring length 3703 and an A(21,10) code of size 42 with minimum distance 10, matching published lower bounds. The full source reports contain the historical verification output; fresh portable checks below replay the distributed claims without modifying the read-only sibling workspaces.\n\n'
-    report += 'Responsive CSS keeps tables and b-file rows in scrollable containers and wraps navigation on narrow viewports. A physical phone was not used. The refreshed social image was inspected directly. The refreshed sitemap covers every HTML page and has last-modified dates taken from pinned source commits. JSON-LD on the home and project pages describes the final outcomes.\n\n'
-    report += 'No third-party source folder, paper, PDF, source archive or copied web page was imported. The file audit below checks forbidden archive/document extensions and import paths; sources.json and PROVENANCE.md enumerate every imported file with its original hash. Batch C research references remain upstream links.\n\n'
-    for title,command,key in [('Site, provenance, hashes, links, sitemap, JSON-LD and privacy','make verify-site','site'),
-                              ('Full OEIS recomputation','make -C oeis verify','oeis-full'),
-                              ('BB6 local proofs and checker controls','make -C bb6 verify','bb6'),
-                              ('HorizonMath exact verifiers','make -C horizonmath verify','horizonmath')]:
+    sequences = load_verification()['sequences']
+    total = sum(row['new_count'] for row in sequences)
+    report = f'''# Verification report
+
+Math Experiments v2 is generated locally from pinned committed source snapshots. The OEIS stages together supply {total:,} new terms across {len(sequences)} sequences. No commit, push, publication or OEIS submission was performed.
+
+The generator and stylesheet provide the announcement copy, per-sequence pages, two-significant-digit historical timings, complete downloads with 20-row previews, author credit, a visible FAQ and matching FAQPage, Article, WebSite, Dataset and breadcrumb JSON-LD, a refreshed social image, llms.txt and a sitemap. The README and all totals use the same combined sequence data.
+
+## Source revisions
+
+'''
+    report += ''.join(f'- `{repo}`: `{rev}`\n' for repo, rev in manifest['revisions'].items())
+    report += '''
+## Verification scope and limitations
+
+The mathematical command below recomputes every distributed OEIS row with both independent methods and checks the published overlap. It also verifies the BB(6) local proof objects, corruption controls, concrete replays and certificate fixtures, and runs the exact record-search construction verifiers with invalid controls. It does not repeat the full historical search campaigns or claim a new Busy Beaver decision or a new mathematical record. Source timings on the pages remain the separately identified historical measurements, rounded for display; actual recomputation timings appear below. Mathematical checks use this repository alone; the full site provenance check also requires the pinned sibling source workspaces. Building the site requires Git history for dates, Pillow and lxml.
+
+Site validation uses the strict local validator for this generator's HTML5 subset, rather than the Nu HTML Checker. It checks nesting, supported attributes and content models, exactly one h1 and one initial lead sentence per page, links, unique titles and descriptions, canonical URLs, Open Graph, Twitter cards, schema author and creator identities, breadcrumbs, date consistency, sitemap and llms.txt coverage, imported hashes and source-backed numeric claims. New tests parse FAQ JSON-LD and compare it with the visible questions and answers; mutations of either the visible answer or schema answer must fail. Other mutation tests cover changed research numbers, missing leads, broken links, duplicate titles, invalid JSON-LD and sitemap omissions.
+
+Page modification dates use each imported file's last-change date from the pinned source git revision and the relevant generator/style dates. Uncommitted generator/style changes use filesystem modification dates. The dates are repeated consistently in the byline, structured data and sitemap. Dates therefore follow each page's dependencies rather than one fixed publication date.
+
+Responsive CSS wraps long numbers and inline code, keeps tables in scrollable boxes, lets navigation and cards wrap, and limits b-file previews to the first 20 rows. The 1200-by-630 social image was inspected directly. Browser automation was unavailable, so no rendered 390 px viewport or physical-phone test is claimed. The checks verify the relevant CSS and viewport rules.
+
+Only allowlisted first-party source programs, evidence and text were imported; third-party papers, web snapshots, archives and implementations remain excluded. All complete b-files are byte-identical to the pinned source blobs. sources.json and docs/PROVENANCE.md record hashes, transformations and dates. The privacy scan below includes hidden and ignored working-tree files, excludes git history and skips binary content.
+
+'''
+    for title, command, key, _ in checks:
         report += f'## {title}\n\nCommand: `{command}`\n\n```text\n{logs[key].rstrip()}\n```\n\n'
-    report += '## Delivery\n\nThe README and site share the same result model. Every research number has a section-level source mapping in docs/PROVENANCE.md and tools/claims.json. sources.json records hashes and extraction transformations. Five distributed b-files are byte-identical to their pinned source results. The licence split is MIT for original code and CC BY 4.0 for original data/text, with source attribution retained for quotations and published constructions. Repository description, topics and Pages configuration suggestions are in docs/github-topics.md.\n'
+    report += f'''## Delivery
+
+All {len(sequences)} b-files and sequence pages are included. The licence holder remains Hari Naralasetty; original code is MIT and original data/text are CC BY 4.0, with existing attribution retained. The changes are left uncommitted for manager review.
+'''
     (ROOT/'REPORT.md').write_text(report)
-    print('Wrote REPORT.md from completed verification logs.')
+    print('Wrote REPORT.md from completed build, site and mathematical verification logs.')
 
 
 if __name__ == '__main__':

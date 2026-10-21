@@ -1,0 +1,21 @@
+# Math Experiments
+
+By Hari Naralasetty, working with AI agents.
+
+The work added 1,350 new terms to 10 OEIS sequences, made partial progress on BB(6), and found no new records in the three record-search batches. Every new term is checked by two independent programs. The terms have not yet been submitted to the OEIS. BB(6) remains undecided; no record improvement is claimed.
+
+- AI Agents Find 1,350 New Terms for Open Math Sequences: https://harinaralasetty.github.io/math-experiments/
+- New terms for OEIS A391646: least integers with a specified sum of prime-factor remainders: https://harinaralasetty.github.io/math-experiments/oeis/A391646.html
+- New terms for OEIS A383533: partitions without ones admitting disjoint strict refinements: https://harinaralasetty.github.io/math-experiments/oeis/A383533.html
+- New terms for OEIS A374679: compositions with strictly increasing anti-run leaders: https://harinaralasetty.github.io/math-experiments/oeis/A374679.html
+- New terms for OEIS A353390: compositions containing their own run lengths as a subsequence: https://harinaralasetty.github.io/math-experiments/oeis/A353390.html
+- New terms for OEIS A335457: patterns found in consecutive parts of compositions: https://harinaralasetty.github.io/math-experiments/oeis/A335457.html
+- New terms for OEIS A374680: compositions with strictly decreasing anti-run leaders: https://harinaralasetty.github.io/math-experiments/oeis/A374680.html
+- New terms for OEIS A374681: compositions with weakly increasing anti-run leaders: https://harinaralasetty.github.io/math-experiments/oeis/A374681.html
+- New terms for OEIS A374682: compositions with weakly decreasing anti-run leaders: https://harinaralasetty.github.io/math-experiments/oeis/A374682.html
+- New terms for OEIS A383710: partitions admitting no disjoint strict refinements: https://harinaralasetty.github.io/math-experiments/oeis/A383710.html
+- New terms for OEIS A383711: partitions without ones admitting no disjoint strict refinements: https://harinaralasetty.github.io/math-experiments/oeis/A383711.html
+- OEIS sequences extended: https://harinaralasetty.github.io/math-experiments/oeis/index.html
+- Busy Beaver BB(6): partial progress: https://harinaralasetty.github.io/math-experiments/bb6.html
+- Record searches: no new records: https://harinaralasetty.github.io/math-experiments/horizonmath.html
+- How to check the results yourself: https://harinaralasetty.github.io/math-experiments/reproduce.html

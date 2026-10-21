@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+# Results summary: https://harinaralasetty.github.io/math-experiments/llms.txt
 Sitemap: https://harinaralasetty.github.io/math-experiments/sitemap.xml

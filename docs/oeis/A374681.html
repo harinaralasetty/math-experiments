@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New terms for OEIS A374681: compositions with weakly increasing anti-run leaders | Math Experiments</title><meta name="description" content="OEIS A374681 has 231 new terms checked by two independent programs, with a complete b-file and instructions to repeat the computation."><meta name="author" content="Hari Naralasetty">
+<link rel="canonical" href="https://harinaralasetty.github.io/math-experiments/oeis/A374681.html"><link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="../assets/style.css">
+<meta property="og:site_name" content="Math Experiments"><meta property="og:type" content="website"><meta property="og:title" content="New terms for OEIS A374681: compositions with weakly increasing anti-run leaders">
+<meta property="og:description" content="OEIS A374681 has 231 new terms checked by two independent programs, with a complete b-file and instructions to repeat the computation."><meta property="og:url" content="https://harinaralasetty.github.io/math-experiments/oeis/A374681.html">
+<meta property="og:image" content="https://harinaralasetty.github.io/math-experiments/assets/results.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Results table: OEIS new terms, BB(6) partial progress, HorizonMath no improvement.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="New terms for OEIS A374681: compositions with weakly increasing anti-run leaders">
+<meta name="twitter:description" content="OEIS A374681 has 231 new terms checked by two independent programs, with a complete b-file and instructions to repeat the computation."><meta name="twitter:image" content="https://harinaralasetty.github.io/math-experiments/assets/results.png">
+<meta name="twitter:image:alt" content="Computer-verified results table.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Dataset", "name": "A374681 computed term extension", "description": "Number of integer compositions of n whose leaders of anti-runs are weakly increasing.", "url": "https://harinaralasetty.github.io/math-experiments/oeis/A374681.html", "license": "https://creativecommons.org/licenses/by/4.0/", "isBasedOn": "https://oeis.org/A374681", "distribution": {"@type": "DataDownload", "encodingFormat": "text/plain", "contentUrl": "https://harinaralasetty.github.io/math-experiments/data/A374681.txt"}, "creator": {"@type": "Person", "name": "Hari Naralasetty", "url": "https://github.com/harinaralasetty", "sameAs": ["https://github.com/harinaralasetty", "https://www.linkedin.com/in/harinaralasetty"]}, "author": {"@type": "Person", "name": "Hari Naralasetty", "url": "https://github.com/harinaralasetty", "sameAs": ["https://github.com/harinaralasetty", "https://www.linkedin.com/in/harinaralasetty"]}, "dateModified": "2026-10-22"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Math Experiments", "item": "https://harinaralasetty.github.io/math-experiments/"}, {"@type": "ListItem", "position": 2, "name": "OEIS sequences extended", "item": "https://harinaralasetty.github.io/math-experiments/oeis/index.html"}, {"@type": "ListItem", "position": 3, "name": "New terms for OEIS A374681: compositions with weakly increasing anti-run leaders", "item": "https://harinaralasetty.github.io/math-experiments/oeis/A374681.html"}]}]}</script>
+</head><body><a class="skip" href="#main">Skip to content</a>
+<header><a class="brand" href="../index.html">Math Experiments</a><nav aria-label="Main navigation"><a href="../index.html">Results</a> <a href="../oeis/index.html">OEIS terms</a> <a href="../bb6.html">BB(6)</a> <a href="../horizonmath.html">HorizonMath</a> <a href="../reproduce.html">Reproduce</a></nav></header>
+<main id="main"><p class="eyebrow">Math Experiments · Research</p><h1>New terms for OEIS A374681: compositions with weakly increasing anti-run leaders</h1><p class="byline">By <a href="https://github.com/harinaralasetty">Hari Naralasetty</a> (<a href="https://github.com/harinaralasetty">GitHub</a> · <a href="https://www.linkedin.com/in/harinaralasetty">LinkedIn</a>) · 2026-10-22</p><p class="lead">This page gives 231 independently checked new terms for OEIS A374681: compositions with weakly increasing anti-run leaders.</p><section id="A374681-definition"><h2>Definition</h2><blockquote><p>Number of integer compositions of n whose leaders of anti-runs are weakly increasing.</p></blockquote><p>Quoted from <a href="https://oeis.org/A374681">OEIS A374681</a>, as cached in the source workspace.</p></section><section id="A374681-range"><h2>Published range and extension</h2><p>The cached published range was 0 through 25. The extension adds indices 26 through 256, giving 231 new terms. These terms have not yet been submitted to the OEIS.</p><p><a href="../data/A374681.txt">Download the complete A374681 b-file, published and new rows</a>.</p></section><h2>Two computation methods</h2><p>Dynamic programming by consumed weight, previous part and last anti-run leader, requiring each new leader to be at least as large.</p><p>Integer formal power series for whole maximal anti-runs, solved in decreasing leader order.</p><p>Anti-runs have no equal adjacent parts; an equal pair starts the next anti-run. The methods count individual parts and whole anti-runs separately.</p><section id="A374681-timings"><h2>Recorded timings</h2><p>Wall seconds from the committed source verification run, not a benchmark of this website build.</p><ul><li>reference: 1.6 s</li><li>independent: 1.2 s</li></ul></section><section id="A374681-terms"><h2>B-file preview</h2><p>The first 20 rows of the complete b-file are shown below. <a href="../data/A374681.txt">Download all published and new rows for A374681</a>.</p><pre class="terms">0 1
+1 1
+2 2
+3 4
+4 7
+5 14
+6 27
+7 50
+8 96
+9 185
+10 353
+11 672
+12 1289
+13 2466
+14 4722
+15 9052
+16 17342
+17 33244
+18 63767
+19 122325</pre></section><h2>Reproduce</h2><p>From the repository root, run <code>make -C oeis verify</code>. It recomputes all extensions with both methods and compares every row, including the published overlap. C++ and Python are required.</p><p><a href="https://github.com/harinaralasetty/math-experiments/tree/main/oeis/code">Read the OEIS computation programs</a> and <a href="https://github.com/harinaralasetty/math-experiments/blob/main/oeis/verify.py">the portable verification runner</a>. <a href="../reproduce.html">Verification scope and dependencies</a>.</p></main>
+<footer><p>By <a href="https://github.com/harinaralasetty">Hari Naralasetty</a> (<a href="https://github.com/harinaralasetty">GitHub</a> · <a href="https://www.linkedin.com/in/harinaralasetty">LinkedIn</a>). Results snapshot. <a href="../PROVENANCE.md">Claim provenance and source revisions</a> · <a href="https://github.com/harinaralasetty/math-experiments">Repository and code</a></p>
+<p>Original code: <a href="https://github.com/harinaralasetty/math-experiments/blob/main/LICENSE">MIT</a>. Original data and text: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Attributed quotations retain their source terms.</p></footer></body></html>

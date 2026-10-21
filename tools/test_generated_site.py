@@ -5,6 +5,9 @@ from pathlib import Path
 import unittest
 import xml.etree.ElementTree as ET
 import check_site
+import json
+from lxml import html
+from site_data import load_verification
 
 
 class GeneratedSiteTests(unittest.TestCase):
@@ -25,7 +28,8 @@ class GeneratedSiteTests(unittest.TestCase):
         p.write_text(text.replace(old,new,1))
 
     def test_reject_rendered_number_tampering(self):
-        self.change_home('577 new terms','578 new terms')
+        total = sum(row['new_count'] for row in load_verification()['sequences'])
+        self.change_home(f'<p class="num">{total:,}</p>', f'<p class="num">{total+1:,}</p>')
         with self.assertRaises(AssertionError): check_site.check_pages()
 
     def test_reject_broken_internal_link(self):
@@ -33,13 +37,31 @@ class GeneratedSiteTests(unittest.TestCase):
         with self.assertRaises(AssertionError): check_site.check_pages()
 
     def test_reject_duplicate_page_title(self):
-        self.change_home('<title>Computer-Verified Mathematics</title>',
-                         '<title>BB(6) local lemmas and unresolved proof gap</title>')
+        home_title = html.parse(str(self.docs/'index.html')).xpath('string(//title)')
+        bb_title = html.parse(str(self.docs/'bb6.html')).xpath('string(//title)')
+        self.change_home(f'<title>{home_title}</title>', f'<title>{bb_title}</title>')
         with self.assertRaises(AssertionError): check_site.check_pages()
 
     def test_reject_invalid_json_ld(self):
         self.change_home('"@type": "WebSite"','"@type": BROKEN')
         with self.assertRaises(ValueError): check_site.check_pages()
+
+    def test_faq_json_ld_matches_visible_text(self):
+        doc = html.parse(str(self.docs/'index.html'))
+        graph = json.loads(doc.xpath('//script')[0].text)['@graph']
+        check_site.check_faq(doc, graph)
+
+    def test_reject_faq_answer_tampering(self):
+        self.change_home('<p>Yes. Two independent programs', '<p>No. Two independent programs')
+        with self.assertRaises(AssertionError): check_site.check_pages()
+
+    def test_reject_faq_schema_tampering(self):
+        self.change_home('"text": "Yes. Two independent programs', '"text": "No. Two independent programs')
+        with self.assertRaises(AssertionError): check_site.check_pages()
+
+    def test_reject_missing_lead(self):
+        self.change_home('class="lead"', 'class="summary"')
+        with self.assertRaises(AssertionError): check_site.check_pages()
 
     def test_reject_sitemap_omission(self):
         p = self.docs/'sitemap.xml'

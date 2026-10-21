@@ -13,10 +13,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--quick', action='store_true', help='Check published overlap only, not extensions')
     args = parser.parse_args()
-    data = json.loads((ROOT/'data/verification.json').read_text())
+    data = {'sequences': [seq for name in ['verification.json', 'stage3-verification.json']
+                          for seq in json.loads((ROOT/'data'/name).read_text())['sequences']]}
+    stage3_ids = {s['id'] for s in json.loads((ROOT/'data/stage3-verification.json').read_text())['sequences']}
     def run(seq, method):
         limit = seq['listed_last'] if args.quick else seq['last']
-        p = subprocess.run([sys.executable, 'code/compute_new.py', seq['id'], method, str(limit)],
+        program = 'code/stage3/compute.py' if seq['id'] in stage3_ids else 'code/compute_new.py'
+        p = subprocess.run([sys.executable, program, seq['id'], method, str(limit)],
                            cwd=ROOT, check=True, capture_output=True, text=True, timeout=7150)
         result = json.loads(p.stdout)
         rows = [list(map(int, line.split())) for line in (ROOT.parent/'docs/data'/f"{seq['id']}.txt").read_text().splitlines() if line and not line.startswith('#')]

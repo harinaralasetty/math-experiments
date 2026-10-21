@@ -1,90 +1,112 @@
 # Verification report
 
-The repository and static site were refreshed locally from the final committed batch C and BB6 stage 2c source snapshots. No commit, push, publication or OEIS submission was performed. Only allowlisted committed source blobs and the authorized record-status note were imported.
+Math Experiments v2 is generated locally from pinned committed source snapshots. The OEIS stages together supply 1,350 new terms across 10 sequences. No commit, push, publication or OEIS submission was performed.
+
+The generator and stylesheet provide the announcement copy, per-sequence pages, two-significant-digit historical timings, complete downloads with 20-row previews, author credit, a visible FAQ and matching FAQPage, Article, WebSite, Dataset and breadcrumb JSON-LD, a refreshed social image, llms.txt and a sitemap. The README and all totals use the same combined sequence data.
 
 ## Source revisions
 
-- `oeis`: `77efe9549b8ced52bf7bec16acb93e794872379c`
+- `oeis`: `3504def3c80d31ce2cacb94b9fa67843812518db`
 - `bb6`: `228ba5559d062ca1f8fb5f6a21285fb9e80a6eb6`
 - `hm-batchA`: `b969a3c1429b2946ea10c3b365086d39bcc60ac7`
 - `hm-batchB`: `87d65db8e5b58a3e741c0bcfc3143bd44ce2609f`
 - `hm-batchC`: `302ff69a016406034ec43024639c6536890a5f30`
 
-## Scope
+## Verification scope and limitations
 
-The full OEIS run below recomputes all distributed extended rows with both original methods. Its wall seconds are actual measurements of this build. Page timing tables retain the separately identified historical source run. The BB6 portable target replays the local proof objects, corruption controls and concrete instances, plus authentic small-machine certificate fixtures. It does not rerun the full historical simulator campaign or claim a global decision. HorizonMath runs exact positive and negative construction checks, without vendoring the upstream benchmark.
+The mathematical command below recomputes every distributed OEIS row with both independent methods and checks the published overlap. It also verifies the BB(6) local proof objects, corruption controls, concrete replays and certificate fixtures, and runs the exact record-search construction verifiers with invalid controls. It does not repeat the full historical search campaigns or claim a new Busy Beaver decision or a new mathematical record. Source timings on the pages remain the separately identified historical measurements, rounded for display; actual recomputation timings appear below. Mathematical checks use this repository alone; the full site provenance check also requires the pinned sibling source workspaces. Building the site requires Git history for dates, Pillow and lxml.
 
-HTML validation uses the repository's strict local validator for the HTML5 subset used by this generator. It checks explicit nesting, supported elements/attributes and content models, plus metadata, links and structure. It is not the Nu HTML Checker. Mutation tests exercise malformed nesting, invalid paragraph contents, unknown elements, missing alt text and duplicate attributes. Further tests alter real generated pages to check rejection of a changed research number, broken link, duplicate title, malformed JSON-LD and omitted sitemap entry.
+Site validation uses the strict local validator for this generator's HTML5 subset, rather than the Nu HTML Checker. It checks nesting, supported attributes and content models, exactly one h1 and one initial lead sentence per page, links, unique titles and descriptions, canonical URLs, Open Graph, Twitter cards, schema author and creator identities, breadcrumbs, date consistency, sitemap and llms.txt coverage, imported hashes and source-backed numeric claims. New tests parse FAQ JSON-LD and compare it with the visible questions and answers; mutations of either the visible answer or schema answer must fail. Other mutation tests cover changed research numbers, missing leads, broken links, duplicate titles, invalid JSON-LD and sitemap omissions.
 
-The final BB6 stage 2c result is no global decision after the six-hour interval, with 118 additional local rules, 470 rejected corruptions and 3973 concrete instantiations. These are additional to the earlier 48 lemmas and 198 corruption controls. Batch C retained W(7,2) colouring length 3703 and an A(21,10) code of size 42 with minimum distance 10, matching published lower bounds. The full source reports contain the historical verification output; fresh portable checks below replay the distributed claims without modifying the read-only sibling workspaces.
+Page modification dates use each imported file's last-change date from the pinned source git revision and the relevant generator/style dates. Uncommitted generator/style changes use filesystem modification dates. The dates are repeated consistently in the byline, structured data and sitemap. Dates therefore follow each page's dependencies rather than one fixed publication date.
 
-Responsive CSS keeps tables and b-file rows in scrollable containers and wraps navigation on narrow viewports. A physical phone was not used. The refreshed social image was inspected directly. The refreshed sitemap covers every HTML page and has last-modified dates taken from pinned source commits. JSON-LD on the home and project pages describes the final outcomes.
+Responsive CSS wraps long numbers and inline code, keeps tables in scrollable boxes, lets navigation and cards wrap, and limits b-file previews to the first 20 rows. The 1200-by-630 social image was inspected directly. Browser automation was unavailable, so no rendered 390 px viewport or physical-phone test is claimed. The checks verify the relevant CSS and viewport rules.
 
-No third-party source folder, paper, PDF, source archive or copied web page was imported. The file audit below checks forbidden archive/document extensions and import paths; sources.json and PROVENANCE.md enumerate every imported file with its original hash. Batch C research references remain upstream links.
+Only allowlisted first-party source programs, evidence and text were imported; third-party papers, web snapshots, archives and implementations remain excluded. All complete b-files are byte-identical to the pinned source blobs. sources.json and docs/PROVENANCE.md record hashes, transformations and dates. The privacy scan below includes hidden and ignored working-tree files, excludes git history and skips binary content.
 
-## Site, provenance, hashes, links, sitemap, JSON-LD and privacy
+## Build
+
+Command: `make build`
+
+```text
+python3 tools/build_site.py
+Generated 15 HTML pages, provenance, sitemap, README and social image.
+```
+
+## Site, FAQ, provenance, metadata, links and privacy
 
 Command: `make verify-site`
 
 ```text
 python3 -m unittest discover -s tools -p 'test_*.py'
-...........
+...............
 ----------------------------------------------------------------------
-Ran 11 tests in 0.220s
+Ran 15 tests in 1.105s
 
 OK
 python3 tools/check_site.py
-PASS imported source hashes and pinned source bytes: 144 files
+PASS imported source hashes and pinned source bytes: 163 files
 PASS final stage2c summary: rule, corruption and concrete totals match source certificates; decision registry empty
-PASS numeric claim ledger: 30 source-backed sections; derived totals and ranges checked
+PASS numeric claim ledger: 51 source-backed sections; derived totals and ranges checked
 c8254c6946c5081c7a98bef5db1c49ee7274a5b1c9db25b316af740fcb8e212a  docs/data/A391646.txt  SOURCE BYTE MATCH
 cb6407dce9262780347ede1f01552c286ba7f69f8cdf393df1ae17625df50607  docs/data/A383533.txt  SOURCE BYTE MATCH
 0cae08d930abb2f7a9c27690792e6da326a323b1804dd6dee0c3fa173a962fc3  docs/data/A374679.txt  SOURCE BYTE MATCH
 2364ef7e0888ebae32183640258713c25e4e38459fd4f077a245eefed35c1599  docs/data/A353390.txt  SOURCE BYTE MATCH
 62ac5f2df048c873dcc53af7a9bf7891d1bfab75387505262d913b4e5ee15415  docs/data/A335457.txt  SOURCE BYTE MATCH
-PASS local HTML5 subset validator: 10 pages, strict nesting, attributes, content models, one h1 and semantic structure
-PASS internal link checker: 113 links and assets, including fragments
-PASS unique titles/descriptions, canonical URLs, Open Graph, Twitter cards and parsed JSON-LD: 10 pages
-PASS sitemap exact coverage: 10 pages; robots sitemap reference
+3d75a9aee887565f0e61d50aed7ef80ac12ce6324ef9f55de30dbc1c40cba338  docs/data/A374680.txt  SOURCE BYTE MATCH
+0e20b1f08d9c44f9e83dd2bf63bbaf50523051d12b9143a69c2829db8778275c  docs/data/A374681.txt  SOURCE BYTE MATCH
+c723aac27e7467e8bcf65eee9dd2c467697f81def286f2093ee5e0018a3fc7ff  docs/data/A374682.txt  SOURCE BYTE MATCH
+38e674a6ecc63b74c8b468dd02200b3d51d31c53efa3c45ccfa8f0b8803d7e6e  docs/data/A383710.txt  SOURCE BYTE MATCH
+8c7ab3d49b82270d9a010ddbee632cf6a829f18352ecf3fc4a79f6d89a80e816  docs/data/A383711.txt  SOURCE BYTE MATCH
+PASS local HTML5 subset validator: 15 pages, strict nesting, attributes, content models, one h1 and semantic structure
+PASS internal link checker: 198 links and assets, including fragments
+PASS unique titles/descriptions, canonical URLs, Open Graph, Twitter cards and parsed JSON-LD: 15 pages
+PASS sitemap exact coverage: 15 pages; robots sitemap reference
+PASS visible FAQ matches parsed FAQPage JSON-LD; author, Article, Dataset and breadcrumbs; per-page modification dates and llms.txt coverage
 PASS responsive viewport and CSS; no runtime scripts, remote fonts, trackers or large page assets
 PASS social image: 1200x630; results table drawn from the shared source model
 PASS repository Markdown internal links: 16 targets
 PASS no vendored papers, PDFs, source archives or copied web pages; imported code is byte-identical allowlisted first-party code; batch C sources folder excluded
-COMMAND: rg --hidden --no-ignore -n -I -e '[/]Users[/][^\s]+|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk[-](?:proj[-])?[A-Za-z0-9_-]{20,}|AKIA[A-Z0-9]{16}|-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----' .
-grep output: (no matches); exit status 1
+COMMAND: python regex scan of every file under the repo root (hidden and ignored files included; .git excluded)
+scan output: (no matches)
 PASS privacy grep: no personal home paths, email addresses, known token/key patterns or private-key headers in distributable files
-Privacy grep covers the whole tree, including hidden and ignored files and git metadata; rg skips binary content. No private sprint log or third-party implementation imported.
+Privacy scan covers the whole working tree, including hidden and ignored files, and skips binary content and .git history. No private sprint log or third-party implementation imported.
 PASS all site checks
 ```
 
-## Full OEIS recomputation
+## Complete mathematical verification
 
-Command: `make -C oeis verify`
+Command: `make verify-math`
 
 ```text
+/Library/Developer/CommandLineTools/usr/bin/make -C oeis verify
 clang++ -O3 -std=c++17 -Wall -Wextra code/new_powerful.cpp -o code/new_powerful
 clang++ -O3 -std=c++17 -Wall -Wextra code/new_patterns.cpp -o code/new_patterns
 clang++ -O3 -std=c++17 -Wall -Wextra code/cut_runs.cpp -o code/cut_runs
 clang++ -O3 -std=c++17 -Wall -Wextra code/new_runs.cpp -o code/new_runs
 python3 -u verify.py
-A391646 reference indices=0..37 PASS wall_seconds=0.040153
-A391646 independent indices=0..37 PASS wall_seconds=0.376238
-A374679 independent indices=0..512 PASS wall_seconds=1.829949
-A374679 reference indices=0..512 PASS wall_seconds=12.751165
-A383533 reference indices=0..75 PASS wall_seconds=60.821322
-A335457 reference indices=0..26 PASS wall_seconds=62.993270
-A353390 reference indices=0..32 PASS wall_seconds=205.606470
-A353390 independent indices=0..32 PASS wall_seconds=280.949909
-A383533 independent indices=0..75 PASS wall_seconds=533.871905
-A335457 independent indices=0..26 PASS wall_seconds=953.571814
+A391646 reference indices=0..37 PASS wall_seconds=0.062775
+A391646 independent indices=0..37 PASS wall_seconds=0.735525
+A374679 independent indices=0..512 PASS wall_seconds=3.338294
+A374679 reference indices=0..512 PASS wall_seconds=17.497081
+A383533 reference indices=0..75 PASS wall_seconds=83.054962
+A335457 reference indices=0..26 PASS wall_seconds=57.928392
+A353390 reference indices=0..32 PASS wall_seconds=190.461001
+A374680 reference indices=0..256 PASS wall_seconds=1.861636
+A374680 independent indices=0..256 PASS wall_seconds=0.978749
+A374681 reference indices=0..256 PASS wall_seconds=1.897893
+A374681 independent indices=0..256 PASS wall_seconds=1.404770
+A374682 reference indices=0..256 PASS wall_seconds=1.875518
+A374682 independent indices=0..256 PASS wall_seconds=1.976311
+A353390 independent indices=0..32 PASS wall_seconds=255.390424
+A383710 reference indices=0..65 PASS wall_seconds=83.903052
+A383711 reference indices=0..65 PASS wall_seconds=12.255656
+A383710 independent indices=0..65 PASS wall_seconds=71.512934
+A383711 independent indices=0..65 PASS wall_seconds=68.046216
+A383533 independent indices=0..75 PASS wall_seconds=501.919625
+A335457 independent indices=0..26 PASS wall_seconds=874.489557
 PASS all extended b-files recomputed by both methods
-```
-
-## BB6 local proofs and checker controls
-
-Command: `make -C bb6 verify`
-
-```text
+/Library/Developer/CommandLineTools/usr/bin/make -C bb6 verify
 python3 -u verify.py
 024-local-lemmas.json: local lemmas=27 corruptions_rejected=106 concrete_replays=372 PASS
 444-local-lemmas.json: local lemmas=21 corruptions_rejected=92 concrete_replays=468 PASS
@@ -95,13 +117,7 @@ PASS local lemmas=48 corruptions_rejected=198 concrete_replays=840; registered d
 PASS stage2c local lemmas=118 corruptions_rejected=470 concrete_replays=3973; registered decisions=0
 PASS translated_cycler source fixtures accepted=20; corruptions and halting-transition variants rejected=40; controls only, no new decisions
 PASS ngram_cps source fixtures accepted=20; corruptions and halting-transition variants rejected=40; controls only, no new decisions
-```
-
-## HorizonMath exact verifiers
-
-Command: `make -C horizonmath verify`
-
-```text
+/Library/Developer/CommandLineTools/usr/bin/make -C horizonmath verify
 python3 verify.py
 dts_7_5_min_scope: scope=112; valid witness accepted, invalid control rejected PASS
 cwcode_29_8_5: num_blocks=36; valid witness accepted, invalid control rejected PASS
@@ -114,4 +130,4 @@ PASS 15 exact verifier cases; no new record claimed
 
 ## Delivery
 
-The README and site share the same result model. Every research number has a section-level source mapping in docs/PROVENANCE.md and tools/claims.json. sources.json records hashes and extraction transformations. Five distributed b-files are byte-identical to their pinned source results. The licence split is MIT for original code and CC BY 4.0 for original data/text, with source attribution retained for quotations and published constructions. Repository description, topics and Pages configuration suggestions are in docs/github-topics.md.
+All 10 b-files and sequence pages are included. The licence holder remains Hari Naralasetty; original code is MIT and original data/text are CC BY 4.0, with existing attribution retained. The changes are left uncommitted for manager review.

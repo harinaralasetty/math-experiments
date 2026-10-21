@@ -14,6 +14,8 @@ from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 from lxml import html
 from PIL import Image
+from site_data import load_verification, duration
+from build_site import page_date, AUTHOR, HEADLINE
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT/'docs'
@@ -92,6 +94,29 @@ def numbers(text):
     return set(re.findall(r'\d+(?:\.\d+)?',text.replace(',','')))
 
 
+def evidence_numbers(data):
+    values = numbers(data)
+    # Display durations are derived by rounding decimal source measurements.
+    for raw in re.findall(r'(?<![\w.])\d+\.\d+(?!\d)', data):
+        values |= numbers(duration(raw))
+    return values
+
+
+def check_faq(doc, graph):
+    schemas = [node for node in graph if node['@type'] == 'FAQPage']
+    assert len(schemas) == 1
+    visible = doc.xpath('//div[@class="faq"]')
+    assert len(visible) == 1
+    assert doc.xpath('//h2[text()="Questions and answers"]')
+    questions = visible[0].xpath('./h3')
+    answers = visible[0].xpath('./p')
+    assert 5 <= len(questions) <= 7 and len(questions) == len(answers)
+    expected = [{'@type': 'Question', 'name': q.text_content(),
+                 'acceptedAnswer': {'@type': 'Answer', 'text': a.text_content()}}
+                for q,a in zip(questions, answers)]
+    assert schemas[0]['mainEntity'] == expected, 'FAQ JSON-LD must match the visible questions and answers'
+
+
 def check_provenance():
     manifest = json.loads((ROOT/'sources.json').read_text())
     for f in manifest['files']:
@@ -104,7 +129,7 @@ def check_provenance():
         assert hashlib.sha256(data).hexdigest() == f['source_sha256']
         if not f['transformed']: assert target.read_bytes() == data
     print(f'PASS imported source hashes and pinned source bytes: {len(manifest["files"])} files')
-    seq = json.loads((ROOT/'oeis/data/verification.json').read_text())['sequences']
+    seq = load_verification()['sequences']
     derived = {str(sum(s['new_count'] for s in seq)),str(len(seq)),*[str(s['listed_last']+1) for s in seq]}
     certs = [json.loads(p.read_text()) for p in (ROOT/'bb6/data/stage2b').glob('*-local-lemmas.json')]
     local_reports = [json.loads(p.read_text()) for p in (ROOT/'bb6/data/stage2b').glob('*local-verification.json')]
@@ -124,13 +149,16 @@ def check_provenance():
         available = set(derived)
         for evidence in c['evidence']:
             data = (ROOT/evidence).read_text()
-            available |= numbers(data)
+            available |= evidence_numbers(data)
         missing = numbers(text)-available
         assert not missing, (c['id'],missing)
     print(f'PASS numeric claim ledger: {len(claims)} source-backed sections; derived totals and ranges checked')
     # The downloadable b-files must be exactly the pinned result blobs.
     for s in seq:
+        assert s['new_count'] == s['last'] - s['listed_last']
         file = DOCS/'data'/f'{s["id"]}.txt'
+        rows = [line for line in file.read_text().splitlines() if line and not line.startswith('#')]
+        assert [int(line.split()[0]) for line in rows] == list(range(s['last']+1))
         digest = hashlib.sha256(file.read_bytes()).hexdigest()
         assert f'{digest}  {file.name}' in (DOCS/'data/SHA256SUMS').read_text()
         print(f'{digest}  {file.relative_to(ROOT)}  SOURCE BYTE MATCH')
@@ -143,11 +171,26 @@ def check_pages():
     observed = set()
     all_source_numbers = set()
     for source in json.loads((ROOT/'sources.json').read_text())['files']:
-        all_source_numbers |= numbers((ROOT/source['target']).read_text())
-    sequence_data = json.loads((ROOT/'oeis/data/verification.json').read_text())['sequences']
+        all_source_numbers |= evidence_numbers((ROOT/source['target']).read_text())
+    sequence_data = load_verification()['sequences']
     all_source_numbers |= {str(sum(s['new_count'] for s in sequence_data)), str(len(sequence_data)), '48', '198', '4.0'}
     for file in files:
         text = file.read_text(); doc = validate_html(text)
+        rel = str(file.relative_to(DOCS))
+        modified = page_date(rel)
+        all_source_numbers |= numbers(modified)
+        leads = doc.xpath('//main//p[@class="lead"]')
+        assert len(leads) == 1 and leads[0].text_content().strip().endswith('.'), (file, 'one direct-answer lead required')
+        assert doc.xpath('//main//p[not(@class="eyebrow") and not(@class="byline")]')[0] == leads[0]
+        assert doc.xpath('//meta[@name="author"]/@content') == [AUTHOR['name']]
+        for area in ['//p[@class="byline"]', '//footer']:
+            node = doc.xpath(area)[0]
+            assert 'By Hari Naralasetty' in node.text_content()
+            for link in AUTHOR['sameAs']:
+                assert node.xpath('.//a[@href=$url]', url=link)
+        assert doc.xpath('string(//p[@class="byline"])').endswith(' · '+modified)
+        assert doc.xpath('//meta[@property="og:site_name"]/@content') == ['Math Experiments']
+        assert doc.xpath('string(//a[@class="brand"])') == 'Math Experiments'
         for section in doc.xpath('//section[@id]'):
             key = section.get('id'); assert key in ledger and key not in observed
             expected_section = html.fromstring('<section id="'+key+'">'+ledger[key]['html']+'</section>')
@@ -176,9 +219,32 @@ def check_pages():
         expected_schema = ('WebSite' if rel=='index.html' else
                            'Dataset' if file.parent.name=='oeis' and file.name!='index.html' else
                            'CollectionPage' if rel=='oeis/index.html' else 'SoftwareSourceCode')
+        graph = schema['@graph']
+        schema = graph[0]
         assert schema['@type'] == expected_schema
+        assert schema['author'] == AUTHOR and schema['dateModified'] == modified
+        if rel == 'index.html':
+            assert schema['name'] == 'Math Experiments'
+            assert title == HEADLINE+' | Math Experiments by Hari Naralasetty'
+            assert doc.xpath('string(//h1)') == HEADLINE
+            article = [node for node in graph if node['@type'] == 'Article']
+            assert len(article) == 1 and article[0]['headline'] == HEADLINE
+            assert article[0]['author'] == AUTHOR and article[0]['dateModified'] == modified
+            assert article[0]['datePublished'] <= modified
+            check_faq(doc, graph)
+        else:
+            assert title == doc.xpath('string(//h1)')+' | Math Experiments'
+            crumbs = [node for node in graph if node['@type'] == 'BreadcrumbList']
+            assert len(crumbs) == 1
+            items = crumbs[0]['itemListElement']
+            assert [x['position'] for x in items] == list(range(1,len(items)+1))
+            assert items[0]['item'] == BASE and items[-1]['item'] == expected
         if expected_schema == 'Dataset':
             assert schema['distribution']['contentUrl'] == BASE+'data/'+file.stem+'.txt'
+            assert schema['creator'] == AUTHOR and schema['isBasedOn'] == 'https://oeis.org/'+file.stem
+            preview = doc.xpath('//pre[@class="terms"]')
+            rows = [line for line in (DOCS/'data'/f'{file.stem}.txt').read_text().splitlines() if line and not line.startswith('#')]
+            assert len(preview) == 1 and preview[0].text_content().splitlines() == rows[:20]
         assert doc.xpath('//meta[@name="viewport"]')
         assert not doc.xpath('//*[@style] | //iframe | //form')
         for node in doc.xpath('//*[@href] | //*[@src]'):
@@ -199,8 +265,13 @@ def check_pages():
     assert observed == set(ledger), 'Every ledger claim must appear once in the actual rendered site'
     urls = [n.text for n in ET.parse(DOCS/'sitemap.xml').findall('s:url/s:loc',ns)]
     assert len(urls)==len(set(urls)) and set(urls)==canonicals
-    dates = set(json.loads((ROOT/'sources.json').read_text())['revision_dates'].values())
-    assert all(node.text in dates for node in ET.parse(DOCS/'sitemap.xml').findall('s:url/s:lastmod', ns))
+    for node in ET.parse(DOCS/'sitemap.xml').findall('s:url', ns):
+        url = node.find('s:loc', ns).text
+        rel = url.removeprefix(BASE) or 'index.html'
+        assert node.find('s:lastmod', ns).text == page_date(rel)
+    summary = (DOCS/'llms.txt').read_text()
+    assert all(url in summary for url in canonicals)
+    assert f'{sum(s["new_count"] for s in sequence_data):,} new terms' in summary
     assert len(ET.parse(DOCS/'sitemap.xml').findall('s:url/s:lastmod', ns)) == len(files)
     assert BASE+'sitemap.xml' in (DOCS/'robots.txt').read_text()
     with Image.open(DOCS/'assets/results.png') as social:
@@ -213,6 +284,7 @@ def check_pages():
     print(f'PASS internal link checker: {links} links and assets, including fragments')
     print(f'PASS unique titles/descriptions, canonical URLs, Open Graph, Twitter cards and parsed JSON-LD: {len(files)} pages')
     print(f'PASS sitemap exact coverage: {len(files)} pages; robots sitemap reference')
+    print('PASS visible FAQ matches parsed FAQPage JSON-LD; author, Article, Dataset and breadcrumbs; per-page modification dates and llms.txt coverage')
     print('PASS responsive viewport and CSS; no runtime scripts, remote fonts, trackers or large page assets')
     print('PASS social image: 1200x630; results table drawn from the shared source model')
 
