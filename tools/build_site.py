@@ -29,7 +29,7 @@ def claim(key, text, evidence):
     return f'<section id="{key}">{text}</section>'
 
 
-def page(path, title, description, body, schema):
+def page(path, title, description, body, schema, eyebrow=None):
     depth = len(Path(path).parts)-1
     prefix = '../'*depth
     canonical = BASE + ('' if path == 'index.html' else path)
@@ -40,19 +40,19 @@ def page(path, title, description, body, schema):
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(description)}"><meta name="author" content="{AUTHOR['name']}">
-<link rel="canonical" href="{canonical}"><link rel="stylesheet" href="{prefix}assets/style.css">
+<link rel="canonical" href="{canonical}"><link rel="icon" href="{prefix}favicon.svg"><link rel="stylesheet" href="{prefix}assets/style.css">
 <meta property="og:type" content="website"><meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{BASE}assets/results.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Results table: OEIS new terms, BB(6) partial progress, HorizonMath no improvement.">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{BASE}assets/results.png">
-<meta name="twitter:image:alt" content="Verified research sprint results table.">
+<meta name="twitter:image:alt" content="Computer-verified results table.">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org', **schema, 'author':AUTHOR},ensure_ascii=False)}</script>
 </head><body><a class="skip" href="#main">Skip to content</a>
-<header><a class="brand" href="{prefix}index.html">math-experiments</a><nav aria-label="Main navigation">{nav}</nav></header>
-<main id="main"><h1>{esc(title)}</h1><p class="byline">By {AUTHOR_LINKS}</p>{body}</main>
-<footer><p>By {AUTHOR_LINKS}. Snapshot of verified sprint work. <a href="{prefix}PROVENANCE.md">Claim provenance and source revisions</a> · <a href="{REPO}">Repository and code</a></p>
+<header><a class="brand" href="{prefix}index.html">Computer-Verified Mathematics</a><nav aria-label="Main navigation">{nav}</nav></header>
+<main id="main">{f'<p class="eyebrow">{eyebrow}</p>' if eyebrow else ''}<h1>{esc(title)}</h1><p class="byline">By {AUTHOR_LINKS} · Published 21 October 2026</p>{body}</main>
+<footer><p>By {AUTHOR_LINKS}. Results snapshot. <a href="{prefix}PROVENANCE.md">Claim provenance and source revisions</a> · <a href="{REPO}">Repository and code</a></p>
 <p>Original code: <a href="{REPO}/blob/main/LICENSE">MIT</a>. Original data and text: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Attributed quotations retain their source terms.</p></footer></body></html>'''
     out = DOCS/path; out.parent.mkdir(parents=True, exist_ok=True); out.write_text(doc)
     pages.append(path)
@@ -64,10 +64,12 @@ def main():
 <tr><th scope="row"><a href="oeis/index.html">OEIS extensions</a></th><td><span class="status new">New result</span></td><td>{total} new terms; not yet submitted to OEIS</td></tr>
 <tr><th scope="row"><a href="bb6.html">BB(6) holdouts</a></th><td><span class="status partial">Partial progress</span></td><td>48 initial lemmas plus 118 new local rules; no global decision</td></tr>
 <tr><th scope="row"><a href="horizonmath.html">HorizonMath A, B and C</a></th><td><span class="status none">No improvement</span></td><td>Published baselines retained, including colouring length 3703 and code size 42 with minimum distance 10; no new record</td></tr></tbody></table></div>'''
-    body = '<p class="eyebrow">Machine-checkable mathematics · source snapshot</p><p class="lead">An AI coding agent, managed by another AI, worked on open problems whose proposed answers can be checked by programs.</p>'
-    body += claim('results-table', table, ['oeis/data/verification.json','bb6/REPORT.txt','bb6/data/stage2c/summary.json','horizonmath/hm-batchA/REPORT.txt','horizonmath/hm-batchB/REPORT.txt','horizonmath/hm-batchC/REPORT.txt'])
-    body += '<h2>The experiment</h2><p>Claude managed the tasks and reviewed staged work. Codex computed candidates and wrote independent checkers. Before search, the workers checked published problem status. The manager reran verification before accepting a result. A long computation or a checker accepting malformed input did not count as mathematical progress.</p><h2>What these results mean</h2><p>The OEIS extensions are exact computations beyond the cached published ranges. BB(6) local transition lemmas leave a global proof obligation open. The HorizonMath searches retained the known constructions. Failed bounded searches do not establish optimality.</p><p>Published status is a dated source-search snapshot, with no coverage of unpublished work. See <a href="reproduce.html">verification commands and limitations</a>.</p>'
-    page('index.html','Verified mathematics experiments','Source-backed results from an AI-managed research sprint: OEIS term extensions, local BB(6) lemmas, and HorizonMath searches.',body,{'@type':'WebSite','name':'math-experiments','url':BASE,'description':f'{total} new OEIS terms, BB(6) stage 2c finished with 118 new local rules and no decision, and HorizonMath batches A, B and C with no new record.'})
+    body = '<p class="lead">Computational results on open problems in number theory, computability and combinatorics. The work was carried out with AI agents, and every result is checked by independent programs.</p>'
+    cards = f'<h2>Key results</h2><div class="cards"><div class="card"><p class="num">{total}</p><p class="label">new terms across five OEIS sequences, each computed by two independent methods</p><p><span class="status new">New result</span></p></div><div class="card"><p class="num">118</p><p class="label">new checked local rules for BB(6) holdout 24, on top of 48 earlier lemmas</p><p><span class="status partial">Partial progress</span></p></div><div class="card"><p class="num">0</p><p class="label">new records in HorizonMath batches A, B and C; published bounds such as W(7,2) &gt; 3703 stand</p><p><span class="status none">No improvement</span></p></div></div>'
+    body += claim('key-results', cards, ['oeis/data/verification.json','bb6/REPORT.txt','bb6/data/stage2c/summary.json','horizonmath/hm-batchA/REPORT.txt','horizonmath/hm-batchB/REPORT.txt','horizonmath/hm-batchC/REPORT.txt'])
+    body += claim('results-table', '<h2>All results</h2>'+table, ['oeis/data/verification.json','bb6/REPORT.txt','bb6/data/stage2c/summary.json','horizonmath/hm-batchA/REPORT.txt','horizonmath/hm-batchB/REPORT.txt','horizonmath/hm-batchC/REPORT.txt'])
+    body += '<h2>Method</h2><p>AI agents searched for candidates and wrote independent checkers. The published status of each problem was checked before any search, and a result is reported only after its checks were re-run from scratch. A long computation, or a checker that accepts malformed input, does not count as progress.</p><h2>What these results mean</h2><p>The OEIS extensions are exact computations beyond the cached published ranges. BB(6) local transition lemmas leave a global proof obligation open. The HorizonMath searches retained the known constructions. Failed bounded searches do not establish optimality.</p><p>Published status is a dated source-search snapshot, with no coverage of unpublished work. See <a href="reproduce.html">verification commands and limitations</a>.</p>'
+    page('index.html','Computer-Verified Mathematics','Computer-verified results on open mathematical problems, produced with AI agents: new OEIS terms, BB(6) lemmas and HorizonMath searches.',body,{'@type':'WebSite','name':'Computer-Verified Mathematics','url':BASE,'description':f'{total} new OEIS terms, BB(6) stage 2c finished with 118 new local rules and no decision, and HorizonMath batches A, B and C with no new record.'}, eyebrow='Research · Experimental mathematics')
 
     methods = {
         'A391646': ('Multiple-choice multiplicative knapsack over prime powers in Python.', 'C++ branch-and-bound over distinct prime factors, with optimistic suffix bounds.', 'Prime factors of exponent one contribute zero and can be removed. Both searches use a finite cap; the computed minima must lie inside it.'),
@@ -113,7 +115,7 @@ def main():
     page('horizonmath.html','HorizonMath checks and negative results','Final HorizonMath batches A, B and C: no new record; exact checks retain W(7,2) colouring length 3703 and A(21,10) code size 42 with minimum distance 10.',body,{'@type':'SoftwareSourceCode','name':'HorizonMath independent exact verifiers','description':'Batches A, B and C found no new record. Batch C retained a length-3703 colouring and 42 binary codewords with minimum distance 10.','codeRepository':REPO+'/tree/main/horizonmath','programmingLanguage':'Python','license':'https://opensource.org/license/mit','url':BASE+'horizonmath.html'})
 
     body = '<p class="lead">Every reported result has a source artifact and an executable check.</p><h2>Run from the repository root</h2><pre>make verify-site\nmake verify-math</pre><p>Site verification checks imported hashes, b-file equality against the adjacent source workspace, HTML structure, internal links, metadata, sitemap coverage, JSON-LD and the privacy scan. Mathematical verification runs the OEIS extensions with both methods, BB(6) local proofs and HorizonMath exact construction checks.</p><p>Python and a C++ compiler are required for mathematical recomputation. The site generator additionally uses Pillow for its results-table image. The validator uses lxml. No browser-side framework, external font, tracker or runtime script is used.</p><h2>Check scope</h2><p>The OEIS full check recomputes the extended ranges. A separate quick command checks only published overlap. Recorded source timings are historical measurements, not promises about another machine. BB(6) portable verification checks local claims and an empty decision registry; the full simulator campaign remains in the source workspace. HorizonMath portable verification checks the exact mathematical conditions, with invalid controls.</p><h2>Source snapshots</h2><p><a href="PROVENANCE.md">Provenance and numeric claim ledger</a>, <a href="data/SHA256SUMS">b-file hashes</a>, and the <a href="'+REPO+'/blob/main/sources.json">import manifest</a> pin the evidence. Run <code>python3 tools/import_sources.py</code> only when deliberately refreshing sources, then rebuild and rerun all checks. It reads committed source blobs and never copies third-party code.</p><h2>Local report</h2><p><a href="'+REPO+'/blob/main/REPORT.md">Read actual verification output</a>. Publication, submission to OEIS and source refreshes remain separate owner actions.</p>'
-    page('reproduce.html','Reproduce the verified sprint results','Commands, dependencies, source snapshots and verification boundaries for the OEIS extensions, BB(6) local proofs and HorizonMath constructions.',body,{'@type':'SoftwareSourceCode','name':'math-experiments verification tools','codeRepository':REPO,'programmingLanguage':['Python','C++'],'license':'https://opensource.org/license/mit','url':BASE+'reproduce.html'})
+    page('reproduce.html','Reproduce the results','Commands, dependencies, source snapshots and verification boundaries for the OEIS extensions, BB(6) local proofs and HorizonMath constructions.',body,{'@type':'SoftwareSourceCode','name':'math-experiments verification tools','codeRepository':REPO,'programmingLanguage':['Python','C++'],'license':'https://opensource.org/license/mit','url':BASE+'reproduce.html'})
 
     sums = ''.join(f'{hashlib.sha256((DOCS/"data"/f"{s["id"]}.txt").read_bytes()).hexdigest()}  {s["id"]}.txt\n' for s in sequences)
     (DOCS/'data/SHA256SUMS').write_text(sums)
@@ -134,12 +136,12 @@ def main():
         provenance += f'| `{f["workspace"]}/{f["source"]}` | `{f["target"]}` | `{f["source_sha256"]}` | '+('Selected fields only; original hash retained' if f['transformed'] else 'None; byte-identical')+' |\n'
     provenance += '\n## Limitations and attribution\n\nBatch C and BB6 stage 2c are included from their final committed snapshots. The hm-batchC sources/ directory contains third-party research material and is excluded in full; upstream references remain links in its first-party report. Source reports are historical records; their descriptions of commits or posts apply to the source worker run. OEIS definitions are attributed quotations. Published baseline constructions retain the source attribution documented in the campaign reports. No third-party implementation is copied into this repository. Sprint management rules are drawn from the parent sprint README; private and unrelated project information is intentionally excluded.\n'
     (DOCS/'PROVENANCE.md').write_text(provenance)
-    (DOCS/'github-topics.md').write_text('# Repository metadata suggestions\n\nDescription: Verified OEIS term extensions, BB(6) local proofs, and exact HorizonMath checks from an AI-managed research sprint.\n\nTopics: mathematics, oeis, busy-beaver, combinatorics, reproducible-research, computational-mathematics, github-pages, verification\n\nPages configuration: deploy from the main branch, /docs folder. The manager handles repository creation and publication.\n')
-    (ROOT/'README.md').write_text(f'''# math-experiments
+    (DOCS/'github-topics.md').write_text('# Repository metadata suggestions\n\nDescription: Computer-verified results on open mathematical problems, produced with AI agents: new OEIS terms, BB(6) lemmas and HorizonMath searches.\n\nTopics: mathematics, oeis, busy-beaver, combinatorics, reproducible-research, computational-mathematics, github-pages, verification\n\nPages configuration: deploy from the main branch, /docs folder. The manager handles repository creation and publication.\n')
+    (ROOT/'README.md').write_text(f'''# Computer-Verified Mathematics
 
 By [Hari Naralasetty](https://github.com/harinaralasetty) · [GitHub](https://github.com/harinaralasetty) · [LinkedIn](https://www.linkedin.com/in/harinaralasetty).
 
-An AI coding agent managed by another AI worked on open problems whose answers can be checked by programs. Claude managed staged tasks; Codex computed candidates and wrote independent checkers. Published status was checked first. The manager reran verification, and no result was accepted without a check.
+Computational results on open problems in number theory, computability and combinatorics. The work was carried out with AI agents, and every result is checked by independent programs. The published status of each problem was checked first, and no result is reported without a re-run check.
 
 | Project | Status | Verified outcome |
 |---|---|---|
@@ -147,7 +149,7 @@ An AI coding agent managed by another AI worked on open problems whose answers c
 | BB(6) | Partial progress | 48 initial local lemmas for candidates 24 and 444, plus 118 new rules for candidate 24; undecided after six hours; 470 new corruption controls rejected |
 | HorizonMath A, B and C | No improvement | Published baselines retained: DTS scope 112, constant-weight code size 36, covering size 30, Schur coloring through 536, W(7,2) colouring length 3703 and A(21,10) code size 42 with minimum distance 10 |
 
-The [static site](docs/index.html) has per-sequence definitions, b-files, methods and recorded timings. The intended Pages URL is {BASE}. The manager handles publication.
+The [static site](docs/index.html) has per-sequence definitions, b-files, methods and recorded timings. Live site: {BASE}
 
 Run `make verify-site` and `make verify-math`. The full OEIS check recomputes the extensions with both methods. BB(6) checks local proofs and rejects corruptions; its committed decision registry is empty. HorizonMath checks constructions with independent exact verifiers and invalid controls. See [verification output](REPORT.md), [provenance](docs/PROVENANCE.md) and [source hashes](sources.json).
 
@@ -168,8 +170,8 @@ def social_image():
     fontpath = next((p for p in options if Path(p).is_file()), None)
     font = lambda n: ImageFont.truetype(fontpath,n) if fontpath else ImageFont.load_default(size=n)
     draw.rectangle((0,0,1200,12),fill='#195b46')
-    draw.text((65,55),'math-experiments',font=font(46),fill='#172d26')
-    draw.text((65,121),'Verified results from an AI-managed research sprint',font=font(25),fill='#43584f')
+    draw.text((65,55),'Computer-Verified Mathematics',font=font(46),fill='#172d26')
+    draw.text((65,121),'Results produced with AI agents, checked by independent programs',font=font(25),fill='#43584f')
     xs=[65,400,710]; headers=['Project','Status','Verified outcome']
     for x,t in zip(xs,headers):draw.text((x,205),t,font=font(23),fill='#43584f')
     rows=[('OEIS','New result',f'{total} new terms'),('BB(6)','Partial progress','118 new local rules\n470 corruptions rejected'),('HorizonMath A/B/C','No improvement','3703 colouring\n42 codewords; distance 10')]

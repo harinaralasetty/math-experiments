@@ -1,6 +1,6 @@
 # Repository metadata suggestions
 
-Description: Verified OEIS term extensions, BB(6) local proofs, and exact HorizonMath checks from an AI-managed research sprint.
+Description: Computer-verified results on open mathematical problems, produced with AI agents: new OEIS terms, BB(6) lemmas and HorizonMath searches.
 
 Topics: mathematics, oeis, busy-beaver, combinatorics, reproducible-research, computational-mathematics, github-pages, verification
 

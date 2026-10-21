@@ -1,8 +1,8 @@
-# math-experiments
+# Computer-Verified Mathematics
 
 By [Hari Naralasetty](https://github.com/harinaralasetty) · [GitHub](https://github.com/harinaralasetty) · [LinkedIn](https://www.linkedin.com/in/harinaralasetty).
 
-An AI coding agent managed by another AI worked on open problems whose answers can be checked by programs. Claude managed staged tasks; Codex computed candidates and wrote independent checkers. Published status was checked first. The manager reran verification, and no result was accepted without a check.
+Computational results on open problems in number theory, computability and combinatorics. The work was carried out with AI agents, and every result is checked by independent programs. The published status of each problem was checked first, and no result is reported without a re-run check.
 
 | Project | Status | Verified outcome |
 |---|---|---|
@@ -10,7 +10,7 @@ An AI coding agent managed by another AI worked on open problems whose answers c
 | BB(6) | Partial progress | 48 initial local lemmas for candidates 24 and 444, plus 118 new rules for candidate 24; undecided after six hours; 470 new corruption controls rejected |
 | HorizonMath A, B and C | No improvement | Published baselines retained: DTS scope 112, constant-weight code size 36, covering size 30, Schur coloring through 536, W(7,2) colouring length 3703 and A(21,10) code size 42 with minimum distance 10 |
 
-The [static site](docs/index.html) has per-sequence definitions, b-files, methods and recorded timings. The intended Pages URL is https://harinaralasetty.github.io/math-experiments/. The manager handles publication.
+The [static site](docs/index.html) has per-sequence definitions, b-files, methods and recorded timings. Live site: https://harinaralasetty.github.io/math-experiments/
 
 Run `make verify-site` and `make verify-math`. The full OEIS check recomputes the extensions with both methods. BB(6) checks local proofs and rejects corruptions; its committed decision registry is empty. HorizonMath checks constructions with independent exact verifiers and invalid controls. See [verification output](REPORT.md), [provenance](docs/PROVENANCE.md) and [source hashes](sources.json).
 

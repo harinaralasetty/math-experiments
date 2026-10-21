@@ -1,7 +1,19 @@
 [
   {
+    "id": "key-results",
+    "html": "<h2>Key results</h2><div class=\"cards\"><div class=\"card\"><p class=\"num\">577</p><p class=\"label\">new terms across five OEIS sequences, each computed by two independent methods</p><p><span class=\"status new\">New result</span></p></div><div class=\"card\"><p class=\"num\">118</p><p class=\"label\">new checked local rules for BB(6) holdout 24, on top of 48 earlier lemmas</p><p><span class=\"status partial\">Partial progress</span></p></div><div class=\"card\"><p class=\"num\">0</p><p class=\"label\">new records in HorizonMath batches A, B and C; published bounds such as W(7,2) &gt; 3703 stand</p><p><span class=\"status none\">No improvement</span></p></div></div>",
+    "evidence": [
+      "oeis/data/verification.json",
+      "bb6/REPORT.txt",
+      "bb6/data/stage2c/summary.json",
+      "horizonmath/hm-batchA/REPORT.txt",
+      "horizonmath/hm-batchB/REPORT.txt",
+      "horizonmath/hm-batchC/REPORT.txt"
+    ]
+  },
+  {
     "id": "results-table",
-    "html": "<div class=\"table-scroll\"><table><caption>Results from the pinned source snapshots</caption>\n<thead><tr><th scope=\"col\">Project</th><th scope=\"col\">Status</th><th scope=\"col\">Verified outcome</th></tr></thead><tbody>\n<tr><th scope=\"row\"><a href=\"oeis/index.html\">OEIS extensions</a></th><td><span class=\"status new\">New result</span></td><td>577 new terms; not yet submitted to OEIS</td></tr>\n<tr><th scope=\"row\"><a href=\"bb6.html\">BB(6) holdouts</a></th><td><span class=\"status partial\">Partial progress</span></td><td>48 initial lemmas plus 118 new local rules; no global decision</td></tr>\n<tr><th scope=\"row\"><a href=\"horizonmath.html\">HorizonMath A, B and C</a></th><td><span class=\"status none\">No improvement</span></td><td>Published baselines retained, including colouring length 3703 and code size 42 with minimum distance 10; no new record</td></tr></tbody></table></div>",
+    "html": "<h2>All results</h2><div class=\"table-scroll\"><table><caption>Results from the pinned source snapshots</caption>\n<thead><tr><th scope=\"col\">Project</th><th scope=\"col\">Status</th><th scope=\"col\">Verified outcome</th></tr></thead><tbody>\n<tr><th scope=\"row\"><a href=\"oeis/index.html\">OEIS extensions</a></th><td><span class=\"status new\">New result</span></td><td>577 new terms; not yet submitted to OEIS</td></tr>\n<tr><th scope=\"row\"><a href=\"bb6.html\">BB(6) holdouts</a></th><td><span class=\"status partial\">Partial progress</span></td><td>48 initial lemmas plus 118 new local rules; no global decision</td></tr>\n<tr><th scope=\"row\"><a href=\"horizonmath.html\">HorizonMath A, B and C</a></th><td><span class=\"status none\">No improvement</span></td><td>Published baselines retained, including colouring length 3703 and code size 42 with minimum distance 10; no new record</td></tr></tbody></table></div>",
     "evidence": [
       "oeis/data/verification.json",
       "bb6/REPORT.txt",

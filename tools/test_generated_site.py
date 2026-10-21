@@ -33,7 +33,7 @@ class GeneratedSiteTests(unittest.TestCase):
         with self.assertRaises(AssertionError): check_site.check_pages()
 
     def test_reject_duplicate_page_title(self):
-        self.change_home('<title>Verified mathematics experiments</title>',
+        self.change_home('<title>Computer-Verified Mathematics</title>',
                          '<title>BB(6) local lemmas and unresolved proof gap</title>')
         with self.assertRaises(AssertionError): check_site.check_pages()
 

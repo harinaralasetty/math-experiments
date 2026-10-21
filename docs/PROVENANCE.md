@@ -14,6 +14,12 @@ The total new-term count is the sum of `new_count` in `oeis/data/verification.js
 
 ## Numeric claims by rendered section
 
+### key-results
+
+Numbers and identifiers: `0`, `2`, `6`, `7`, `24`, `48`, `118`, `577`, `3703`.
+
+Evidence: `oeis/data/verification.json`, `bb6/REPORT.txt`, `bb6/data/stage2c/summary.json`, `horizonmath/hm-batchA/REPORT.txt`, `horizonmath/hm-batchB/REPORT.txt`, `horizonmath/hm-batchC/REPORT.txt`.
+
 ### results-table
 
 Numbers and identifiers: `6`, `10`, `42`, `48`, `118`, `577`, `3703`.
