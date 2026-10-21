@@ -1,0 +1,223 @@
+# HorizonMath batch C
+
+Final report. Start time from `date -u`: 2026-10-21T04:58:59Z. Report time from `date -u` at finalization, or the UTC clock during progress: 2026-10-21T15:15:47Z.
+
+No commits, publication or messages to third parties were made.
+
+## Verdict
+
+Best independently verified colouring length: 3703. Best independently verified code size: 42, minimum distance 10. Neither published lower bound was improved. No new record is claimed.
+
+The experiment does not prove either baseline optimal. Invalid near-solutions are stored only under checkpoints/.
+
+## Status gate and sources
+
+# Status gate
+
+Checked 2026-10-21. No newer construction beating either target was found in the searches below. Both problems remain in scope.
+
+## Two colours, seven-term arithmetic progressions
+
+The benchmark uses two colours and progression length seven. It calls this W(7,2); sources using colour-first notation call it W(2,7). A valid colouring of length 3703 proves W > 3703. The target is length at least 3704.
+
+Monroe's current journal article, *New lower bounds for Van der Waerden numbers using distributed computing*, lists length-seven/two-colour bound >3703 and prime 617 for its construction. This is the same numerical bound as the brief, not evidence of a colouring longer than 3703. Rabung and Lotts compile the bound; the underlying residue construction predates their paper.
+
+- https://combinatorialpress.com/jcmcc-articles/volume-128/new-lower-bounds-for-van-der-waerden-numbers-using-distributed-computing/
+- https://arxiv.org/abs/1603.03301
+- https://doi.org/10.37236/2363
+
+Queries included `van der Waerden W(2,7) lower bound 3703 2025 2026 Rabung Lotts`, and `"van der Waerden" "3704" arxiv`. No newer explicit construction was located. This is a literature search finding, not a proof that none exists.
+
+## Binary code
+
+Brouwer's live general binary code table lists A(21,10) in the interval 42-47. It attributes the lower bound to Kaikkonen, IEEE Transactions on Information Theory 35 (1989), page 1344. Gijswijt, Mittelmann and Schrijver establish the upper bound 47. Neither a new lower bound nor a claim of 43 codewords was located.
+
+- https://aeb.win.tue.nl/codes/binary-1.html
+- https://doi.org/10.1109/18.45298
+- https://arxiv.org/abs/1005.4959
+
+Queries included `"A(21,10)" Kaikkonen construction code 42`, `"A(21, 10)" "43"`, and `"A(21,10)" arxiv 2026 2025`. The identity A(n-1,2e-1)=A(n,2e), stated on Brouwer's page, relates A(20,9) and A(21,10). The extra even-weight coordinate view is useful for search but does not identify all unrestricted length-22 codes with this problem.
+
+Baseline reconstruction reference: Brouwer, Shearer, Sloane and Smith, *A New Table of Constant Weight Codes*, Table II and key 18, describes the 42-word construction as extended quasi-cyclic: https://neilsloane.com/doc/Me153.pdf. The original IEEE article could not be retrieved. On resumption, curl received an HTTP 202 CloudFront web challenge; the response headers are saved in sources/kaikkonen_resume_headers.txt. Python urllib also encountered a local certificate validation failure. Metadata from Crossref, OpenAlex and Semantic Scholar is saved under sources/. The local record-score reconstruction uses the stated family; it does not assert isomorphism to the original certificate.
+
+The unrestricted A(22,10) even-weight problem is not equivalent to A(21,10): the live table gives A(22,10) >= 64. To use length 22 as the same search problem, an added coordinate must remain fixed; puncturing that coordinate then preserves distance. Exact parameters of the saved length-20, length-21 and fixed-zero length-22 views are in logs/code_views.jsonl. This qualification prevents treating a larger length-22 code as a length-21 record.
+
+## Resumption status check
+
+Web search repeated on 2026-10-21 before resuming the improvement searches. Brouwer's live table still gives 42-47 for A(21,10), and 40 for A(20,10). No newer construction was located with queries `"A(21,10)" "43"`, `"A(21, 10)" code 2026 Kaikkonen`, and `site:arxiv.org "A(21" "10" code`.
+
+The apparent alternative value 3704 in search results is a non-strict lower bound on the van der Waerden number, equivalent to W(2,7)>3703, and does not supply a length-3704 certificate. A September 2026 arXiv hit concerns an asymmetric three-term-versus-k-term problem and does not improve the two-colour symmetric seven-term target. Neither problem passes the skip gate.
+
+- Live table: https://aeb.win.tue.nl/codes/binary-1.html
+- Primary compilation: https://arxiv.org/abs/1603.03301
+- Recent asymmetric problem, checked and excluded: https://arxiv.org/abs/2609.31798
+- Search-result notation cross-check: https://leapsinbounds.org/constants/van-der-waerden-2-7/
+
+
+## Exact verification
+
+`verify_vdw_W72_ap7.py` uses integer bit sets and shifted intersections to check every positive progression step. `verify_A21_10_binary_code.py` parses exact binary vectors and counts coordinate differences directly. Both derive their metric from the actual construction and ignore claimed scores. The benchmark source is imported from the sibling checkout without modification; a read-only git status check found no source changes.
+
+The baseline progression construction is the prime-617 quadratic-residue construction with colours [0,0,0,0,0,0,1] on the multiples of the prime. It has the published length. The baseline binary construction is a record-score quasi-cyclic reconstruction, parity-extending four orbits under two simultaneous 10-cycles plus fixed words 0 and 1023. The representatives found by the actual reconstruction command are 40107, 126568, 176016 and 227099. Its length-20 distance is 9; after parity extension its length-21 distance is 10. This reproduces the published parameters using the published family description, but is not a proved isomorphism to Kaikkonen's original certificate. The original IEEE paper could not be retrieved; resumption curl headers show an HTTP 202 web challenge. Source metadata, access evidence and the accessible Brouwer et al. paper are saved in sources/.
+
+Each verifier accepts its record-score construction. Explicit forged score fields are ignored, and the measured scores agree with the benchmark. Both agree with the benchmark on at least three deliberately broken constructions for each problem. Mixed integer/string words and duplicate words expressed in different forms are also tested. The resumed audit found a string-coordinate reversal mismatch in the independent code verifier, reproduced it against the benchmark, and fixed it with a failing regression test followed by a full passing verification run. The submitted and searched constructions use integers, so earlier integer-certificate results were unaffected. Before-fix evidence is retained in logs/verifier_mixed_repro.json and logs/mixed_verifier_before_fix.txt. The AP tests force zero progressions at different positions and steps. The code tests introduce a duplicate and pairs at distances one and nine.
+
+
+Real command output from `make verify`:
+
+```text
+python3 check_verifiers.py
+{"benchmark": {"message": "Valid 2-coloring of {0,...,3702} with no monochromatic 7-AP", "metrics": {"length": 3703}, "valid": true}, "case": "submitted construction", "problem": "vdw_W72_ap7", "strict": {"length": 3703, "valid": true}}
+{"benchmark": {"message": "Valid 2-coloring of {0,...,3702} with no monochromatic 7-AP", "metrics": {"length": 3703}, "valid": true}, "case": "ignore forged score fields", "problem": "vdw_W72_ap7", "strict": {"length": 3703, "valid": true}}
+{"benchmark": {"message": "Monochromatic 7-AP found: [0, 1, 2, 3, 4, 5, 6] all color 0", "metrics": {}, "valid": false}, "case": "forced zero AP a=0 d=1", "problem": "vdw_W72_ap7", "strict": {"a": 0, "color": 0, "d": 1, "reason": "monochromatic AP", "valid": false}}
+{"benchmark": {"message": "Monochromatic 7-AP found: [10, 12, 14, 16, 18, 20, 22] all color 0", "metrics": {}, "valid": false}, "case": "forced zero AP a=10 d=2", "problem": "vdw_W72_ap7", "strict": {"a": 10, "color": 0, "d": 2, "reason": "monochromatic AP", "valid": false}}
+{"benchmark": {"message": "Monochromatic 7-AP found: [52, 53, 54, 55, 56, 57, 58] all color 0", "metrics": {}, "valid": false}, "case": "forced zero AP a=17 d=13", "problem": "vdw_W72_ap7", "strict": {"a": 52, "color": 0, "d": 1, "reason": "monochromatic AP", "valid": false}}
+{"benchmark": {"message": "Valid code of length 21 with min distance >= 10. Size = 42, min distance = 10.", "metrics": {"d": 10, "min_distance": 10, "n": 21, "number_of_codewords": 42}, "valid": true}, "case": "submitted construction", "problem": "A21_10_binary_code", "strict": {"min_distance": 10, "number_of_codewords": 42, "valid": true}}
+{"benchmark": {"message": "Valid code of length 21 with min distance >= 10. Size = 42, min distance = 10.", "metrics": {"d": 10, "min_distance": 10, "n": 21, "number_of_codewords": 42}, "valid": true}, "case": "ignore forged score fields", "problem": "A21_10_binary_code", "strict": {"min_distance": 10, "number_of_codewords": 42, "valid": true}}
+{"benchmark": {"message": "Valid code of length 21 with min distance >= 10. Size = 42, min distance = 10.", "metrics": {"d": 10, "min_distance": 10, "n": 21, "number_of_codewords": 42}, "valid": true}, "case": "mixed integer and string words", "problem": "A21_10_binary_code", "strict": {"min_distance": 10, "number_of_codewords": 42, "valid": true}}
+{"benchmark": {"message": "Duplicate codewords detected: 1 duplicates", "metrics": {}, "valid": false}, "case": "same word in two representations", "problem": "A21_10_binary_code", "strict": {"distance": 0, "pair": [0, 1], "reason": "distance violation", "valid": false}}
+{"benchmark": {"message": "Duplicate codewords detected: 1 duplicates", "metrics": {}, "valid": false}, "case": "duplicate", "problem": "A21_10_binary_code", "strict": {"distance": 0, "pair": [0, 42], "reason": "distance violation", "valid": false}}
+{"benchmark": {"message": "Distance violation: codewords 0 and 1 have distance 1 < 10", "metrics": {"min_distance": 1, "number_of_codewords": 2}, "valid": false}, "case": "distance one", "problem": "A21_10_binary_code", "strict": {"distance": 1, "pair": [0, 1], "reason": "distance violation", "valid": false}}
+{"benchmark": {"message": "Distance violation: codewords 0 and 1 have distance 9 < 10", "metrics": {"min_distance": 9, "number_of_codewords": 2}, "valid": false}, "case": "distance nine", "problem": "A21_10_binary_code", "strict": {"distance": 9, "pair": [0, 1], "reason": "distance violation", "valid": false}}
+python3 verify_vdw_W72_ap7.py solutions/vdw_W72_ap7.json
+{"length": 3703, "valid": true}
+python3 verify_A21_10_binary_code.py solutions/A21_10_binary_code.json
+{"min_distance": 10, "number_of_codewords": 42, "valid": true}
+python3 inspect_code_views.py
+{"n": 20, "size": 42, "min_distance": 9, "view": "puncture the parity coordinate", "all_even_weight": false}
+{"n": 21, "size": 42, "min_distance": 10, "view": "parity extension", "all_even_weight": true}
+{"n": 22, "size": 42, "min_distance": 10, "view": "append a fixed zero coordinate", "all_even_weight": true}
+```
+
+## Methods
+
+A cyclic search also tests prime periods above 617. It identifies positions by discrete-logarithm classes, forbids monochromatic cyclic seven-term progressions, and uses exact SAT. A period above 617 has no zero-step seven-term repetition inside length 3704. The short probe selects families for a longer focused prime-619 run.
+
+The progression search uses full CNF constraints for all seven-term progressions. Each progression gives a positive and a negative clause. The solver logs report the actual clause count. Glucose and MiniSat preserve learned state across interrupted timed slices in the same process. Disk checkpoints save phases, statistics and seeds, not learned clauses. A neighborhood solver initially frees windows and random variables; later batches also free variables from UNSAT assumption cores. C++ local searches maintain exact AP counts, use a ProbSAT-style break penalty, restart from their best checkpoint, and in later batches use tabu penalties. The resumed weighted variant increases integer penalties on violated progressions to leave recurring basins. On normal completion it independently recomputes every AP count and weighted break/make counter and asserts agreement. Its bounded probe output is included in the run table. A later optional diversity run samples one-violation ties and saves those with greater Hamming distance from its initial checkpoint, while leaving the submitted valid certificate unchanged. The closest coloring found is independently checked before any claim.
+
+The length-22 view is used with an added fixed-zero coordinate; unrestricted even-weight A(22,10) is a different problem, as STATUS.md explains. The binary-code methods use A(20,9), then add even parity to obtain the required A(21,10) certificate. Direct tabu and annealing searches optimize a 43-word candidate's exact squared distance deficits. The prepared row-level diversification mode also freezes recently moved rows; it is motivated by the saved star-conflict diagnostic, and its use is recorded in the batch commands. Large-neighborhood search removes words from a valid code, enumerates compatible words from the complete length-20 cube, then solves a clique repair problem with greedy-coloring bounds and timed exact backtracking. Candidate sets above 15000 are skipped. Growth searches are bounded to 30 seconds and equal-size repairs to 5 seconds; successful growth is retained before any equal-size move. It saves the actual valid working code after each repair and resumes that code in subsequent batches. A guided variant can start from a smaller verified subset, retain a chosen anchor word, and grow one word at a time. The later guided phase refines the default deletion range of 8..29 to 1..29 so it also tries small repairs of its smaller seed. The conflict-graph diagnostic extracts both a maximum valid subset and a valid subset that retains a problematic word; all such seeds are independently checked before use. An independent exhaustive-subset check validates the clique routine on the saved test cases. Another exact orbit search tests zero plus six seven-word orbits under three simultaneous seven-cycles. It uses independent rotations and block permutations to reduce choices for the first orbit. The additional five-cycle search uses four simultaneous cycles at length twenty, three fixed words and eight full orbits, for a total of forty-three words before parity extension. It tests fixed block-pattern sets 0/3/5, 0/3/12 and 0/3/13. An additional case uses all eight even-parity four-bit fixed block patterns and seven full orbits, again totaling forty-three words. Its fixed-word distance and target orbit count are checked by the actual binary. Completed first-orbit roots and pending roots are checkpointed, so subsequent seeds do not repeat roots already exhausted. Only independent block rotations and permutations preserving the chosen fixed-word set are used to restrict the first orbit. A completed restricted-family search would not prove global nonexistence. Full SAT also encodes a 43-word length-20 distance-nine code with XOR variables and exact cardinalities. Translation, coordinate permutation and row sorting remove symmetry. The SAT phase initializer can normalize the best saved 43-word near-code while preserving every pairwise distance. The column-order option also orders coordinate columns inside the two blocks preserved by the fixed distance-nine pair. A lexicographically least row-major representative satisfies both row and column orders, so this option preserves existence. Its encoding was checked against exhaustive Boolean truth tables, and its small-matrix normalization was checked independently; actual output follows below. The later SAT repair phase fixes a clean distance-nine pair, disables row and column ordering, and bounds the total number of changed bits around the saved normalized near-code. Its negative results apply only to that Hamming ball with those two words fixed. The signed-literal cardinality helper was checked exhaustively against direct Hamming distances. The fixed distance-nine pair is justified because Brouwer's table gives A(20,10)=40, so any hypothetical 43-word code must contain such a pair.
+
+An additional exact small-trade search fixes a verified 42-word code, assigns every word of the complete length-20 cube a mask of old words it conflicts with, and enumerates deletion sets. For a deletion set D, the union of conflict buckets indexed by subsets of D is exactly the set compatible with every retained word. An exact clique search asks for |D|+1 replacement words. The checkpoint stores the complete ordered seed and the next unresolved deletion set, so interrupted sets are repeated rather than silently discarded. A candidate cap stops the search explicitly as incomplete. Completed deletion radii apply only to that specific seed and do not establish global optimality. The separate direct-extension probes each examined the entire cube: the baseline seed's minimum squared extra-word deficit was 10 and the hybrid seed's was 4. Thus both saved codes are maximal for adding one word without changing existing words; this does not rule out a larger code. Raw probe output is in the measured table.
+
+The completed hybrid-seed trade pass is audited against the exact binomial count in logs/code_trade_coverage_verification.json. The final checkpoint and the logged count agree on all deletion sets through radius seven. This is a local negative result for the immutable seed in checkpoints/code_trades_initial42.txt. A second trade pass uses the original record-score seed; its completion status is reported separately in the run table. A later annealing pass starts from the best saved near-code instead of the original cold initialization.
+
+Baseline reconstruction probes are in logs/reconstruct42.log and logs/reconstruct42_half.log. The zero/all-ones fixed-word restriction failed; using fixed word 1023 yielded the submitted record-score seed. These probes reconstruct the baseline, before the code-improvement search.
+
+## Measured runs
+
+Elapsed seconds are taken from the last actual output of each process. The baseline score column distinguishes a valid submitted construction from an invalid optimization checkpoint. `None` means a SAT time limit interrupted the solve, not UNSAT. Per-batch start/end records list exact commands and exit codes. Flip counters count ordinary single-variable search moves and exclude checkpoint resets and kicks. The LNS clique-node counter covers growth searches; equal-size repair searches are not added to that counter. A killed job with a partial final slice is reported by its last logged time rather than an invented completion time.
+
+| Run log | Logged seconds | Verified score | Search result and work |
+|---|---:|---|---|
+| batch_1_job_0.jsonl | 6019.548 | verified baseline 3703 | 28411474 SAT conflicts; status None |
+| batch_1_job_1.jsonl | 5990.911 | verified baseline 3703 | 24252158 SAT conflicts; status None |
+| batch_1_job_2.jsonl | 6030.120 | verified baseline 3703 | 1 AP violations at length 3704; 497741087 flips |
+| batch_1_job_3.jsonl | 6030.110 | verified baseline 3703 | 1 AP violations at length 3704; 498341880 flips |
+| batch_2_job_0.jsonl | 6870.024 | verified baseline 3703 | 39378858 SAT conflicts; status None |
+| batch_2_job_1.jsonl | 6870.008 | verified baseline 3703 | 9592206 SAT conflicts; status None |
+| batch_2_job_2.jsonl | 6870.000 | verified baseline 3703 | 1 AP violations at length 3704; 950936783 flips |
+| batch_2_job_3.jsonl | 6875.518 | verified baseline 3703 |  |
+| batch_3_job_0.jsonl | 1770.002 | verified baseline 3703 | 17407742 SAT conflicts; status None |
+| batch_3_job_1.jsonl | 1770.008 | verified baseline 3703 | 1333860 SAT conflicts; status None |
+| batch_3_job_2.jsonl | 1770.010 | verified baseline 3703 | 1 AP violations at length 3704; independent counter recomputation passed; 18799689 flips |
+| batch_3_job_3.jsonl | 1731.847 | verified baseline 3703 | 4373719 SAT conflicts; status None |
+| code_anneal_warm_4007.jsonl | 2088.000 | verified baseline 42 | best squared distance-deficit energy 4; independent current and best energy recomputation passed; 1608959660 iterations |
+| code_batch_1_job_0.jsonl | 6870.010 | verified baseline 42 | best squared distance-deficit energy 4; 1114634855 iterations |
+| code_batch_1_job_1.jsonl | 6870.010 | verified baseline 42 | best squared distance-deficit energy 10; 4324787021 iterations |
+| code_batch_1_job_2.jsonl | 6870.010 | verified baseline 42 | best size 42; 1032 iterations; 304007044 clique_nodes |
+| code_batch_1_job_3.jsonl | 6870.077 | verified baseline 42 | 41591554 SAT conflicts; status None |
+| code_batch_2_job_0.jsonl | 4470.000 | verified baseline 42 | best squared distance-deficit energy 4; independent current and best energy recomputation passed; 744301976 iterations |
+| code_batch_2_job_1.jsonl | 123.946 | verified baseline 42 | restricted orbit family exhausted; not a global bound; 3268424 clique_nodes |
+| code_batch_2_job_2.jsonl | 4470.000 | verified baseline 42 | best size 42; 656 iterations; 193424252 clique_nodes |
+| code_batch_2_job_3.jsonl | 4470.004 | verified baseline 42 | 27651039 SAT conflicts; status None |
+| code_batch_3_job_0.jsonl | 3270.000 | verified baseline 42 | best squared distance-deficit energy 4; independent current and best energy recomputation passed; 638956065 iterations |
+| code_batch_3_job_1.jsonl | 30.232 | verified baseline 42 | restricted orbit family exhausted; not a global bound; 2096286 clique_nodes |
+| code_batch_3_job_2.jsonl | 3270.000 | verified baseline 42 | best size 39; 631 iterations; 236942639 clique_nodes |
+| code_batch_3_job_3.jsonl | 3270.009 | verified baseline 42 | code-bit repair radius 64 with the selected pair fixed; 18868242 SAT conflicts; status None |
+| code_extension_baseline_probe.jsonl | 0.033 | verified baseline 42 | minimum extra-word squared deficit 10; 1048576 extra words examined |
+| code_extension_hybrid_probe.jsonl | 0.060 | verified baseline 42 | minimum extra-word squared deficit 4; 1048576 extra words examined |
+| code_guided_4003.jsonl | 3947.000 | verified baseline 42 | best size 39; 587 iterations; 234250687 clique_nodes |
+| code_lns_guided_probe.jsonl | 5.035 | verified baseline 42 | best size 39; 14 iterations; 544099 clique_nodes |
+| code_local_row_tabu_probe.jsonl | 5.000 | verified baseline 42 | best squared distance-deficit energy 4; independent current and best energy recomputation passed; 879349 iterations |
+| code_orbit_family_v2_4004.jsonl | 71.097 | verified baseline 42 | restricted orbit family exhausted; not a global bound; 3038169 clique_nodes |
+| code_orbit_family_v3_4005.jsonl | 0.017 | verified baseline 42 | restricted orbit family exhausted; not a global bound; 14 clique_nodes |
+| code_orbits5_resume_probe1.jsonl | 2.491 | verified baseline 42 | 68900 clique_nodes |
+| code_orbits5_resume_probe2.jsonl | 2.030 | verified baseline 42 | 63038 clique_nodes |
+| code_orbits_completion_probe.jsonl | 3.901 | verified baseline 42 | restricted orbit family exhausted; not a global bound; 49903 clique_nodes |
+| code_orbits_resume_probe1.jsonl | 2.020 | verified baseline 42 | 23125 clique_nodes |
+| code_orbits_resume_probe2.jsonl | 2.120 | verified baseline 42 | 25149 clique_nodes |
+| code_trades_4002.jsonl | 5638.330 | verified baseline 42 | best size 42; 33110975 deletion sets completed this run; next deletion radius 8; all requested trade radii complete: True; 3153509 clique_nodes |
+| code_trades_4006.jsonl | 2917.000 | verified baseline 42 | best size 42; 21634161 deletion sets completed this run; next deletion radius 7; all requested trade radii complete: False; 2425746 clique_nodes |
+| code_trades_probe1.jsonl | 0.114 | verified baseline 42 | best size 42; 12384 deletion sets completed this run; next deletion radius 4; all requested trade radii complete: True; 10 clique_nodes |
+| code_trades_probe2.jsonl | 3.005 | verified baseline 42 | best size 42; 75737 deletion sets completed this run; next deletion radius 4; all requested trade radii complete: False; 484 clique_nodes |
+| vdw_cyclic_probe.jsonl | 590.141 | verified baseline 3703 | prime/class-family selection probe; detailed outcomes remain in log |
+| vdw_diversity_402.jsonl | 6870.010 | verified baseline 3703 | 1 AP violations at length 3704; near-best Hamming diversity 7; independent counter recomputation passed; 98548941 flips |
+| vdw_diversity_smoke.jsonl | 5.005 | verified baseline 3703 | 1 AP violations at length 3704; near-best Hamming diversity 0; independent counter recomputation passed; 100458 flips |
+| vdw_radius_16_maplesat.jsonl | 51.156 | verified baseline 3703 | Hamming radius 16; 85267 SAT conflicts; status False |
+| vdw_radius_32_maplesat.jsonl | 1176.408 | verified baseline 3703 | Hamming radius 32; 2091917 SAT conflicts; status False |
+| vdw_radius_64_maplesat.jsonl | 6870.011 | verified baseline 3703 | Hamming radius 64; 10228843 SAT conflicts; status None |
+| vdw_weighted_audit_probe.jsonl | 5.005 | verified baseline 3703 | 1 AP violations at length 3704; independent counter recomputation passed; 93793 flips |
+| vdw_weighted_probe.jsonl | 45.000 | verified baseline 3703 | 1 AP violations at length 3704; 715119 flips |
+| reconstruct42.log | 0.804903 | no construction | initial restricted reconstruction probe; no code found; last logged duration |
+| reconstruct42_half.log | 0.0479805 | verified baseline 42 | record-score quasi-cyclic reconstruction found; last logged duration |
+
+Bounded Hamming-distance probe around the saved near-colouring:
+
+| Radius | SAT status | Measured seconds |
+|---:|---|---:|
+| 1 | False | 3.641 |
+| 2 | False | 4.435 |
+| 4 | False | 4.056 |
+| 8 | False | 10.374 |
+| 16 | None | 58.692 |
+| 32 | None | 72.880 |
+| 64 | None | 59.809 |
+| 128 | None | 59.732 |
+
+`False` rules out a repair only within the specified Hamming ball around that exact checkpoint; `None` is inconclusive. This is not a global nonexistence proof. Solver UNSAT statuses are not accompanied by independently checked DRAT proofs.
+
+Clique routine verification output:
+
+```text
+Exact clique checks passed: 160 decisions against exhaustive subset enumeration
+```
+
+Exact conflict-bucket and deletion-combination checks:
+
+```text
+Conflict-bucket checks passed: 48 deletion sets against direct enumeration
+Combination checks passed: 34 complete cases
+{
+  "expected_deletion_sets": 33199096,
+  "logged_deletion_sets": 33199096,
+  "next_unsearched_radius": 8,
+  "source": "checkpoints/code_trades_initial42.txt",
+  "scope": "complete deletion radii 0..7 for this exact seed only"
+}
+```
+
+SAT ordering, Hamming-radius and additional orbit-family checks:
+
+```text
+Lex SAT truth-table checks passed: 680 decisions
+Double-order symmetry checks passed: 4096 complete small matrices
+Hamming-radius checks passed: 448 assignments across all radii
+Eight-fixed-word family passed: 8 fixed words, distance 10, 7 orbits, total 43
+```
+
+Phase-seed normalization and bounded-job control checks:
+
+```text
+Code seed normalization checks passed: 15 real-input and boundary cases
+Bounded control-file check passed: owned child terminated on request
+```
+
+## Time discipline and reproduction
+
+Progression search start: 2026-10-21T05:01:36.747502+00:00. Last credited search endpoint: 2026-10-21T10:50:51.805016+00:00. Active wall seconds, interruption gaps excluded: 14675.648.
+
+Code improvement search start: 2026-10-21T10:52:18.969685+00:00. Last credited search endpoint: 2026-10-21T15:14:19.980315+00:00. Active wall seconds, interruption gaps excluded: 14610.090.
+
+Minimum four-hour wall times satisfied for both problems: True. The totals above conservatively credit only the main search batches, using the union of intervals supported by actual child-process elapsed-time logs. Auxiliary searches and probes are listed separately and receive no extra credit toward the minimum. The interruption between the previous run and its resumption is excluded. The first interrupted batch has no end metadata, so only its last measured child-search duration is credited. Exact intervals and per-child durations are reproducible with `python3 audit_time.py` and saved in logs/time_audit.json. The brief's approximate ten-hour-per-problem allocation is a soft budget; this run uses its explicit four-hour minimum as the stopping threshold. Each main batch is bounded below two hours. Four single-core searches are run per batch. Auxiliary searches use a fifth process or a slot vacated by an exhausted restricted family, keeping at most five search workers active. Reconstruction and infrastructure checks are short command jobs. Auxiliary start/end metadata and exact commands are in logs/*.bounded.json; these commands are also bounded below two hours.
+
+Reproduce the certificates with `make reconstruct` and verify with `make verify`. Search dependencies are pinned in requirements-lock.txt. C++ programs compile with `c++ -O3 -std=c++17`. Resume commands and seed/checkpoint paths are recorded in logs/*_start.json. Re-running a batch uses its checkpoint seed; SAT learned clauses survive only while its process remains alive.

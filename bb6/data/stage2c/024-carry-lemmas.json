@@ -1,0 +1,388 @@
+{
+  "type": "local_affine_run_lemmas",
+  "machine": "1RB0LA_1RC---_0LD1RD_0RA0RE_0RF1RC_1LF0LA",
+  "scope": "local transitions only; no global decision",
+  "required_rules": [
+    "C-left-digit",
+    "A-buffer-entry",
+    "marker-buffer4-to-R0",
+    "marker-buffer5-to-R1",
+    "marker-buffer6-erases-unary",
+    "blank-to-first-frontier"
+  ],
+  "rules": [
+    {
+      "id": "C-left-digit",
+      "variables": [
+        "n",
+        "m"
+      ],
+      "source": {
+        "tape": [
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "n": 1,
+              "constant": 2
+            }
+          },
+          {
+            "bit": 0,
+            "count": {
+              "m": 1,
+              "constant": 2
+            }
+          }
+        ],
+        "head": {
+          "n": 1,
+          "constant": 3
+        },
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "11",
+          {
+            "bit": 0,
+            "count": {
+              "n": 1
+            }
+          },
+          "111",
+          {
+            "bit": 0,
+            "count": {
+              "m": 1
+            }
+          }
+        ],
+        "head": 2,
+        "state": "C"
+      },
+      "steps": {
+        "n": 1,
+        "constant": 9
+      },
+      "proof": [
+        {
+          "steps": 7
+        },
+        {
+          "scan": {
+            "read": 1,
+            "count": {
+              "n": 1
+            },
+            "induction": {
+              "base": "zero steps; tape and head unchanged",
+              "successor": "one self-loop step; induction on adjacent remaining cells"
+            }
+          }
+        },
+        {
+          "steps": 2
+        }
+      ]
+    },
+    {
+      "id": "A-buffer-entry",
+      "variables": [
+        "n"
+      ],
+      "source": {
+        "tape": [
+          {
+            "bit": 0,
+            "count": {
+              "n": 1,
+              "constant": 2
+            }
+          }
+        ],
+        "head": 0,
+        "state": "A"
+      },
+      "target": {
+        "tape": [
+          "11",
+          {
+            "bit": 0,
+            "count": {
+              "n": 1
+            }
+          }
+        ],
+        "head": 2,
+        "state": "C"
+      },
+      "steps": 2,
+      "proof": [
+        {
+          "steps": 2
+        }
+      ]
+    },
+    {
+      "id": "marker-buffer4-to-R0",
+      "variables": [],
+      "source": {
+        "tape": [
+          "00000"
+        ],
+        "head": 1,
+        "state": "A"
+      },
+      "target": {
+        "tape": [
+          "11101"
+        ],
+        "head": 5,
+        "state": "C"
+      },
+      "steps": 14,
+      "proof": [
+        {
+          "steps": 14
+        }
+      ]
+    },
+    {
+      "id": "marker-buffer5-to-R1",
+      "variables": [],
+      "source": {
+        "tape": [
+          "0000001"
+        ],
+        "head": 1,
+        "state": "A"
+      },
+      "target": {
+        "tape": [
+          "1110011"
+        ],
+        "head": 7,
+        "state": "C"
+      },
+      "steps": 20,
+      "proof": [
+        {
+          "steps": 20
+        }
+      ]
+    },
+    {
+      "id": "marker-buffer6-erases-unary",
+      "variables": [
+        "n"
+      ],
+      "source": {
+        "tape": [
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "n": 1
+            }
+          },
+          "00000001"
+        ],
+        "head": {
+          "n": 1,
+          "constant": 2
+        },
+        "state": "A"
+      },
+      "target": {
+        "tape": [
+          {
+            "bit": 0,
+            "count": {
+              "n": 1,
+              "constant": 4
+            }
+          },
+          "11111"
+        ],
+        "head": 0,
+        "state": "A"
+      },
+      "steps": {
+        "n": 1,
+        "constant": 24
+      },
+      "proof": [
+        {
+          "steps": 24
+        },
+        {
+          "scan": {
+            "read": 1,
+            "count": {
+              "n": 1
+            },
+            "induction": {
+              "base": "zero steps; tape and head unchanged",
+              "successor": "one self-loop step; induction on adjacent remaining cells"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "blank-to-first-frontier",
+      "variables": [],
+      "source": {
+        "tape": [
+          "00"
+        ],
+        "head": 0,
+        "state": "A"
+      },
+      "target": {
+        "tape": [
+          "11"
+        ],
+        "head": 2,
+        "state": "C"
+      },
+      "steps": 2,
+      "proof": [
+        {
+          "steps": 2
+        }
+      ]
+    }
+  ],
+  "word_transducers": [
+    {
+      "id": "ternary-C-carry-left-sweep",
+      "kind": "left_buffer_transducer",
+      "state": "C",
+      "head_offset": 2,
+      "alphabet": {
+        "0": "011",
+        "1": "0111",
+        "2": "01111"
+      },
+      "buffers": {
+        "z2": "1100",
+        "z3": "11000",
+        "z4": "110000"
+      },
+      "base": "empty word is identity",
+      "induction": "process last block; induction on remaining prefix",
+      "cases": [
+        {
+          "from_buffer": "z2",
+          "letter": "0",
+          "to_buffer": "z2",
+          "output": "111",
+          "rule": "C-left-digit",
+          "parameters": {
+            "n": 2,
+            "m": 0
+          },
+          "steps": 11
+        },
+        {
+          "from_buffer": "z2",
+          "letter": "1",
+          "to_buffer": "z3",
+          "output": "111",
+          "rule": "C-left-digit",
+          "parameters": {
+            "n": 3,
+            "m": 0
+          },
+          "steps": 12
+        },
+        {
+          "from_buffer": "z2",
+          "letter": "2",
+          "to_buffer": "z4",
+          "output": "111",
+          "rule": "C-left-digit",
+          "parameters": {
+            "n": 4,
+            "m": 0
+          },
+          "steps": 13
+        },
+        {
+          "from_buffer": "z3",
+          "letter": "0",
+          "to_buffer": "z2",
+          "output": "1110",
+          "rule": "C-left-digit",
+          "parameters": {
+            "n": 2,
+            "m": 1
+          },
+          "steps": 11
+        },
+        {
+          "from_buffer": "z3",
+          "letter": "1",
+          "to_buffer": "z3",
+          "output": "1110",
+          "rule": "C-left-digit",
+          "parameters": {
+            "n": 3,
+            "m": 1
+          },
+          "steps": 12
+        },
+        {
+          "from_buffer": "z3",
+          "letter": "2",
+          "to_buffer": "z4",
+          "output": "1110",
+          "rule": "C-left-digit",
+          "parameters": {
+            "n": 4,
+            "m": 1
+          },
+          "steps": 13
+        },
+        {
+          "from_buffer": "z4",
+          "letter": "0",
+          "to_buffer": "z2",
+          "output": "11100",
+          "rule": "C-left-digit",
+          "parameters": {
+            "n": 2,
+            "m": 2
+          },
+          "steps": 11
+        },
+        {
+          "from_buffer": "z4",
+          "letter": "1",
+          "to_buffer": "z3",
+          "output": "11100",
+          "rule": "C-left-digit",
+          "parameters": {
+            "n": 3,
+            "m": 2
+          },
+          "steps": 12
+        },
+        {
+          "from_buffer": "z4",
+          "letter": "2",
+          "to_buffer": "z4",
+          "output": "11100",
+          "rule": "C-left-digit",
+          "parameters": {
+            "n": 4,
+            "m": 2
+          },
+          "steps": 13
+        }
+      ]
+    }
+  ]
+}

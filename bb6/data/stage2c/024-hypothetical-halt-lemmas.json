@@ -1,0 +1,84 @@
+{
+  "type": "local_affine_run_lemmas",
+  "machine": "1RB0LA_1RC---_0LD1RD_0RA0RE_0RF1RC_1LF0LA",
+  "scope": "local transitions only; no global decision",
+  "required_rules": [
+    "hypothetical-guarded-a5-halt",
+    "hypothetical-guarded-a8-halt",
+    "hypothetical-guarded-a11-halt"
+  ],
+  "rules": [
+    {
+      "id": "hypothetical-guarded-a5-halt",
+      "variables": [],
+      "source": {
+        "tape": [
+          "0000000000000111110011101101110110100000000000000000000"
+        ],
+        "head": 35,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "0111001111011101110111101110110110110110110110110111110"
+        ],
+        "head": 51,
+        "state": "Z"
+      },
+      "steps": 938,
+      "proof": [
+        {
+          "steps": 938
+        }
+      ]
+    },
+    {
+      "id": "hypothetical-guarded-a8-halt",
+      "variables": [],
+      "source": {
+        "tape": [
+          "0000000000000111111110011110111011011010000000000000000"
+        ],
+        "head": 39,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "0111001111011101110111101110110110110110110110110111110"
+        ],
+        "head": 51,
+        "state": "Z"
+      },
+      "steps": 824,
+      "proof": [
+        {
+          "steps": 824
+        }
+      ]
+    },
+    {
+      "id": "hypothetical-guarded-a11-halt",
+      "variables": [],
+      "source": {
+        "tape": [
+          "000000000001111111111100111011101101000000000000"
+        ],
+        "head": 36,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "011101101111110111011011011011111111111110011110"
+        ],
+        "head": 30,
+        "state": "Z"
+      },
+      "steps": 496,
+      "proof": [
+        {
+          "steps": 496
+        }
+      ]
+    }
+  ]
+}

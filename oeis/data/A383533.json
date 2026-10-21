@@ -1,0 +1,7 @@
+{
+  "number": 383533,
+  "name": "Number of integer partitions of n with no ones such that it is possible to choose a family of pairwise disjoint strict integer partitions, one of each part.",
+  "data": "1,0,1,1,1,2,3,3,4,5,8,8,11,13,17,22,25,30,37,44,53,69,77,93,111,130,153,181,220,249,295",
+  "offset": "0,6",
+  "keyword": "nonn,more"
+}

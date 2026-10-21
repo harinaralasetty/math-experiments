@@ -1,0 +1,371 @@
+# BB(6) holdouts: stage-1 report
+
+Stage-1 research, tools, verification, triage and shortlist are delivered. **No new halting or non-halting decision is claimed.** The source filter retains **571 candidates**, all were simulated to the requested limit, and **10 research targets** are in [SHORTLIST.md](SHORTLIST.md). A resource-limit enforcement lapse is disclosed under Risks.
+
+## Sources and status
+
+Source retrieval ended at **2026-10-20T19:21:27.962277+00:00** (UTC; the local task date is October 21, 2026). [data/SOURCES.md](data/SOURCES.md) records every downloaded research snapshot's URL, UTC completion time, byte count and SHA-256. `python3 tools/audit.py` checked **41 snapshots** against those hashes. Complete upstream source archives remain in `data/`.
+
+- [Wiki Holdouts lists](https://wiki.bbchallenge.org/wiki/Holdouts_lists) identifies mxdys's **October 16, 2026 list of 663 representatives up to equivalence**. The [download](https://wiki.bbchallenge.org/w/images/6/69/BB6_holdouts_663.txt) is saved verbatim as `data/BB6_holdouts_663.txt`; the [file page](https://wiki.bbchallenge.org/wiki/File:BB6_holdouts_663.txt) dates its upload. This is the latest published list found, not a claim that every entry remains open at retrieval.
+- [BB(6)](https://wiki.bbchallenge.org/wiki/BB(6)) separately reports **1,417 before equivalence reduction** and an **informal count of 998**. These refer to different scopes and are not substituted for the downloaded list. The pinned [BB6 proof branch](https://github.com/ccz181078/busycoq/tree/BB6) still says about 663 in its README, while containing later proofs.
+- The [annotated Google sheet](https://docs.google.com/spreadsheets/d/1mMp8bAcTFT91j7azn72liX8NSTwc2E_ozKnOGTfRCfw/edit?gid=1330361301) exports **1534 rows** based on an older list. The snapshot has **1083 blank statuses**, **342 NONHALT**, **34 HALT**, **56 EQUIVALENCE**, **18 CRYPTID**, and **1 NONHALT (?)**. Blank status is not proof of openness. All published representatives match a sheet row; among them, **18 are marked CRYPTID and 1 NONHALT**. The sheet's literal row/status counts do not reproduce the wiki's informal count; both snapshots are preserved.
+- Cryptid exclusions use the [Cryptids category](https://wiki.bbchallenge.org/wiki/Category:Cryptids), [Potential Cryptids category](https://wiki.bbchallenge.org/wiki/Category:Potential_Cryptids), and the explicit BB(6) section. Categories and page text differ, so the filter takes their union. [Google DeepMind's machine table](https://github.com/google-deepmind/cryptids/blob/ac5eff7b899f1920cea206363fa05a856005e130/BusyBeaver/README.md) contributes **11 provisionally classified Cryptids**. The [paper, revised October 19](https://arxiv.org/abs/2610.22603v2), also lists **50 six-state conjecture candidates** in Appendix C; all are conservatively excluded, although the paper does not call every candidate a confirmed Cryptid.
+- The [October research bulletin](https://wiki.bbchallenge.org/wiki/TMBR:_October_2026) links an [energy-vampire investigation](https://github.com/thomasreus-bb/bb6-vampire-family-1RB0LA_0RC0RB_1LD1LA_1LC1RE_1RF0RD_1LC---). Its seven-machine summary and dated simulation-status notes are preserved and excluded as potential Cryptid/existing-work targets.
+
+Web search was used to locate these sources and search for later announcements. The downloaded wiki recent-changes response has no continuation token for the queried interval. GitHub pull metadata, relevant file lists, and proof-branch commits after the list were also downloaded. Examples of later source announcements are:
+
+| Source | Source-reported status / reason to exclude |
+| --- | --- |
+| [PR 29](https://github.com/ccz181078/busycoq/pull/29), merged October 18 | Tail-counter blank-start non-halting proof |
+| [PR 30](https://github.com/ccz181078/busycoq/pull/30), [PR 31](https://github.com/ccz181078/busycoq/pull/31), and subsequent proof-branch changes | Existing fractal-in-bouncer non-halting claims, including closed unmerged submissions |
+| [PR 32](https://github.com/ccz181078/busycoq/pull/32), merged October 18 | Two monotone-list blank-start halting proofs |
+| [PR 13](https://github.com/ccz181078/busycoq/pull/13), updated October 20, and branch `SOMDCv9.v` | Existing non-halting claim / integrated proof work |
+| [PR 33](https://github.com/ccz181078/busycoq/pull/33), updated October 20, and branch `LMv4.v` | Existing halting claim / proof work |
+| [PR 34](https://github.com/ccz181078/busycoq/pull/34), open in snapshot | Existing non-halting submission; excluded as in progress |
+
+These are **attributed source claims**, not proofs independently replayed here. The filter also scans the actual changed files in the pinned archive, avoiding dependence on truncated API patches. [data/excluded.json](data/excluded.json) records exact strings, original list lines, reasons and evidence paths.
+
+## What we excluded and why
+
+`python3 tools/select_candidates.py` produces the authoritative partition:
+
+| Item | Count |
+| --- | ---: |
+| Published representative list | 663 |
+| Excluded by an exact source-string match | 75 |
+| Additional conservative shared-table exclusions | 17 |
+| Total excluded | 92 |
+| Retained candidates | 571 |
+
+The exclusion union covers Cryptids, potential Cryptids, the paper's broader conjecture-candidate list, decided/questionably decided sheet entries, later public decision claims and open proof work. A sheet entry marked EQUIVALENCE excludes that exact entry only; it does not automatically exclude its open representative. Contributor names alone are not interpreted as current reservations.
+
+The shared-table filter permits state renaming, reflection and different start states. **Different starts can have different blank-tape orbits.** Shared-table exclusions are conservative work-avoidance decisions, not mathematical equivalence or transferred halting decisions. They are explicitly distinguished from exact matches. Source reason counts overlap and must not be summed.
+
+[data/candidates.txt](data/candidates.txt) contains one standard-notation machine per line, with count in [data/candidates.count](data/candidates.count). [data/exclusion-evidence.json](data/exclusion-evidence.json) preserves the full source union. Private or unreadable Discord work cannot be comprehensively excluded.
+
+## Tools: built versus reused, licences
+
+`make tools` builds the compiled programs with Clang:
+
+| Tool | Implementation and reuse | Licence |
+| --- | --- | --- |
+| `build/fast_sim` | New C++ simulator with expanding byte tape, halting step, head/state, exact RLE tape output and sampled statistics | MIT, `tools/LICENSE` |
+| `build/reference_sim` | Ligocki's C++ parser and simulator, with a small JSON adapter. Only the initial/growth allocation size is tuned; transition execution is unchanged. Independent of the fast simulator's transition/tape code | [sligocki/busy-beaver](https://github.com/sligocki/busy-beaver), MIT; archived snapshot directory `614ba83` |
+| `build/decider_tc` | Original Ligocki translated-cycler/linear-recurrence search, built with its original tape allocation and adapted to emit replay parameters as JSON | Same MIT source |
+| `tools/ngram.py` | Calls bbchallenge's upstream n-gram CPS search and serializes its printed local-context/language certificate; the search is not reimplemented | [bbchallenge-deciders](https://github.com/bbchallenge/bbchallenge-deciders), Apache-2.0 OR MIT; archived snapshot directory `abcf537` |
+| `tools/check_tc.py`, `tools/check_ngram.py` | New small independent Python checkers; neither imports or shares searcher code | MIT |
+
+The bbchallenge program-output licence is CC-BY-4.0; its licence texts are retained. The BB6 busycoq snapshot (`c421dd9`) is a research/status source, not a compiled dependency; its MIT and LibTactics licence files remain in the archive/vendor tree. The wiki identifies its content as Creative Commons Attribution. Google DeepMind's repository states Apache-2.0 for software and CC-BY for other materials; no code from it is used in the tools. [data/SOURCES.md](data/SOURCES.md) supplies the exact archive hashes.
+
+Both deciders emit checkable certificates. Translated-cycler certificates contain the machine, anchor, positive period and displacement; the checker replays on a sparse tape and verifies the required half-tape or visited-interval equality. CPS certificates contain left/right languages and local contexts; the checker verifies blank inclusion, absence of halting contexts, and exhaustive successor closure. See [tools/CERTIFICATES.md](tools/CERTIFICATES.md). The checkers reject Python optimized mode because their obligations use assertions.
+
+Both simulator conventions count the halt transition, and complete `---` as `1RZ`. The fast simulator's tape-file argument writes absolute start, symbol and run length, with zeros outside the described region. Width is the head span including the final position. The positional hash is an additional comparison aid, not a proof certificate.
+
+## Self-verification: commands and real output
+
+Commands actually run:
+
+```sh
+make tools
+make verify
+python3 tools/check_demo.py
+python3 tools/audit.py
+```
+
+The final sequential verification log is reproduced verbatim below; [logs/make-verify-final.log](logs/make-verify-final.log) also includes compiler commands/output.
+
+```text
+COMMAND: python3 tools/verify.py (make verify target)
+UTC: 2026-10-20T19:23:49.015305+00:00
+Simulator comparison: seed=20261021 machines=500 horizon=1000000 workers=4
+Simulator agreement: 500/500; halted=68; reached_limit=432; tape/state/head/ones/hash also agree
+BB4: halted=True steps=107 ones=13 head=-9; independent simulator agrees
+BB5: halted=True steps=47176870 ones=4098 head=-12242; independent simulator agrees
+translated_cycler: authentic accepted=20; deliberately corrupted rejected=20; source=BB3_verified_enumeration.csv status=nonhalt
+ngram_cps: authentic accepted=20; deliberately corrupted rejected=20; source=BB3_verified_enumeration.csv status=nonhalt
+Known-halter false-positive gate: translated_cycler=1772 tested, ngram_cps=1772 tested; false positives=0
+PASS; elapsed_seconds=15.719
+```
+
+The random fixture is saved as [data/random500.txt](data/random500.txt), with all paired results in [data/simulator-crosscheck.json](data/simulator-crosscheck.json). The generators use full random six-state transition tables, fixed seed, blank tape and the stated limit. Non-halters have equal executed-step counts at the limit; halters agree on the exact halt step. Final state, head, ones and positional tape hash are checked too. Champion results and exact tapes are saved as `data/bb4-verification.json`, `data/bb5-verification.json` and their RLE files. Known values and machine definitions are also archived from the [BB(4)](https://wiki.bbchallenge.org/wiki/BB(4)) and [BB(5)](https://wiki.bbchallenge.org/wiki/BB(5)) pages.
+
+The certificate fixtures are actual **three-state machines** already marked `nonhalt` in the [published Coq-BB5 extraction](https://docs.bbchallenge.org/CoqBB5_release_v1.0.0/BB3_verified_enumeration.csv), not new decisions on holdouts. CPS fixtures are selected from entries already decided by published CPS runs. Their machine strings, original decider IDs and certificate paths are in [data/certificate-verification.json](data/certificate-verification.json). The general simulator comparison uses the target six-state domain.
+
+For every translated-cycler fixture, corruption changes the claimed displacement. For every CPS fixture, corruption removes a reached context while retaining the remaining certificate structure. Both independent checkers reject every corrupted fixture. CLI demonstrations and real exit codes:
+
+```text
+$ python3 tools/check_tc.py certificates/verification/translated_cycler-00.json
+ACCEPT
+exit_code=0
+$ python3 tools/check_tc.py certificates/verification/translated_cycler-00-corrupt.json
+REJECT
+exit_code=1
+$ python3 tools/check_ngram.py certificates/verification/ngram_cps-00.json
+ACCEPT
+exit_code=0
+$ python3 tools/check_ngram.py certificates/verification/ngram_cps-00-corrupt.json
+REJECT
+exit_code=1
+```
+
+The final artifact audit checks source hashes, candidate/exclusion partition, standard machine syntax, every final tape's span/ones/run counts, all good/bad certificates, and shortlist uniqueness:
+
+```text
+{
+  "source_snapshots_checked": 41,
+  "published": 663,
+  "excluded": 92,
+  "candidates": 571,
+  "triage_results": 571,
+  "tapes_checked": 571,
+  "certificates_accepted": 40,
+  "corrupt_certificates_rejected": 40,
+  "shortlist": 10,
+  "shortlist_unique_tables": 10,
+  "total_candidate_simulation_steps": 57100000000,
+  "max_tape_width": 573582,
+  "classification_counts": {
+    "counter-like": 69,
+    "bouncer-like": 387,
+    "chaotic": 115
+  },
+  "status": "PASS"
+}
+```
+
+## Triage results
+
+Command: `python3 tools/triage.py`, using the same engine as `make triage`. Full progress/output is in [logs/triage.log](logs/triage.log).
+
+- Translated-cycler search: limit **8,192 steps**, with a **3-second** subprocess cap.
+- N-gram CPS: radii **1, 2, 3**, at most **5,000 contexts** per attempt and a **3-second** cap per attempt.
+- Search results: **0 translated-cycler certificates**, **0 CPS certificates**, **0 TC timeouts**, **0 CPS timeouts**. Every machine therefore proceeded to direct simulation.
+- **571 machines reached 100,000,000 steps**, all without halting: **57,100,000,000 primitive candidate steps** in total. A simulation has a **45-second** subprocess cap. The original complete triage command took **127.508557 seconds** according to its measured log.
+
+| Heuristic label | Count |
+| --- | ---: |
+| Cycler-like | 0 |
+| Bouncer-like | 387 |
+| Counter-like | 69 |
+| Chaotic / spatially unstructured at this sample | 115 |
+
+These are prioritization labels, not asymptotic classifications. Statistics include head span, ones, symbol runs, bit changes, direction changes, adjacent-symbol counts, last-interval width growth, binary-symbol entropy and zlib compression of the exact tape. The classifier first checks a stable small span, then high spatial complexity, then predominantly translating growth, then a strongly compressible tape with repeated turns; the remainder is called counter-like. Exact predicates are in `tools/triage.py` and can be reapplied to saved measurements with `python3 tools/reclassify.py`. On short tapes, compression overhead makes the chaotic label especially weak. A long regular background can conversely conceal a chaotic edge.
+
+[data/triage.json](data/triage.json) stores each actual command and result, [data/triage.tsv](data/triage.tsv) is the compact review table, and `data/tapes/` stores exact final RLE tapes compressed with gzip. The fast-simulator JSON retains the original uncompressed output filename; the adjacent classification record gives its archived `.gz` path. Sampling horizons are recorded per machine. No candidate decision arose from these bounded runs.
+
+[SHORTLIST.md](SHORTLIST.md) prioritizes **10 machines with distinct transition tables** and no chaotic spreadsheet annotations. For each it gives measured growth/tape evidence, exact-tape links and an intended symbolic technique. [data/shortlist-evidence.json](data/shortlist-evidence.json) also contains an exact periodic-word decomposition of each final tape. These decompositions are spatial descriptions, not certificates about future execution.
+
+## Risks
+
+- **Resource-control deviation:** an intermediate `make verify` rerun overlapped the four-worker triage. Two four-worker pools could schedule eight CPU children, so the requested six-core limit was not enforced during that overlap; actual physical-core utilization was not measured. The final verification was run sequentially after triage. A shared four-child lock gate is now used by verification and triage, leaving room for their Python coordinators. This fixes future enforcement but does not erase the earlier lapse. No individual command approached the two-hour ceiling.
+- **Status incompleteness:** the published list, wiki prose, sheet and current proof branch are not synchronized. Later public claims are excluded conservatively without rebuilding their proof-assistant developments. Private Discord reservations or unannounced results may still exist. Recheck exact target strings and equivalence classes before next-stage work.
+- **Conservative exclusions:** the broader paper list and shared-table rule intentionally overexclude. Different start states are not treated as proved-equivalent blank orbits.
+- **Bounded experiments:** finite direct simulation and compressibility cannot establish non-halting, a stable macro system or absence of chaos. These holdouts already received substantial community computation; the direct run is a reproducible baseline, not evidence of a new advance.
+- **Trust boundary:** independent executable checkers and known-halter gates substantially reduce implementation risk, but their general soundness has not been formalized here. The certificate regression set is from the published smaller domain; target-domain simulator testing does not constitute exhaustive decider validation.
+- **Next-stage uncertainty:** proposed sweep/counter/list rules still need discovery, proof and an independent certificate checker. A proposed acceleration may eventually reveal halting rather than non-halting. No new decision should be inferred from the shortlist.
+
+No commits were made and nothing was posted online. Reproduction commands and artifact roles are in [README.md](README.md).
+
+## Stage 2 — bounded decision attempts
+
+**0 decided; 10 attempted; 0 skipped. No new decision is claimed.** All shortlist entries have terminal attempt records and individual notes. The source refresh is in [data/STATUS-stage2.md](data/STATUS-stage2.md); no target was dropped after the public-source check, including the explicitly traced blank-orbit equivalences.
+
+These are bounded automated attempts using recursive macro proof search as an alternative to hand-derived sweep rules, alongside closure/backtracking probes. The per-machine three-hour ceiling was not exhausted; no three-hour manual investigation is claimed. None produced the global invariant or independently checked certificate required for a decision. The machines remain unresolved in this workspace.
+
+The attempts ran from 2026-10-20T20:37:42.893095+00:00 to 2026-10-20T20:41:03.784519+00:00. Sum of child-command wall times: 200.672361 seconds. 110 probes, statuses {'completed': 110}. The runner executes one child at a time; numeric libraries are restricted to one thread. Status fetching uses four download workers. No command approached the two-hour ceiling; per-probe deadlines and checkpoint files are retained. No commits or external posts were made.
+
+### Every shortlisted machine
+
+Rule counts below are the upstream macro prover's reported counts in automatic/block-2/block-3 order, **not independently verified proofs**. Frontier widths describe unsuccessful reverse searches, not reachable blank-start configurations.
+
+| Candidate | Status | What failed / remained incomplete | Detail |
+| --- | --- | --- | --- |
+| 24 | attempted | 44 CTL cases failed; reverse frontier 1197; macro rules 0, 0, 0 | [notes](notes/024.md) |
+| 444 | attempted | 44 CTL cases failed; reverse frontier 1158; macro rules 0, 0, 0 | [notes](notes/444.md) |
+| 106 | attempted | 44 CTL cases failed; reverse frontier 1227; macro rules 6, 0, 1135 | [notes](notes/106.md) |
+| 133 | attempted | 44 CTL cases failed; reverse frontier 1115; macro rules 0, 0, 0 | [notes](notes/133.md) |
+| 373 | attempted | 44 CTL cases failed; reverse frontier 1256; macro rules 0, 0, 0 | [notes](notes/373.md) |
+| 90 | attempted | 44 CTL cases failed; reverse frontier 1119; macro rules 1, 0, 0 | [notes](notes/090.md) |
+| 167 | attempted | 44 CTL cases failed; reverse frontier 1133; macro rules 202, 202, 1796 | [notes](notes/167.md) |
+| 392 | attempted | 44 CTL cases failed; reverse frontier 1043; macro rules 0, 0, 364 | [notes](notes/392.md) |
+| 16 | attempted | 44 CTL cases failed; reverse frontier 1189; macro rules 3, 3, 7 | [notes](notes/016.md) |
+| 183 | attempted | 44 CTL cases failed; reverse frontier 1352; macro rules 0, 0, 0 | [notes](notes/183.md) |
+
+### Measured direct simulation and effort
+
+| Candidate | Steps without halt | Visited width | Final ones | Child wall seconds |
+| --- | ---: | ---: | ---: | ---: |
+| 24 | 1,000,000,000 | 3,954,386 | 3,954,346 | 12.203 |
+| 444 | 1,000,000,000 | 4,591,533 | 4,591,501 | 12.310 |
+| 106 | 1,000,000,000 | 37,620 | 24,044 | 19.935 |
+| 133 | 1,000,000,000 | 33,592 | 24,444 | 16.304 |
+| 373 | 1,000,000,000 | 32,393 | 16,156 | 17.425 |
+| 90 | 1,000,000,000 | 44,836 | 32,176 | 13.393 |
+| 167 | 1,000,000,000 | 37,504 | 37,450 | 68.280 |
+| 392 | 1,000,000,000 | 32,052 | 22,709 | 10.086 |
+| 16 | 1,000,000,000 | 46,890 | 39,631 | 17.104 |
+| 183 | 1,000,000,000 | 36,694 | 24,088 | 13.634 |
+
+Total direct steps: 10,000,000,000. These horizons are observations only and do not exceed the community simulation bounds reported in stage 1. Exact tapes and JSON are in [data/stage2/attempts](data/stage2/attempts); raw output is in [logs/stage2](logs/stage2). The complete sequential progress log is [logs/stage2-attempts.log](logs/stage2-attempts.log).
+
+### Search parameters and certificate boundary
+
+Translated-cycler limit: 1,000,000 steps. CPS radii: [4, 6, 8, 12]; context cap 100,000. CTL1/CTL2 tested 440 cases in total: cutoffs 100/10,000; block sizes 1/2/3/4/6/8; offsets zero and block-size-minus-one; backsymbol enabled. Reverse search allowed 1,000 levels and frontier bound 1,000. Macro proof search enabled recursion, capped at 50,000 macro loops and 10,000 remembered prover configurations per run. Automatic block selection and explicit block sizes 2/3 were tested. Every actual invocation and deadline is recorded in the per-machine JSON.
+
+The macro prover's local rules were not serialized to an independent certificate format, so they remain unverified observations in `notes/`. No FAR/CTL certificate or community verifier was run for a new claim. Rocq/Coq and OCaml were unavailable in the environment. There are no `decisions/<machine>.md` files because there are no decisions; [decisions/registry.json](decisions/registry.json) is explicitly empty.
+
+### Self-verification
+
+`make verify-decisions` ran the independent checkers in fresh processes, rejected corrupted controls, checked complete shortlist records and log hashes, and checked the exact saved RLE tapes against the simulator records. With no claimed certificates, the certificate-claim portion is explicitly empty; the BB3 controls are not new results. Actual output:
+
+```text
+python3 tools/verify_decisions.py
+COMMAND: make verify-decisions
+UTC: 2026-10-20T20:41:10.555788+00:00
+Claimed shortlisted decisions checked from scratch: 0; corrupted claim variants rejected: 0
+CHECKER CONTROL translated_cycler: authentic BB3 fixtures accepted=20; corrupted variants rejected=80
+CHECKER CONTROL ngram_cps: authentic BB3 fixtures accepted=20; corrupted variants rejected=80
+Shortlist records complete: 10/10; raw probe log hashes match
+Exact final RLE tapes checked against direct-simulation records: 10
+Community verifier run for stage-2 claims: no (no claims)
+PASS (checker controls are not new decisions)
+```
+
+Reproduce using the stage-2 commands in [README.md](README.md). `make report` preserves this generated section. Source evidence includes a disclosed failed PR-discussion request; no claim of complete private/unpublished status coverage is made.
+
+### CPS failure diagnostics
+
+A separate instrumented replay of the radius-12 search was run for all 10 targets. These diagnostic commands are recorded separately from the primary probe timing/counts above in [data/stage2/ngram-witnesses.jsonl](data/stage2/ngram-witnesses.jsonl).
+
+| Candidate | Contexts examined | Failure |
+| --- | ---: | --- |
+| 24 | 302 | abstract window `101101101101 [B1] 111111001111` admits halt |
+| 444 | 6,389 | abstract window `110110110111 [B1] 111111111111` admits halt |
+| 106 | 8,085 | abstract window `011011001101 [A1] 010101010101` admits halt |
+| 133 | 22,291 | abstract window `010111110101 [B1] 001111111111` admits halt |
+| 373 | 100,000 | context bound reached |
+| 90 | 10,249 | abstract window `111111111111 [F0] 110111110101` admits halt |
+| 167 | 317 | abstract window `000000000000 [F0] 101111111111` admits halt |
+| 392 | 448 | abstract window `111111111111 [E1] 111111111111` admits halt |
+| 16 | 543 | abstract window `000000000000 [E0] 001101111111` admits halt |
+| 183 | 2,186 | abstract window `101010101010 [F0] 111111111111` admits halt |
+
+An abstract halting window is a failure of the proposed overapproximation; it does not prove concrete halting. These diagnostics identify the lost correlations that a stronger invariant would have to recover.
+
+## Stage 2b — focused translated-counter investigation
+
+**0 new decisions claimed.** The investigation is complete.
+
+Recorded start: **2026-10-20T21:14:31Z**. Target 1 ended **2026-10-21T01:14:50.484630+00:00**. Recorded target-1 wall interval: **14419.485 seconds**. The four-hour threshold is **2026-10-21T01:14:31Z**.
+
+Target 2 started at **2026-10-21T01:14:50.492616+00:00** and ended at **2026-10-21T01:40:37.523259+00:00**.
+
+[The public-status re-check](data/STATUS-stage2b.md) retained both targets. Source requests: 70; successful: 70. No unpublished/private status coverage is claimed.
+
+### Local proofs and the unresolved obligation
+
+[Candidate 24's attempt note](notes/024-attempt.md) records 27 independently checked local lemmas, 4 arbitrary-repeat inductions, and 3 complete word transducers for the ternary left sweep, binary right parser and paired redundant-digit right parser. The checker executes affine-run proofs with base/successor induction and checks every parser case. These are local transition results, not a blank-start decision.
+
+Fresh local checks rejected **106 corrupted variants** and replayed **372 concrete instantiations**. The fixed-block discovery simulator matched **2 exact billion-step RLE tapes** from the original simulator. Separately, **16 hypothetical configurations** were independently replayed. Their halting examples are not blank-start results.
+
+The observed counter value usually drops by two in base minus two. Counter-width changes and rebuilding invalidate an unrestricted recurrence. The missing proof is a closed configuration family that retains the left context through redundant-digit carries, delimiter changes and rebuilding. Negative encoded value alone is insufficient.
+
+### Longer experiments
+
+The checkpointed fixed-block run records **927,986,952,817 primitive steps**, halted=False; the last recorded state is F, head 3,628,301,519, ones 3,628,301,601. This is finite exploration. It is not a decision or a claim to exceed community bounds. The compressed checkpoint contains the complete tape, not a truncation.
+
+A revised guarded-counter experiment checked **115,398,488 hypothetical starts** and completed every generated length through **25 digits**, with a partial checkpoint at **26 digits**. It found no unexpected interior failure after explicitly allowing the terminal `[3,3,2]` exit and separating unary-prefix visits. The verifier checks enumeration counts and a selected exact countdown ending in the independently proved 111-step exit. These are finite experiments; the guarded word induction and rebuilding proof remain open.
+
+The period-7/14 recursive searches use the observed `1110`/`110` digit-pair lengths. Their full tape/configuration text and minute checkpoints are retained in `logs/stage2b` and `data/stage2b`. Configured-source searches explicitly label their starts as hypothetical.
+
+Global regular-invariant SAT searches recorded these outcomes: `{'unsat': 7, 'unknown': 24}`. An `unsat` result is a solver report about that query; a timeout is inconclusive. The saved SMT-LIB queries permit replay. Any SAT candidate must pass the separate `tools/check_far.py` verifier before becoming a decision. Known-machine controls are not new decisions.
+
+The persistent-tree accelerator matched independent simulators at its reported horizons. Its complete-root stopping rule can stop before the requested step limit; actual printed counts are used. Those benchmarks did not justify replacing the fixed-block exploration.
+
+### Candidate 444
+
+[Its attempt note](notes/444-attempt.md) records **21 checked local lemmas**, **3 arbitrary-repeat inductions** and **2 complete word transducers**. Fresh verification rejected **92 corruptions** and replayed **468 concrete instantiations**. An independently checked state-entry guard justifies replacing F0 by its three-step shortcut. This proves blank-start halting equivalence to the public shortened machine, without deciding either.
+
+The original simulator recorded **4492 frontier snapshots** through a million steps. The **2220 post-10000 phase comparisons** all showed encoded value decrement two. An earlier reset and the redundant digit `11100` remain outside the closed binary parser. The missing global argument must preserve the left context and rebuilding, and exclude `C>101`.
+
+Both saved original billion-step tapes match the independent block simulator. Its checkpointed continuation reached **87,250,396,711 steps**, halted=False, state E, head 390,658,639, ones 390,658,766. The complete checkpoint and log are retained. This is finite exploration.
+
+Normal and reflected FAR searches recorded `{'unknown': 2}`. No target decision certificate was produced.
+
+### Verification and reproduction
+
+`make verify-decisions` replays registered decision certificates, local symbolic proofs and corruption controls from scratch. It also checks the earlier stage records. No community verifier has been run for a new decision. Custom checker acceptance is not a busycoq/Rocq certification.
+
+Final fresh runs of `make verify` and `make verify-decisions` passed. Their full output is retained in `logs/stage2b/final-project-verification.log` and `logs/stage2b/final-decision-verification.log`. The saved SMT-LIB queries also passed syntax parsing; this does not decide those queries.
+
+Commands and tool roles are in [README.md](README.md). The local proof certificate and traces are in `data/stage2b`; the registry remains the authoritative list of global decisions. No commits or external posts were made.
+
+## Stage 2c — candidate 24 carry closure
+
+**No new decision is claimed. Candidate 24 remains undecided in this workspace.**
+The interval began at **2026-10-21T01:55:19+00:00** and ended at **2026-10-21T07:55:19.086310+00:00**,
+lasting **21600.086 seconds**. The full six-hour wall budget
+was used. [The timing record](data/stage2c/time-discipline.json) and
+[final evidence summary](data/stage2c/summary.json) retain the exact values.
+No commits or external posts were made.
+
+[The public-status refresh](data/STATUS-stage2c.md) found no new target claim.
+The original HTTP refresh had one denied discussion request; the connected
+GitHub tool subsequently returned an empty comments array for that discussion.
+The original failures and supplementary evidence are both retained. Unpublished
+and private work remain outside the search.
+
+[The attempt note](notes/024-attempt.md) records **118 new checked
+local rules**: six carry/marker/base rules, 109 affine unary-prefix boundary
+instances, and three finite hypothetical halting paths. The C-state left carry
+has a complete nine-case word induction with a fixed head offset. Fresh checks
+rejected **470 local corruptions** and replayed
+**3973 sparse-tape instantiations**. Conditional
+boundary, anchor, grammar and FAR-engine controls are recorded separately.
+These are local results, not a blank-start invariant.
+
+The whole-tape guarded family with unary prefix length two modulo three is
+unsafe: prefix length **5**, runs `[3,2,3,2]`, halt after **938 steps**.
+Both original simulators and the independent symbolic kernel confirm the
+finite path. It is **not asserted blank-reachable**. The counterexample shows
+that the global family must retain more left-context information.
+
+A corrected finite anchor at step **20657323**, C head
+**83849**, has unary length **82433** and a valid
+counter of length **46**. Both simulators agree on its
+complete tape, and the independent checker replays every primitive blank-start
+step to it. The earlier proposed anchor failed the redundant-digit parity guard
+and was replaced before any claim. The retained-context family at the corrected
+anchor has **not** been proved closed or globally safe.
+
+| Search | Queries | Recorded outcomes |
+| --- | ---: | --- |
+| Global blank-start | 8 | unknown: 8 |
+| Conditional prefix-boundary | 11 | unknown: 10, external wall cap: 1 |
+| Retained-context anchor | 10 | unknown: 10 |
+
+The global decision searches ended without a certificate. The conditional checker has no accepted target certificate.
+The interrupted query retains
+only its last complete model checkpoint, explicitly identified as such.
+The static templates additionally tested **1232**
+global, **616** conditional guarded-word and
+**1217** processed-word prefix DFAs;
+all admitted abstract halting paths. Abstract paths are not concrete halts.
+Saved SMT-LIB queries, effective orientations/biases and steering hashes define
+the actual experiments; raw filenames can retain coordinator-requested settings.
+
+The exact block continuation ended at **6,307,258,355,399 primitive steps**,
+halted=False, state **F**, head **24,851,875,407**,
+ones **24,851,875,449**. Its complete checkpoint
+and final log agree, including the independently summed boundary-map ones.
+This is a finite accelerated simulation, not a decision or a community bound.
+
+A final fresh `make verify-decisions` passed; its complete output is
+[retained here](logs/stage2c/final-verify-decisions.log). It rechecks the local
+proofs, rejects corruptions, compares both simulators, checks exact rebuilding
+tapes and replays the finite anchor. The decision registry remains empty.
+No community busycoq/Rocq verifier was run because no global decision was found.
+The unresolved obligation is closure through arbitrary guarded words and
+unary-prefix rebuilding, connected to the complete blank-start orbit.
+
+[Artifact hashes](data/stage2c/artifact-manifest.json) cover the delivered source and evidence files.

@@ -1,0 +1,7 @@
+{
+  "number": 391646,
+  "name": "a(n) is the least integer k such that the sum of the prime divisors of k, each taken modulo its exponent in the prime factorization of k, equals n.",
+  "data": "1,9,8,72,1000,648,16200,81000,1125000,38896200,10125000,496125000,3735591048,24310125000",
+  "offset": "0,2",
+  "keyword": "nonn,more"
+}

@@ -1,0 +1,7 @@
+{
+  "number": 353390,
+  "name": "Number of compositions of n whose own run-lengths are a subsequence (not necessarily consecutive).",
+  "data": "1,1,0,0,1,2,3,2,2,8,17,26,43,77,129,210,351,569",
+  "offset": "0,6",
+  "keyword": "nonn,more"
+}

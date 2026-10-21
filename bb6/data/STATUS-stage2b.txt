@@ -1,0 +1,45 @@
+# Stage 2b public-status re-check
+
+Both targets remain research targets. No public halting or non-halting decision
+was found in this refresh. This is a source-search result, not a mathematical
+decision or a claim about unpublished work.
+
+The refresh command was `python3 tools/stage2_status.py --stage2b`.
+The machine-readable results are in [stage2b/status.json](stage2b/status.json),
+and all retrieval times, hashes, URLs and HTTP outcomes are in
+[the manifest](stage2b/status/manifest.json). The original snapshots remain intact.
+
+| Candidate | Published list | Sheet status | Explicit blank-orbit equivalence edges | Result |
+| --- | --- | --- | --- | --- |
+| 24 | present | blank | none found | retain |
+| 444 | present | blank | two found | retain |
+
+The downloaded list contains 663 representatives and the sheet contains 1534
+rows. All 70 source requests succeeded. Sources checked include the
+[holdout lists](https://wiki.bbchallenge.org/wiki/Holdouts_lists),
+[published list](https://wiki.bbchallenge.org/w/images/6/69/BB6_holdouts_663.txt),
+[annotated sheet](https://docs.google.com/spreadsheets/d/1mMp8bAcTFT91j7azn72liX8NSTwc2E_ozKnOGTfRCfw/edit?gid=1330361301),
+[busycoq BB6 proof branch](https://github.com/ccz181078/busycoq/tree/BB6),
+PR metadata and relevant files/discussions/review comments, wiki machine-title
+queries, recent changes, BB(6), Cryptids/Potential Cryptids categories, and
+[September](https://wiki.bbchallenge.org/wiki/TMBR:_September_2026) and
+[October](https://wiki.bbchallenge.org/wiki/TMBR:_October_2026) bulletins.
+
+Candidate 444 appears in `Eqv_v2.v` and `Eqv_v3.v`. The checked source relation
+links it to
+`1RB0RD_1RC---_0LA1RA_0RE1RC_1LE0LF_1RB0LF` and then to
+`1RB0LA_1RC---_0LD1RD_1RB0RE_0RF1RC_1LF0LA`.
+These are equivalence statements, not decisions. State renamings fix the initial
+state A, reflection is permitted, and the explicit blank-start equivalence edges
+are followed transitively. The proof-assistant equivalence developments were
+read but have not been built here.
+
+Candidate 24 has no matching decision, reservation or proof-source mention in
+the downloaded evidence. Its sheet note says it has to halt in the counting
+phase. That note identifies a necessary local condition, not a halting claim.
+Candidate 444's only matched proof-source mentions are the equivalences above.
+
+Web searches for both exact transition strings and recent translated-counter
+announcements were also run. They found no additional decision. Machine-title
+wiki pages are missing in the saved API response. Private Discord and
+unpublished research are outside the available coverage.

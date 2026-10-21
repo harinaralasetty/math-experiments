@@ -1,0 +1,136 @@
+# Certificate formats and trust boundaries
+
+Searchers propose proofs; the checkers replay or check closure independently.
+Both checker modules import only the standard library. Python optimization is
+rejected because the checkers deliberately use assertions as checked obligations.
+
+## Translated cycler
+
+JSON contains `type`, `machine`, `success`, `start`, `period`, `offset`.
+The searcher is Ligocki's C++ `LinRecurDetect`, serialized by the adapter.
+The independent Python checker replays from the blank tape with a set of
+nonzero absolute positions. It rejects halting, unequal states, or incorrect
+displacement. For positive displacement it compares the entire right half-tape
+beginning at the minimum head coordinate during the lap, under translation.
+For negative displacement it compares the left half-tape ending at the maximum
+head coordinate. With zero displacement it compares the whole visited interval.
+
+Induction: the next lap starts in the same state and reads the same translated
+cells. Positive translation moves every future visited interval into the
+half-line on which equality was checked; negative translation is symmetric.
+The unmatched wake cannot affect the computation. For zero displacement, the
+same finite interval is repeated. Every lap has positive length and avoids halt.
+
+The checker bounds replay length to prevent an untrusted certificate causing
+unbounded work. A larger real proof would need an explicitly increased limit.
+
+## N-gram closed position set
+
+JSON contains `type`, `machine`, `radius`, `left`, `right`, `contexts`.
+Search is bbchallenge's upstream n-gram CPS implementation. A context is
+`leftword [StateSymbol] rightword`, with both words having the stated radius.
+The languages contain zero-padding words and the local set contains the blank
+initial window.
+
+The independent checker verifies the inductive invariant: the head-centered
+window belongs to the context set, and every radius-length block wholly to
+its left/right belongs to the corresponding language. All contexts have
+defined, non-halting transitions. Each possible far-end bit consistent with
+the corresponding language must produce a listed successor context. The
+newly written opposite-side block is included by that successor. All other
+blocks are unchanged. This preserves the invariant under every TM step and
+excludes halting configurations.
+
+These are executable mathematical checks with regression tests, not newly
+formalized theorems in a proof assistant. See the report's limitations.
+## Stage 2b local symbolic lemmas
+
+`check_symbolic.py` accepts `local_affine_run_lemmas`. Acceptance proves the
+listed local transitions only. This type cannot be entered as a non-halting
+decision in the registry. There is no blank-start invariant in that format.
+
+A tape is a list of literal binary words and homogeneous runs. For example,
+`{"bit":1,"count":{"n":1,"constant":2}}` denotes `1^(n+2)`, for every natural
+`n`, including zero. Head positions and step counts are affine forms as well.
+The arithmetic kernel uses coefficientwise non-negativity to prove every read
+and replacement lies inside a supplied run. This criterion is incomplete but
+does not rely on testing parameter values. Unknown outside contexts are never
+read or written.
+
+An inductive scan is allowed only when the actual TM transition is a
+single-symbol self-loop. Its zero case is identity. In the successor case the
+machine executes one transition and applies the induction hypothesis to the
+remaining adjacent cells. Exact times and displacements add. Fixed block
+sweeps and finite-state word parsers have separate checked base and successor
+obligations. Parser coverage is the complete product of the declared states
+and input letters, with the next block's lookahead preserved.
+
+Both the local symbolic checker and the new FAR checker reject optimized
+Python explicitly before executing any assertion-based obligations.
+
+## Stage 2b backward finite-automata certificates
+
+`check_far.py` accepts `finite_automata_backward`. It imports neither the SAT
+searcher nor Z3. A prefix DFA reads the tape left of the head; DFA state `q`
+and TM state `s` select NFA state `n*q+s`. One additional NFA state is a sink
+with loops on both tape symbols. Every undefined TM transition must have an
+edge to that sink.
+
+For a right TM move, the checker requires the corresponding NFA edge to the
+new head state with its updated prefix-DFA state. For a left move, it checks
+every prefix state and both possible left-neighbor bits, requiring inclusion
+of all endpoints of the two-symbol NFA composition. These are backward
+closure conditions for the language of configurations whose right suffix can
+reach the sink.
+
+The certificate also supplies a set containing blank start's NFA state and
+excluding the sink, closed under NFA zero transitions. Blank start therefore
+cannot reach the sink on any finite zero suffix. Since every halting
+configuration reaches the sink and backward closure holds, no finite TM
+execution can take blank start to a halt. DFA state zero must ignore leading
+zeros. Reflection, when declared, preserves blank-start halting.
+
+The least zero-predecessor closure of the sink supplies the usual FAR
+accepting vector. The supplied safe set proves that vector excludes blank
+start. This describes the relationship to the community criterion; no
+community verifier execution is implied. Search timeouts and solver UNSAT
+answers are not machine decisions. Only an exported SAT certificate accepted
+by the independent checker can support a non-halting claim.
+
+## Position-phase CPS certificates
+
+`check_phase_cps.py` accepts `position_phase_ngram_cps`. It keeps the original
+machine and adds a ghost control component recording head displacement modulo
+the declared modulus, initially zero. It checks that component's update from
+each original transition itself, without importing the product-machine
+constructor or packed searcher.
+
+Contexts encode left/right binary windows, the current bit and the augmented
+state as integers. The checker decodes them with arithmetic, validates all
+languages and state ranges, requires blank inclusion, excludes every halting
+context, and checks both possible overlapping side-window successors. The
+side-language invariant and the ghost-state update then hold by induction
+from blank start. Context deletion, a missing phase, wrong modulus and a
+machine changed to halt from blank are rejection controls. Optimized Python
+is rejected explicitly.
+
+## State-entry guards and machine shortcuts
+
+Local affine certificates may contain `entry_guards` with an id, state,
+neighbor offset, bit, and exact `incoming` list of state/read pairs. The
+checker enumerates every transition entering that state itself. For each
+case the offset must be minus the move direction and the bit must equal
+the bit just written. Thus the guard holds on every entry independently
+of previous tape. If the guarded state is initial A, the bit must also
+equal blank zero. Missing or duplicate incoming cases are rejected.
+
+`machine_shortcuts` supplies a target machine and an exact list of its
+changed state/read pairs, each linked to a checked local rule and guard.
+Both machines must satisfy the guard. The source footprint contains exactly
+the current read bit and guarded neighbor. The checker compares the local
+rule's entire endpoint, head and state with one target transition, requires
+positive finite original time, and rejects changes to undefined transitions.
+All other transitions agree. Induction expands each target step to a finite
+positive original path from blank, giving halting equivalence. This proves
+neither a halting bound nor nonhalting. Local certificates remain ineligible
+for registration as global decisions.

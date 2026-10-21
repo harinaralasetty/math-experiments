@@ -1,0 +1,11 @@
+# Stage 2c public-status re-check
+
+Candidate 24 remains a research target. The refresh found no matching public decision, reservation, or proof-source mention; this is a search result, not a mathematical decision or a claim about unpublished work.
+
+Command: `python3 tools/stage2_status.py --stage2c`. The [machine-readable status](stage2c/status.json), [retrieval manifest](stage2c/status/manifest.json), and [command log](../logs/stage2c/status-refresh.log) preserve the evidence. The manifest records 70 source requests, of which 69 succeeded. The denied request was the discussion on busycoq PR 3 (HTTP 403, including a retry). Original stage-2 and stage-2b snapshots were retained.
+
+The target occurs in the downloaded representative list. Its matching annotated-sheet row has blank Status and no explicit blank-orbit equivalence edge was found. The note about having to halt in the counting phase is not a decision.
+
+Sources checked: [published list](https://wiki.bbchallenge.org/w/images/6/69/BB6_holdouts_663.txt), [annotated sheet](https://docs.google.com/spreadsheets/d/1mMp8bAcTFT91j7azn72liX8NSTwc2E_ozKnOGTfRCfw/edit?gid=1330361301), [busycoq BB6 branch](https://github.com/ccz181078/busycoq/tree/BB6), pull metadata and changed files/comments, wiki machine-title query and recent changes, BB(6), Cryptids and Potential Cryptids categories, and September/October research bulletins. Exact-string web searches also ran; the returned pages did not establish any target status. Private Discord and unpublished work remain outside coverage.
+
+The denied PR-3 discussion request was subsequently covered through the connected GitHub `fetch_issue_comments` tool. It returned an empty comments array. The [saved connector response](stage2c/status/connector-pr3-comments.json) and [supplemental manifest](stage2c/status/supplemental-manifest.json) preserve the response and retrieval time; the original HTTP failures remain recorded.

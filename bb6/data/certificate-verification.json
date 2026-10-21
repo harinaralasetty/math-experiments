@@ -1,0 +1,366 @@
+{
+  "translated_cycler": [
+    {
+      "machine": "0RA---_------_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-00.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-00-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "1RA---_------_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-01.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-01-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_0LA---_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-02.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-02-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LA0LA_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-03.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-03-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LA1LA_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-04.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-04-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LA0RA_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-05.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-05-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LA1RA_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-06.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-06-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LA0LB_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-07.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-07-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LA1LB_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-08.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-08-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LA0RB_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-09.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-09-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0RA_1LA1RB_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-10.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-10-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB1RA_1LA1RB_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-11.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-11-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0LB_1LA1RB_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-12.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-12-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB1LB_1LA1RB_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-13.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-13-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0RB_1LA1RB_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-14.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-14-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB1RB_1LA1RB_------",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-15.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-15-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0LC_1LA1RB_0LA---",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-16.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-16-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0LC_1LA1RB_1LA---",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-17.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-17-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0LC_1LA1RB_0RA---",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-18.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-18-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0LC_1LA1RB_1RA---",
+      "status": "nonhalt",
+      "decider": "LOOP1_params_21",
+      "certificate": "certificates/verification/translated_cycler-19.json",
+      "corrupt_certificate": "certificates/verification/translated_cycler-19-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    }
+  ],
+  "ngram_cps": [
+    {
+      "machine": "0RB0LA_1LA1RB_------",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-00.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-00-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB1LA_1LA1RB_------",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-01.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-01-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0RC_1LA1RB_---1LB",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-02.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-02-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0LA_0LC1RA_1LA---",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-03.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-03-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB0LC_0LC1RA_1LA---",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_2_2_200",
+      "certificate": "certificates/verification/ngram_cps-04.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-04-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_0LC1RB_1LA1LC",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_2_2_200",
+      "certificate": "certificates/verification/ngram_cps-05.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-05-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_0LC0RB_1RB1LC",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-06.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-06-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_0LC1RB_1RB1LC",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-07.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-07-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LC1RB_1LA0LB",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_2_2_200",
+      "certificate": "certificates/verification/ngram_cps-08.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-08-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LC1RB_1LA1LC",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_2_2_200",
+      "certificate": "certificates/verification/ngram_cps-09.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-09-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB1LA_1LC0LC_1RA---",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-10.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-10-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LC1RB_0RB0LC",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-11.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-11-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LC1RB_0RB1LC",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-12.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-12-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LC1RB_1RB1LC",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-13.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-13-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LC0RC_1RB0LA",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_2_2_200",
+      "certificate": "certificates/verification/ngram_cps-14.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-14-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_1LC0RC_1RB0LB",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-15.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-15-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_0RC0LB_1LB1RC",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-16.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-16-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB---_0RC1LB_1LB1RC",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_1_1_100",
+      "certificate": "certificates/verification/ngram_cps-17.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-17-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB1LA_1RC1RB_0LA---",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_2_2_200",
+      "certificate": "certificates/verification/ngram_cps-18.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-18-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    },
+    {
+      "machine": "0RB1LC_1RC---_0LA0RB",
+      "status": "nonhalt",
+      "decider": "NGRAM_CPS_IMPL2_params_2_2_200",
+      "certificate": "certificates/verification/ngram_cps-19.json",
+      "corrupt_certificate": "certificates/verification/ngram_cps-19-corrupt.json",
+      "accepted": true,
+      "corruption_rejected": true
+    }
+  ]
+}

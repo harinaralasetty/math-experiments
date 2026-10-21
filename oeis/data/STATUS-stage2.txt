@@ -1,0 +1,11 @@
+# Stage 2 published-status recheck
+
+Fresh serial read-only requests are saved with URL, UTC retrieval time, HTTP status, and SHA-256 under `cache-stage2/`. Re-running this script replays that stage-2 snapshot. Both entry DATA and the complete b-file agree with stage 1. This checks published status, not unpublished work.
+
+| Entry | Retrieved UTC | Listed indices | `more` | DATA and b-file | Last published edit |
+|---|---|---|---|---|---|
+| [A391646](https://oeis.org/A391646) | 2026-10-20T20:12:53.154895+00:00 | 0..13 | yes | unchanged | 2026-01-24T15:35:10-05:00 |
+| [A383533](https://oeis.org/A383533) | 2026-10-20T20:12:55.538302+00:00 | 0..30 | yes | unchanged | 2025-05-08T22:57:03-04:00 |
+| [A374679](https://oeis.org/A374679) | 2026-10-20T20:12:57.923272+00:00 | 0..25 | yes | unchanged | 2024-09-16T08:42:44-04:00 |
+| [A353390](https://oeis.org/A353390) | 2026-10-20T20:13:00.136505+00:00 | 0..17 | yes | unchanged | 2022-05-16T10:02:31-04:00 |
+| [A335457](https://oeis.org/A335457) | 2026-10-20T20:13:02.352887+00:00 | 0..20 | yes | unchanged | 2020-07-08T10:22:41-04:00 |

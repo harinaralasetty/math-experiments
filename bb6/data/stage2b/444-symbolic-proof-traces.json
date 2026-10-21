@@ -1,0 +1,8857 @@
+{
+  "C111": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        0
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        2
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        3
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "C100": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        0
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        2
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        3
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    }
+  ],
+  "C101-halt": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        0
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        2
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "Z"
+        }
+      },
+      "state": "Z",
+      "head": [
+        3
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    }
+  ],
+  "C1101": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        0
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        2
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        2
+      ],
+      "steps": [
+        4
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        3
+      ],
+      "steps": [
+        5
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2
+      ],
+      "steps": [
+        6
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        3
+      ],
+      "steps": [
+        7
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        4
+      ],
+      "steps": [
+        8
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ]
+      ]
+    }
+  ],
+  "0C00": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        1
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        0
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        1
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        2
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "1C01": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        1
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        0
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        1
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        2
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        1
+      ],
+      "steps": [
+        4
+      ],
+      "runs": [
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        2
+      ],
+      "steps": [
+        5
+      ],
+      "runs": [
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1
+      ],
+      "steps": [
+        6
+      ],
+      "runs": [
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        2
+      ],
+      "steps": [
+        7
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        3
+      ],
+      "steps": [
+        8
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ]
+      ]
+    }
+  ],
+  "C1100-first-return": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        1,
+        1
+      ],
+      "steps": [
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        1,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        2,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        3,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        4,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        5,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        1,
+        1
+      ],
+      "steps": [
+        6,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        1
+      ],
+      "steps": [
+        7,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "F",
+          "read": 1,
+          "write": 0,
+          "count": [
+            0,
+            1
+          ],
+          "direction": -1
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        0
+      ],
+      "steps": [
+        7,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        1,
+        0
+      ],
+      "steps": [
+        8,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    }
+  ],
+  "C1100-restart": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        1,
+        1
+      ],
+      "steps": [
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        1,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        2,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        3,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        4,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        5,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        1,
+        1
+      ],
+      "steps": [
+        6,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        1
+      ],
+      "steps": [
+        7,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "F",
+          "read": 1,
+          "write": 0,
+          "count": [
+            0,
+            1
+          ],
+          "direction": -1
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        0
+      ],
+      "steps": [
+        7,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        1,
+        0
+      ],
+      "steps": [
+        8,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        0,
+        0
+      ],
+      "steps": [
+        9,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        1,
+        0
+      ],
+      "steps": [
+        10,
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        2,
+        0
+      ],
+      "steps": [
+        11,
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    }
+  ],
+  "1C00-first-return": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        3,
+        1,
+        1
+      ],
+      "steps": [
+        0,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2,
+        1,
+        1
+      ],
+      "steps": [
+        1,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        3,
+        1,
+        1
+      ],
+      "steps": [
+        2,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4,
+        1,
+        1
+      ],
+      "steps": [
+        3,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3,
+        1,
+        1
+      ],
+      "steps": [
+        4,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        2,
+        1,
+        1
+      ],
+      "steps": [
+        5,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        1,
+        1,
+        1
+      ],
+      "steps": [
+        6,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "E",
+          "read": 0,
+          "write": 1,
+          "count": [
+            0,
+            0,
+            1
+          ],
+          "direction": -1
+        }
+      },
+      "state": "E",
+      "head": [
+        1,
+        1,
+        0
+      ],
+      "steps": [
+        6,
+        0,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            1,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        1,
+        0
+      ],
+      "steps": [
+        7,
+        0,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "F",
+          "read": 1,
+          "write": 0,
+          "count": [
+            0,
+            1,
+            0
+          ],
+          "direction": -1
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        0,
+        0
+      ],
+      "steps": [
+        7,
+        1,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        1,
+        0,
+        0
+      ],
+      "steps": [
+        8,
+        1,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "1C00-restart": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        3,
+        1,
+        1
+      ],
+      "steps": [
+        0,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2,
+        1,
+        1
+      ],
+      "steps": [
+        1,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        3,
+        1,
+        1
+      ],
+      "steps": [
+        2,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4,
+        1,
+        1
+      ],
+      "steps": [
+        3,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3,
+        1,
+        1
+      ],
+      "steps": [
+        4,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        2,
+        1,
+        1
+      ],
+      "steps": [
+        5,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        1,
+        1,
+        1
+      ],
+      "steps": [
+        6,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "E",
+          "read": 0,
+          "write": 1,
+          "count": [
+            0,
+            0,
+            1
+          ],
+          "direction": -1
+        }
+      },
+      "state": "E",
+      "head": [
+        1,
+        1,
+        0
+      ],
+      "steps": [
+        6,
+        0,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            1,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        1,
+        0
+      ],
+      "steps": [
+        7,
+        0,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "F",
+          "read": 1,
+          "write": 0,
+          "count": [
+            0,
+            1,
+            0
+          ],
+          "direction": -1
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        0,
+        0
+      ],
+      "steps": [
+        7,
+        1,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        1,
+        0,
+        0
+      ],
+      "steps": [
+        8,
+        1,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        0,
+        0,
+        0
+      ],
+      "steps": [
+        9,
+        1,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        1,
+        0,
+        0
+      ],
+      "steps": [
+        10,
+        1,
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        2,
+        0,
+        0
+      ],
+      "steps": [
+        11,
+        1,
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "F-left-digit": [
+    {
+      "instruction": "initial",
+      "state": "F",
+      "head": [
+        1,
+        1,
+        0
+      ],
+      "steps": [
+        0,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        2,
+        1,
+        0
+      ],
+      "steps": [
+        1,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1,
+        1,
+        0
+      ],
+      "steps": [
+        2,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        2,
+        1,
+        0
+      ],
+      "steps": [
+        3,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        3,
+        1,
+        0
+      ],
+      "steps": [
+        4,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2,
+        1,
+        0
+      ],
+      "steps": [
+        5,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        3,
+        1,
+        0
+      ],
+      "steps": [
+        6,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4,
+        1,
+        0
+      ],
+      "steps": [
+        7,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3,
+        1,
+        0
+      ],
+      "steps": [
+        8,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        2,
+        1,
+        0
+      ],
+      "steps": [
+        9,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        1,
+        1,
+        0
+      ],
+      "steps": [
+        10,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        1,
+        0
+      ],
+      "steps": [
+        11,
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "F",
+          "read": 1,
+          "write": 0,
+          "count": [
+            0,
+            1,
+            0
+          ],
+          "direction": -1
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        0,
+        0
+      ],
+      "steps": [
+        11,
+        1,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "frontier-to-F": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        1,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        2,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        5,
+        1
+      ],
+      "steps": [
+        3,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        4,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        5,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        6,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        1,
+        1
+      ],
+      "steps": [
+        7,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            5,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        1
+      ],
+      "steps": [
+        8,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "F",
+          "read": 1,
+          "write": 0,
+          "count": [
+            0,
+            1
+          ],
+          "direction": -1
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        0
+      ],
+      "steps": [
+        8,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    }
+  ],
+  "E-zero-scan": [
+    {
+      "instruction": "initial",
+      "state": "E",
+      "head": [
+        0,
+        1
+      ],
+      "steps": [
+        0,
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "E",
+          "read": 0,
+          "write": 1,
+          "count": [
+            0,
+            1
+          ],
+          "direction": -1
+        }
+      },
+      "state": "E",
+      "head": [
+        0,
+        0
+      ],
+      "steps": [
+        0,
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        -1,
+        0
+      ],
+      "steps": [
+        1,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "F-one-scan": [
+    {
+      "instruction": "initial",
+      "state": "F",
+      "head": [
+        0,
+        1
+      ],
+      "steps": [
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "inductive_scan": {
+          "state": "F",
+          "read": 1,
+          "write": 0,
+          "count": [
+            0,
+            1
+          ],
+          "direction": -1
+        }
+      },
+      "state": "F",
+      "head": [
+        0,
+        0
+      ],
+      "steps": [
+        0,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        1,
+        0
+      ],
+      "steps": [
+        1,
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "parse-R0-0": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        0
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        2
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        3
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ]
+      ]
+    }
+  ],
+  "parse-R0-1": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        0
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            3
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            3
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        2
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        3
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2
+      ],
+      "steps": [
+        4
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        3
+      ],
+      "steps": [
+        5
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4
+      ],
+      "steps": [
+        6
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        3
+      ],
+      "steps": [
+        7
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        4
+      ],
+      "steps": [
+        8
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        3
+      ],
+      "steps": [
+        9
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        4
+      ],
+      "steps": [
+        10
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        5
+      ],
+      "steps": [
+        11
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ]
+      ]
+    }
+  ],
+  "parse-R1-0": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        1
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        3
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        4
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "parse-R1-1": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        1
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          1,
+          [
+            3
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          1,
+          [
+            3
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        3
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        3
+      ],
+      "steps": [
+        4
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        4
+      ],
+      "steps": [
+        5
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        3
+      ],
+      "steps": [
+        6
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        4
+      ],
+      "steps": [
+        7
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        5
+      ],
+      "steps": [
+        8
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ]
+      ]
+    }
+  ],
+  "frontier-short-24": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        5
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        4
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        5
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        6
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        5
+      ],
+      "steps": [
+        4
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4
+      ],
+      "steps": [
+        5
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3
+      ],
+      "steps": [
+        6
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        2
+      ],
+      "steps": [
+        7
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            6
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        1
+      ],
+      "steps": [
+        8
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        0
+      ],
+      "steps": [
+        9
+      ],
+      "runs": [
+        [
+          0,
+          [
+            3
+          ]
+        ],
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        1
+      ],
+      "steps": [
+        10
+      ],
+      "runs": [
+        [
+          0,
+          [
+            3
+          ]
+        ],
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        0
+      ],
+      "steps": [
+        11
+      ],
+      "runs": [
+        [
+          0,
+          [
+            3
+          ]
+        ],
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        1
+      ],
+      "steps": [
+        12
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        2
+      ],
+      "steps": [
+        13
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1
+      ],
+      "steps": [
+        14
+      ],
+      "runs": [
+        [
+          1,
+          [
+            2
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        2
+      ],
+      "steps": [
+        15
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3
+      ],
+      "steps": [
+        16
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        2
+      ],
+      "steps": [
+        17
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ],
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        3
+      ],
+      "steps": [
+        18
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ],
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2
+      ],
+      "steps": [
+        19
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3
+          ]
+        ],
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        3
+      ],
+      "steps": [
+        20
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        4
+      ],
+      "steps": [
+        21
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            5
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        5
+      ],
+      "steps": [
+        22
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            5
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        6
+      ],
+      "steps": [
+        23
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        7
+      ],
+      "steps": [
+        24
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            3
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ],
+        [
+          1,
+          [
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "frontier-pair-to-F": [
+    {
+      "instruction": "initial",
+      "state": "C",
+      "head": [
+        6,
+        1
+      ],
+      "steps": [
+        0,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        5,
+        1
+      ],
+      "steps": [
+        1,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        6,
+        1
+      ],
+      "steps": [
+        2,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            6,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        7,
+        1
+      ],
+      "steps": [
+        3,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            6,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        6,
+        1
+      ],
+      "steps": [
+        4,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        5,
+        1
+      ],
+      "steps": [
+        5,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        6,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        7,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            6,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        8,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        1,
+        1
+      ],
+      "steps": [
+        9,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        10,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        1,
+        1
+      ],
+      "steps": [
+        11,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        12,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        13,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        14,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        15,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        16,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        17,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        18,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        19,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        20,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        5,
+        1
+      ],
+      "steps": [
+        21,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            5,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        6,
+        1
+      ],
+      "steps": [
+        22,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            5,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        7,
+        1
+      ],
+      "steps": [
+        23,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 1,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        8,
+        1
+      ],
+      "steps": [
+        24,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        7,
+        1
+      ],
+      "steps": [
+        25,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": 1,
+          "next": "D"
+        }
+      },
+      "state": "D",
+      "head": [
+        8,
+        1
+      ],
+      "steps": [
+        26,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        9,
+        1
+      ],
+      "steps": [
+        27,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        8,
+        1
+      ],
+      "steps": [
+        28,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        7,
+        1
+      ],
+      "steps": [
+        29,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        6,
+        1
+      ],
+      "steps": [
+        30,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            3,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": -1,
+          "next": "E"
+        }
+      },
+      "state": "E",
+      "head": [
+        5,
+        1
+      ],
+      "steps": [
+        31,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            7,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        4,
+        1
+      ],
+      "steps": [
+        32,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        3,
+        1
+      ],
+      "steps": [
+        33,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          0,
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 1,
+          "write": 0,
+          "direction": -1,
+          "next": "F"
+        }
+      },
+      "state": "F",
+      "head": [
+        2,
+        1
+      ],
+      "steps": [
+        34,
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            4,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            4,
+            0
+          ]
+        ]
+      ]
+    }
+  ],
+  "F00-shortcut": [
+    {
+      "instruction": "initial",
+      "state": "F",
+      "head": [
+        0
+      ],
+      "steps": [
+        0
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": 1,
+          "next": "C"
+        }
+      },
+      "state": "C",
+      "head": [
+        1
+      ],
+      "steps": [
+        1
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 0,
+          "direction": -1,
+          "next": "A"
+        }
+      },
+      "state": "A",
+      "head": [
+        0
+      ],
+      "steps": [
+        2
+      ],
+      "runs": [
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": {
+        "microstep": {
+          "read": 0,
+          "write": 1,
+          "direction": 1,
+          "next": "B"
+        }
+      },
+      "state": "B",
+      "head": [
+        1
+      ],
+      "steps": [
+        3
+      ],
+      "runs": [
+        [
+          1,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            1
+          ]
+        ]
+      ]
+    }
+  ],
+  "entry-F-right-zero": {
+    "scope": "all finite blank-start executions",
+    "incoming": [
+      [
+        "E",
+        1
+      ],
+      [
+        "F",
+        1
+      ]
+    ],
+    "proof": "blank A base; every incoming transition writes the required neighbor"
+  },
+  "shortcut-F0-shortcut": {
+    "target_machine": "1RB0RD_1RC---_0LA1RA_0RE1RC_1LE0LF_1RB0LF",
+    "replaced_cases": [
+      [
+        "F",
+        0
+      ]
+    ],
+    "positive_step_bounds": [
+      3
+    ],
+    "proof": "entry guard in both machines; checked finite local replacements; induction on target steps",
+    "consequence": "blank-start halting equivalence only; neither halting nor nonhalting is asserted"
+  },
+  "repeat-C111": {
+    "domain": "all natural n, including zero",
+    "input_word": "111",
+    "output_word": "101",
+    "steps": {
+      "n": 3
+    },
+    "displacement": {
+      "n": 3
+    },
+    "proof": "identity base; checked block touches no other block; induction"
+  },
+  "repeat-C100": {
+    "domain": "all natural n, including zero",
+    "input_word": "100",
+    "output_word": "111",
+    "steps": {
+      "n": 3
+    },
+    "displacement": {
+      "n": 3
+    },
+    "proof": "identity base; checked block touches no other block; induction"
+  },
+  "repeat-C1101": {
+    "domain": "all natural n, including zero",
+    "input_word": "1101",
+    "output_word": "1011",
+    "steps": {
+      "n": 8
+    },
+    "displacement": {
+      "n": 4
+    },
+    "proof": "identity base; checked block touches no other block; induction"
+  },
+  "binary-encoding-right-parser": {
+    "checked_cases": 4,
+    "proof": "empty word identity; checked cases preserve next prefix; structural induction"
+  },
+  "ternary-digit-left-sweep": {
+    "checked_cases": 9,
+    "proof": "empty prefix identity; checked last block yields next buffer; structural induction"
+  }
+}

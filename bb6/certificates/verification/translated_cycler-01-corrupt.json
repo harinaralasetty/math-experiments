@@ -1,0 +1,10 @@
+{
+  "type": "translated_cycler",
+  "machine": "1RA---_------_------",
+  "success": true,
+  "halted": false,
+  "start": 1,
+  "period": 1,
+  "offset": 2,
+  "steps_run": 2
+}

@@ -1,0 +1,206 @@
+# HorizonMath batch B research report
+
+No new record was found; both submitted constructions reproduce the published baselines. Best verified scores: **30 blocks** and **N = 536**. Both validators agree.
+
+Start time recorded by `date -u`: **2026-10-20T20:42:42Z** (local `date`: **2026-10-21 02:12:42 IST**).
+Last report generation: **2026-10-21T04:57:19.211454+00:00**. Elapsed since start: **29677.2 seconds**.
+
+## Status gate
+
+
+Initial gate checked 2026-10-21 IST, before construction search. Follow-up confirmations during the long searches are identified below.
+
+### covering_C13_k7_t4
+
+Proceed: no improved upper bound found. The maintainer's downloadable metadata at
+https://raw.githubusercontent.com/dmgordo/LJCR/main/coverings/coverdata.json
+reports `size: 30`, `low_bd: 28` for `C(13,7,4)`, with the listed construction
+attributed to the JCD article. The downloaded file is saved in `sources/coverdata.json`.
+The original entry https://ljcr.dmgordon.org/cover/show_cover.php?v=13&k=7&t=4
+and the online table could not be fetched (web fetch returned 502).
+The initial archival alternative was https://zenodo.org/records/19472830. A follow-up check during the long run found that its latest-version link redirects to https://zenodo.org/records/19735294 (version 1.2, April 24, 2026). The latest archive metadata was downloaded separately as `sources/zenodo_latest_coverdata.json` and independently confirms size 30 and lower bound 28.
+A recent partial elimination of one link class explicitly says it does not resolve
+the full problem: https://github.com/edwares/class52-formal-certification .
+Searches included `La Jolla covering repository C(13,7,4) 30 29` and
+`"C(13,7,4)" covering 29 30`.
+
+### schur_6
+
+Proceed: no published construction above 536 found. The original record is
+Fredricksen and Sweet (2000), https://doi.org/10.37236/1510 .
+The July 2026 paper https://arxiv.org/html/2607.15034v1 explicitly uses the bound
+`S(6) >= 536`; its improvements concern other numbers.
+The online table https://oeis.org/A045652 also lists the 536 lower bound.
+Searches included `Schur number S(6) 536 537 new lower bound 2026 2607.15034`,
+`"Schur" "537" "536" 2026 coloring`, and
+`Fredricksen Sweet 536 partition download schur numbers`.
+Conventions differ by one in some sources; this task uses largest colorable N.
+Search results claiming 537 under a smallest-uncolorable convention are not improvements.
+
+These searches establish the working status gate, not an exhaustive proof that
+no unpublished or unindexed improvement exists.
+
+## Independent exact verifiers
+
+Both verifiers use integer arithmetic and derive scores directly from constructions. The covering verifier enumerates all four-subsets in each block and compares the union with the entire target universe. The Schur verifier enumerates every pair x ≤ y with x+y ≤ N, including x=y. Neither reads a claimed score.
+
+Published baselines, reconstructed from archival data and the original paper:
+
+```json
+{
+  "covering": {
+    "valid": true,
+    "num_blocks": 30,
+    "covered": 715,
+    "uncovered": 0
+  },
+  "schur": {
+    "valid": true,
+    "N": 536,
+    "pairs_checked": 71824,
+    "color_sizes": [
+      129,
+      86,
+      110,
+      77,
+      64,
+      70
+    ]
+  }
+}
+```
+
+Full real outputs are in `logs/make_verify_initial.log` and `logs/verification.json`; rerun `make verify`.
+
+| Problem | Case | Strict valid | Benchmark valid |
+|---|---|---|---|
+| covering_C13_k7_t4 | published record | True | True |
+| covering_C13_k7_t4 | duplicate block | False | False |
+| covering_C13_k7_t4 | repeated point | False | False |
+| covering_C13_k7_t4 | out-of-range point | False | False |
+| covering_C13_k7_t4 | missing coverage | False | False |
+| covering_C13_k7_t4 | submitted construction | True | True |
+| schur_6 | published record | True | True |
+| schur_6 | bad sentinel | False | False |
+| schur_6 | invalid color | False | False |
+| schur_6 | monochromatic doubling | False | False |
+| schur_6 | monochromatic distinct sum | False | False |
+| schur_6 | prompt dict wrapper | False | False |
+| schur_6 | submitted construction | True | True |
+
+**Benchmark format bug reproduced:** the same published Schur coloring passes as a bare list, but the prompt-mandated `{"coloring": [...]}` wrapper is rejected with `Expected a list, got dict.` The submitted Schur solution uses the accepted bare list, and its mathematical validity is checked independently.
+
+## Search implementations and executed runs
+
+The descriptions below cover implemented methods. The completed-run table and command/phase logs identify which methods actually ran; prepared methods are not claimed as completed searches.
+
+Covering search targets 29 distinct blocks. The unrestricted CP-SAT model has exact four-subset coverage constraints and necessary degree bounds obtained from links: each point occurs at least 15 times, each pair at least 7 times, each triple at least 3 times. For 29 blocks, a minimum-degree point has degree 15. It can be renamed point 0, with one incident block fixed to {0,...,6}; remaining degrees are sorted separately within the fixed block and its complement. These symmetry restrictions preserve existence. The refined unrestricted run normalizes the best saved near-cover to these labels and uses CP-SAT hint repair. The original implementation is retained as `sources/search_cover_cp_v1.py`.
+
+The weighted tabu search exchanges one selected block for one block covering an uncovered four-subset. It updates coverage counts and increases penalties for persistent uncovered subsets, with periodic penalty decay and perturbations. Later runs correct the aspiration rule to compare exact uncovered counts; weighted penalties rank moves only. The initial implementation is preserved as `sources/search_cover_tabu_v1.cpp`. Checkpoint files containing nonzero uncovered counts are invalid candidates and are never submitted as solutions.
+
+The refined CP-SAT model starts from an explicitly verified element-minimal (12,6,3) link family, selects completions of its three short blocks, and chooses fourteen extension blocks. It is a restricted construction search; a failed run is not a proof that no 29-block covering exists.
+
+Schur search uses the full exact Boolean encoding: exactly one color per integer and a clause forbidding each monochromatic x+y=z, with doubled variables deduplicated in the SAT implementation. Color names are normalized by first occurrence where required. CP-SAT searches both unrestricted and reflected colorings in separate runs; reflection is an explicit restriction, not a theorem about all optima.
+
+The SAT neighborhood method freezes part of a candidate, releases endpoints of violated sums, and solves the complete formula under those assumptions using bounded CaDiCaL conflict budgets. It mixes local repairs with much larger released neighborhoods; later runs also release entire color classes for component trades. An UNSAT neighborhood rules out only those frozen assignments. UNKNOWN is recorded separately.
+
+The Schur tabu engine maintains weighted conflict costs for recoloring each integer, follows a currently violated sum, and updates only incident constraints. Persistent conflicts receive increasing weights, with decay and perturbed restarts. It searches targets 537 and 538. Later runs alternate standard weights with higher initial weights on doubling constraints, and refresh equal-score checkpoints to diversify exact repair neighborhoods. Another variant first repairs the doubling-edge forest, then forbids every move that would create a doubling violation. All genuine sum-free colorings satisfy that invariant. Modular permutations of the published 536 construction provide diverse seeds, and the high-depth seed was independently verified after relabeling. Later runs load the best matching saved checkpoint before changing seeds.
+
+The additional covering probe fixes the other published minimum-link family (Figure 6 of Gordon et al., https://www.dmgordon.org/papers/c-12-6-3.pdf) and searches for fourteen extension blocks. Its triple coverage was enumerated before use.
+
+Group-invariant CP-SAT models select entire orbits of seven-subsets under permutations with cycles of length three, five, or two. Coverage is checked on target-subset orbit representatives, with exact multiplicities in degree constraints. Incidence and congruence arguments strengthen the fixed-point degree constraints. These searches cover the stated symmetry classes only; a negative result does not rule out asymmetric coverings.
+
+A finite repair check swaps two colors on induced hypergraph components after excluding the sole bad edge; every proposed repair is checked exactly. The algebraic part multiplies integer labels modulo N+1 by every invertible multiplier for saved one-violation candidates, then applies the exact Schur verifier. This transformation is treated as candidate generation; sum-freeness is never assumed to be preserved. The check runs at an idle phase boundary.
+
+A final exact repair builds palette-restricted SAT models for the late one-error candidate: selected color classes may be recolored within their palette, while all other classes stay fixed. Mixed edges cannot become monochromatic because the palettes are disjoint. Each query has an explicit conflict budget; its status is recorded separately.
+
+## Completed run log
+
+| Log | Method | Seconds | Target | Outcome |
+|---|---|---:|---:|---|
+| cover_cp_101_result.json | CP-SAT set cover with link degree bounds | 6900.994 | 29 | UNKNOWN |
+| cover_cp_307_result.json | CP-SAT set cover with checkpoint repair hints and link bounds | 6900.880 | 29 | UNKNOWN |
+| cover_link_301_result.json | CP-SAT link-family completions plus 14 extension blocks | 6900.145 | 29 | UNKNOWN |
+| cover_link_fig6_304_result.json | CP-SAT fixed Figure 6 link plus 14 extension blocks | 600.094 | 29 | UNKNOWN |
+| cover_orbits_303_result.json | CP-SAT group-invariant coverings | 6900.093 | 29 | TIME_LIMIT_OR_INFEASIBLE_WITHIN_TESTED_ACTIONS |
+| cover_orbits_306_result.json | CP-SAT group-invariant coverings | 600.020 | 29 | TIME_LIMIT_OR_INFEASIBLE_WITHIN_TESTED_ACTIONS |
+| cover_tabu_202_result.json | weighted tabu block exchanges | 6900.000 | 29 | best uncovered = 3; steps = 220140632 |
+| cover_tabu_203_result.json | weighted tabu block exchanges | 6900.000 | 29 | best uncovered = 3; steps = 221046992 |
+| cover_tabu_302_result.json | weighted tabu block exchanges with exact aspiration | 6900.000 | 29 | best uncovered = 3; steps = 191456005 |
+| cover_tabu_305_result.json | weighted tabu block exchanges with exact aspiration | 600.000 | 29 | best uncovered = 3; steps = 16743311 |
+| cover_tabu_probe_result.json | weighted tabu block exchanges | 60.000 | 29 | best uncovered = 3; steps = 1329254 |
+| schur_cp_400_result.json | CP-SAT Schur coloring | 603.743 | 537 | UNKNOWN |
+| schur_cp_410_result.json | CP-SAT Schur coloring | 6906.187 | 537 | UNKNOWN |
+| schur_cp_420_result.json | CP-SAT Schur coloring symmetric | 6904.984 | 537 | UNKNOWN |
+| schur_engine_sanity_result.json | weighted tabu Schur recoloring | 0.008 | 536 | best violations = 0; steps = 1 |
+| schur_hard_engine_sanity_result.json | weighted tabu Schur recoloring (doubling constraints maintained) | 1.000 | 537 | best violations = 7; steps = 73187 |
+| schur_modular_final_result.json | finite Kempe component swaps and exhaustive modular relabelings | 0.868 | 537 and 538 | NO_VALID_TRANSFORM |
+| schur_modular_result.json | finite Kempe component swaps and exhaustive modular relabelings | 0.488 | 537 and 538 | NO_VALID_TRANSFORM |
+| schur_palette_repair_result.json | exact palette-restricted repair of late one-error Schur candidate | 38.869 | 537 | NO_VERIFIED_REPAIR_WITHIN_BUDGET |
+| schur_sat_401_result.json | CaDiCaL SAT neighborhoods | 601.553 | 537 | TIME_LIMIT |
+| schur_sat_411_result.json | CaDiCaL SAT neighborhoods | 6902.385 | 537 | TIME_LIMIT |
+| schur_sat_421_result.json | CaDiCaL SAT neighborhoods symmetric | 6901.694 | 537 | TIME_LIMIT |
+| schur_tabu_402_result.json | weighted tabu Schur recoloring | 600.000 | 537 | best violations = 1; steps = 25449286 |
+| schur_tabu_403_result.json | weighted tabu Schur recoloring | 600.000 | 538 | best violations = 1; steps = 25542096 |
+| schur_tabu_412_result.json | weighted tabu Schur recoloring | 6900.000 | 537 | best violations = 1; steps = 333987379 |
+| schur_tabu_413_result.json | weighted tabu Schur recoloring (doubling weight 8) | 6900.000 | 538 | best violations = 1; steps = 333455952 |
+| schur_tabu_422_result.json | weighted tabu Schur recoloring (doubling constraints maintained) | 6900.000 | 537 | best violations = 1; steps = 271897468 |
+| schur_tabu_423_result.json | weighted tabu Schur recoloring | 6900.000 | 538 | best violations = 1; steps = 267024548 |
+
+Entries containing `engine_sanity` are engine correctness checks, not budgeted record-search runs. All budgeted runs have finished; their complete output is retained in individual `.log` files. No single requested search invocation exceeds the specification limit; the controller limits concurrent solver workers to five.
+
+## Best verified constructions
+
+- `solutions/covering_C13_k7_t4.json`: **30 blocks**, all **715** four-subsets covered.
+- `solutions/schur_6.json`: **N = 536**, **71824** pairs checked exactly.
+
+Construction provenance and file hashes are in `sources/PROVENANCE.md` and `sources/sha256.json`.
+
+## Verdict
+
+No new record was found. Both submitted constructions reproduce the published baselines. Failed bounded searches do not establish optimality or global unsatisfiability. The required wall time was met for each problem. No commit, publication, or external post was made.
+
+## Time discipline and final verification
+
+Final `date` check: `2026-10-21T04:57:19Z`.
+
+Covering wall time before switching problems: **14758.238 seconds**. Schur wall time since its recorded start: **14919.003 seconds**.
+
+Final `make verify` passed; complete real output is in `logs/make_verify_final.log`. The phase controller records commands, worker limits, start and finish times, and return codes in `logs/commands.jsonl` and `logs/phases.jsonl`.
+
+```json
+{
+  "covering": {
+    "valid": true,
+    "num_blocks": 30,
+    "covered": 715,
+    "uncovered": 0
+  },
+  "schur": {
+    "valid": true,
+    "N": 536,
+    "pairs_checked": 71824,
+    "color_sizes": [
+      129,
+      86,
+      110,
+      77,
+      64,
+      70
+    ]
+  }
+}
+```
+
+All saved checkpoint objectives were independently recomputed; see `logs/checkpoint_audit.json`.
+
+## Best invalid target candidates
+
+- `checkpoints/cover_tabu_202.json`: 29 blocks, 3 uncovered four-subsets; invalid.
+- `checkpoints/schur_tabu_402.json`: N=537, exact violation count 1 (doubling count 1); invalid.
+- `checkpoints/schur_tabu_403.json`: N=538, exact violation count 1 (doubling count 1); invalid.
+- Late doubling-preserving candidate `checkpoints/schur_tabu_422.json`: N=537, 1 monochromatic sums, 0 doubling violations; witness `[1, 165, 166]`. Invalid.
+
+## Search limitations and next steps
+
+The CP-SAT runs use floating-point LP guidance internally, but no acceptance decision depends on it: submitted constructions pass independent integer verifiers. A time-limited UNKNOWN result is not an infeasibility certificate. Link-family, permutation-group, and reflection constraints restrict particular runs; they are not global nonexistence proofs. SAT neighborhood UNSAT results apply only to the frozen assignments for that query. The high-depth Schur seed is a modular relabeling of the published construction, verified before use. Checkpoints preserve the best construction state; restarting a solver does not resume its internal learned clauses or full RNG state.

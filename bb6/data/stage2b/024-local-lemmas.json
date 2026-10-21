@@ -1,0 +1,1278 @@
+{
+  "type": "local_affine_run_lemmas",
+  "machine": "1RB0LA_1RC---_0LD1RD_0RA0RE_0RF1RC_1LF0LA",
+  "scope": "local transitions only; no global decision",
+  "required_rules": [
+    "C111",
+    "C101",
+    "C1000",
+    "C1101",
+    "C1001-halt",
+    "0C00",
+    "1C01",
+    "0C01-halt",
+    "C1100-borrow",
+    "1C00-borrow",
+    "A-left-digit",
+    "parse-R0-0",
+    "parse-R0-1",
+    "parse-R1-0",
+    "parse-R1-1",
+    "frontier-short-20",
+    "frontier-to-A",
+    "frontier-pair-to-left-sweep",
+    "parse-E2-after-output-zero",
+    "two-level-borrow",
+    "counter-terminal-332",
+    "parse-R1-02",
+    "counter-base-322",
+    "counter-base-3222",
+    "counter-base-3232",
+    "counter-base-3322",
+    "counter-base-3332"
+  ],
+  "rules": [
+    {
+      "id": "C111",
+      "variables": [],
+      "source": {
+        "tape": [
+          "111"
+        ],
+        "head": 0,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "101"
+        ],
+        "head": 3,
+        "state": "C"
+      },
+      "steps": 3,
+      "proof": [
+        {
+          "steps": 3
+        }
+      ]
+    },
+    {
+      "id": "C101",
+      "variables": [],
+      "source": {
+        "tape": [
+          "101"
+        ],
+        "head": 0,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "111"
+        ],
+        "head": 3,
+        "state": "C"
+      },
+      "steps": 5,
+      "proof": [
+        {
+          "steps": 5
+        }
+      ]
+    },
+    {
+      "id": "C1000",
+      "variables": [],
+      "source": {
+        "tape": [
+          "1000"
+        ],
+        "head": 0,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "1011"
+        ],
+        "head": 4,
+        "state": "C"
+      },
+      "steps": 4,
+      "proof": [
+        {
+          "steps": 4
+        }
+      ]
+    },
+    {
+      "id": "C1101",
+      "variables": [],
+      "source": {
+        "tape": [
+          "1101"
+        ],
+        "head": 0,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "1011"
+        ],
+        "head": 4,
+        "state": "C"
+      },
+      "steps": 6,
+      "proof": [
+        {
+          "steps": 6
+        }
+      ]
+    },
+    {
+      "id": "C1001-halt",
+      "variables": [],
+      "source": {
+        "tape": [
+          "1001"
+        ],
+        "head": 0,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "1011"
+        ],
+        "head": 4,
+        "state": "Z"
+      },
+      "steps": 4,
+      "proof": [
+        {
+          "steps": 4
+        }
+      ]
+    },
+    {
+      "id": "0C00",
+      "variables": [],
+      "source": {
+        "tape": [
+          "000"
+        ],
+        "head": 1,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "011"
+        ],
+        "head": 3,
+        "state": "C"
+      },
+      "steps": 4,
+      "proof": [
+        {
+          "steps": 4
+        }
+      ]
+    },
+    {
+      "id": "1C01",
+      "variables": [],
+      "source": {
+        "tape": [
+          "101"
+        ],
+        "head": 1,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "011"
+        ],
+        "head": 3,
+        "state": "C"
+      },
+      "steps": 6,
+      "proof": [
+        {
+          "steps": 6
+        }
+      ]
+    },
+    {
+      "id": "0C01-halt",
+      "variables": [],
+      "source": {
+        "tape": [
+          "001"
+        ],
+        "head": 1,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "011"
+        ],
+        "head": 3,
+        "state": "Z"
+      },
+      "steps": 4,
+      "proof": [
+        {
+          "steps": 4
+        }
+      ]
+    },
+    {
+      "id": "C1100-borrow",
+      "variables": [
+        "n"
+      ],
+      "source": {
+        "tape": [
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "n": 1
+            }
+          },
+          "1100"
+        ],
+        "head": {
+          "n": 1,
+          "constant": 1
+        },
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "11",
+          {
+            "bit": 0,
+            "count": {
+              "n": 1
+            }
+          },
+          "111"
+        ],
+        "head": 2,
+        "state": "C"
+      },
+      "steps": {
+        "n": 1,
+        "constant": 9
+      },
+      "proof": [
+        {
+          "steps": 7
+        },
+        {
+          "scan": {
+            "read": 1,
+            "count": {
+              "n": 1
+            },
+            "induction": {
+              "base": "zero steps; tape and head unchanged",
+              "successor": "one self-loop step; induction on adjacent remaining cells"
+            }
+          }
+        },
+        {
+          "steps": 2
+        }
+      ]
+    },
+    {
+      "id": "1C00-borrow",
+      "variables": [
+        "n",
+        "m"
+      ],
+      "source": {
+        "tape": [
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "n": 1,
+              "constant": 1
+            }
+          },
+          {
+            "bit": 0,
+            "count": {
+              "m": 1
+            }
+          },
+          "100"
+        ],
+        "head": {
+          "n": 1,
+          "m": 1,
+          "constant": 3
+        },
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "11",
+          {
+            "bit": 0,
+            "count": {
+              "n": 1
+            }
+          },
+          {
+            "bit": 1,
+            "count": {
+              "m": 1,
+              "constant": 3
+            }
+          }
+        ],
+        "head": 2,
+        "state": "C"
+      },
+      "steps": {
+        "n": 1,
+        "m": 1,
+        "constant": 9
+      },
+      "proof": [
+        {
+          "steps": 6
+        },
+        {
+          "scan": {
+            "read": 0,
+            "count": {
+              "m": 1
+            },
+            "induction": {
+              "base": "zero steps; tape and head unchanged",
+              "successor": "one self-loop step; induction on adjacent remaining cells"
+            }
+          }
+        },
+        {
+          "steps": 1
+        },
+        {
+          "scan": {
+            "read": 1,
+            "count": {
+              "n": 1
+            },
+            "induction": {
+              "base": "zero steps; tape and head unchanged",
+              "successor": "one self-loop step; induction on adjacent remaining cells"
+            }
+          }
+        },
+        {
+          "steps": 2
+        }
+      ]
+    },
+    {
+      "id": "A-left-digit",
+      "variables": [
+        "n",
+        "m"
+      ],
+      "source": {
+        "tape": [
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "n": 1
+            }
+          },
+          {
+            "bit": 0,
+            "count": {
+              "m": 1,
+              "constant": 4
+            }
+          }
+        ],
+        "head": {
+          "n": 1,
+          "constant": 1
+        },
+        "state": "A"
+      },
+      "target": {
+        "tape": [
+          {
+            "bit": 0,
+            "count": {
+              "n": 1,
+              "constant": 2
+            }
+          },
+          "111",
+          {
+            "bit": 0,
+            "count": {
+              "m": 1
+            }
+          }
+        ],
+        "head": 0,
+        "state": "A"
+      },
+      "steps": {
+        "n": 1,
+        "constant": 9
+      },
+      "proof": [
+        {
+          "steps": 9
+        },
+        {
+          "scan": {
+            "read": 1,
+            "count": {
+              "n": 1
+            },
+            "induction": {
+              "base": "zero steps; tape and head unchanged",
+              "successor": "one self-loop step; induction on adjacent remaining cells"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "parse-R0-0",
+      "variables": [],
+      "source": {
+        "tape": [
+          "1111"
+        ],
+        "head": 0,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "1011"
+        ],
+        "head": 3,
+        "state": "C"
+      },
+      "steps": 3,
+      "proof": [
+        {
+          "steps": 3
+        }
+      ]
+    },
+    {
+      "id": "parse-R0-1",
+      "variables": [],
+      "source": {
+        "tape": [
+          "11101"
+        ],
+        "head": 0,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "10011"
+        ],
+        "head": 5,
+        "state": "C"
+      },
+      "steps": 9,
+      "proof": [
+        {
+          "steps": 9
+        }
+      ]
+    },
+    {
+      "id": "parse-R1-0",
+      "variables": [],
+      "source": {
+        "tape": [
+          "1111"
+        ],
+        "head": 1,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "1101"
+        ],
+        "head": 4,
+        "state": "C"
+      },
+      "steps": 3,
+      "proof": [
+        {
+          "steps": 3
+        }
+      ]
+    },
+    {
+      "id": "parse-R1-1",
+      "variables": [],
+      "source": {
+        "tape": [
+          "11101"
+        ],
+        "head": 1,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "11011"
+        ],
+        "head": 5,
+        "state": "C"
+      },
+      "steps": 6,
+      "proof": [
+        {
+          "steps": 6
+        }
+      ]
+    },
+    {
+      "id": "frontier-short-20",
+      "variables": [],
+      "source": {
+        "tape": [
+          "0110100"
+        ],
+        "head": 5,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "1011101"
+        ],
+        "head": 7,
+        "state": "C"
+      },
+      "steps": 20,
+      "proof": [
+        {
+          "steps": 20
+        }
+      ]
+    },
+    {
+      "id": "frontier-to-A",
+      "variables": [
+        "n"
+      ],
+      "source": {
+        "tape": [
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "n": 1,
+              "constant": 1
+            }
+          },
+          "0100"
+        ],
+        "head": {
+          "n": 1,
+          "constant": 4
+        },
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          {
+            "bit": 0,
+            "count": {
+              "n": 1,
+              "constant": 2
+            }
+          },
+          "1111"
+        ],
+        "head": 0,
+        "state": "A"
+      },
+      "steps": {
+        "n": 1,
+        "constant": 8
+      },
+      "proof": [
+        {
+          "steps": 8
+        },
+        {
+          "scan": {
+            "read": 1,
+            "count": {
+              "n": 1
+            },
+            "induction": {
+              "base": "zero steps; tape and head unchanged",
+              "successor": "one self-loop step; induction on adjacent remaining cells"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "frontier-pair-to-left-sweep",
+      "variables": [
+        "n"
+      ],
+      "source": {
+        "tape": [
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "n": 1
+            }
+          },
+          "011010000"
+        ],
+        "head": {
+          "n": 1,
+          "constant": 6
+        },
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "n": 1,
+              "constant": 1
+            }
+          },
+          "00001111"
+        ],
+        "head": {
+          "n": 1,
+          "constant": 2
+        },
+        "state": "A"
+      },
+      "steps": 30,
+      "proof": [
+        {
+          "steps": 30
+        }
+      ]
+    },
+    {
+      "id": "parse-E2-after-output-zero",
+      "variables": [],
+      "source": {
+        "tape": [
+          "0111001"
+        ],
+        "head": 2,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "1011101"
+        ],
+        "head": 7,
+        "state": "C"
+      },
+      "steps": 19,
+      "proof": [
+        {
+          "steps": 19
+        }
+      ]
+    },
+    {
+      "id": "two-level-borrow",
+      "variables": [
+        "n",
+        "m"
+      ],
+      "source": {
+        "tape": [
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "n": 1
+            }
+          },
+          "0",
+          {
+            "bit": 1,
+            "count": {
+              "m": 1,
+              "constant": 2
+            }
+          },
+          "11001"
+        ],
+        "head": {
+          "n": 1,
+          "m": 1,
+          "constant": 4
+        },
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "11",
+          {
+            "bit": 0,
+            "count": {
+              "n": 1
+            }
+          },
+          "111",
+          {
+            "bit": 0,
+            "count": {
+              "m": 1
+            }
+          },
+          "1111"
+        ],
+        "head": 2,
+        "state": "C"
+      },
+      "steps": {
+        "n": 1,
+        "m": 1,
+        "constant": 20
+      },
+      "proof": [
+        {
+          "steps": 7
+        },
+        {
+          "scan": {
+            "read": 1,
+            "count": {
+              "m": 1,
+              "constant": 2
+            },
+            "induction": {
+              "base": "zero steps; tape and head unchanged",
+              "successor": "one self-loop step; induction on adjacent remaining cells"
+            }
+          }
+        },
+        {
+          "steps": 9
+        },
+        {
+          "scan": {
+            "read": 1,
+            "count": {
+              "n": 1
+            },
+            "induction": {
+              "base": "zero steps; tape and head unchanged",
+              "successor": "one self-loop step; induction on adjacent remaining cells"
+            }
+          }
+        },
+        {
+          "steps": 2
+        }
+      ]
+    },
+    {
+      "id": "counter-terminal-332",
+      "variables": [],
+      "source": {
+        "tape": [
+          "001110111011010000000"
+        ],
+        "head": 14,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "111111011011011011011"
+        ],
+        "head": 21,
+        "state": "C"
+      },
+      "steps": 111,
+      "proof": [
+        {
+          "steps": 111
+        }
+      ]
+    },
+    {
+      "id": "parse-R1-02",
+      "variables": [],
+      "source": {
+        "tape": [
+          "111111001"
+        ],
+        "head": 1,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "111011101"
+        ],
+        "head": 9,
+        "state": "C"
+      },
+      "steps": 22,
+      "proof": [
+        {
+          "steps": 22
+        }
+      ]
+    },
+    {
+      "id": "counter-base-322",
+      "variables": [],
+      "source": {
+        "tape": [
+          "00111011011010000"
+        ],
+        "head": 13,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "11100111011101101"
+        ],
+        "head": 17,
+        "state": "C"
+      },
+      "steps": 86,
+      "proof": [
+        {
+          "steps": 86
+        }
+      ],
+      "discovery": {
+        "input_runs": [
+          3,
+          2,
+          2
+        ],
+        "minimum_read": 0,
+        "maximum_read": 16
+      }
+    },
+    {
+      "id": "counter-base-3222",
+      "variables": [],
+      "source": {
+        "tape": [
+          "00111011011011010000"
+        ],
+        "head": 16,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "11100111011011101101"
+        ],
+        "head": 20,
+        "state": "C"
+      },
+      "steps": 100,
+      "proof": [
+        {
+          "steps": 100
+        }
+      ],
+      "discovery": {
+        "input_runs": [
+          3,
+          2,
+          2,
+          2
+        ],
+        "minimum_read": 0,
+        "maximum_read": 19
+      }
+    },
+    {
+      "id": "counter-base-3232",
+      "variables": [],
+      "source": {
+        "tape": [
+          "001110110111011010000"
+        ],
+        "head": 17,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "111001111011101101101"
+        ],
+        "head": 21,
+        "state": "C"
+      },
+      "steps": 114,
+      "proof": [
+        {
+          "steps": 114
+        }
+      ],
+      "discovery": {
+        "input_runs": [
+          3,
+          2,
+          3,
+          2
+        ],
+        "minimum_read": 0,
+        "maximum_read": 20
+      }
+    },
+    {
+      "id": "counter-base-3322",
+      "variables": [],
+      "source": {
+        "tape": [
+          "001110111011011010000"
+        ],
+        "head": 17,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "111001110111011101101"
+        ],
+        "head": 21,
+        "state": "C"
+      },
+      "steps": 104,
+      "proof": [
+        {
+          "steps": 104
+        }
+      ],
+      "discovery": {
+        "input_runs": [
+          3,
+          3,
+          2,
+          2
+        ],
+        "minimum_read": 0,
+        "maximum_read": 20
+      }
+    },
+    {
+      "id": "counter-base-3332",
+      "variables": [],
+      "source": {
+        "tape": [
+          "0011101110111011010000"
+        ],
+        "head": 18,
+        "state": "C"
+      },
+      "target": {
+        "tape": [
+          "1111110011101101101101"
+        ],
+        "head": 22,
+        "state": "C"
+      },
+      "steps": 146,
+      "proof": [
+        {
+          "steps": 146
+        }
+      ],
+      "discovery": {
+        "input_runs": [
+          3,
+          3,
+          3,
+          2
+        ],
+        "minimum_read": 0,
+        "maximum_read": 21
+      }
+    }
+  ],
+  "word_transducers": [
+    {
+      "id": "binary-encoding-right-parser",
+      "kind": "right_word_transducer",
+      "state": "C",
+      "lookahead": "1",
+      "alphabet": {
+        "0": "111",
+        "1": "1110"
+      },
+      "head_offsets": {
+        "R0": 0,
+        "R1": 1
+      },
+      "base": "empty word is identity",
+      "induction": "process first block; induction on remaining word",
+      "cases": [
+        {
+          "from_state": "R0",
+          "letter": "0",
+          "to_state": "R0",
+          "output": "101",
+          "rule": "parse-R0-0"
+        },
+        {
+          "from_state": "R0",
+          "letter": "1",
+          "to_state": "R1",
+          "output": "1001",
+          "rule": "parse-R0-1"
+        },
+        {
+          "from_state": "R1",
+          "letter": "0",
+          "to_state": "R1",
+          "output": "110",
+          "rule": "parse-R1-0"
+        },
+        {
+          "from_state": "R1",
+          "letter": "1",
+          "to_state": "R1",
+          "output": "1101",
+          "rule": "parse-R1-1"
+        }
+      ]
+    },
+    {
+      "id": "ternary-digit-left-sweep",
+      "kind": "left_buffer_transducer",
+      "state": "A",
+      "alphabet": {
+        "0": "011",
+        "1": "0111",
+        "2": "01111"
+      },
+      "buffers": {
+        "z4": "0000",
+        "z5": "00000",
+        "z6": "000000"
+      },
+      "base": "empty word is identity",
+      "induction": "process last block; induction on remaining prefix",
+      "cases": [
+        {
+          "from_buffer": "z4",
+          "letter": "0",
+          "to_buffer": "z4",
+          "output": "111",
+          "rule": "A-left-digit",
+          "parameters": {
+            "n": 2,
+            "m": 0
+          },
+          "steps": 11
+        },
+        {
+          "from_buffer": "z4",
+          "letter": "1",
+          "to_buffer": "z5",
+          "output": "111",
+          "rule": "A-left-digit",
+          "parameters": {
+            "n": 3,
+            "m": 0
+          },
+          "steps": 12
+        },
+        {
+          "from_buffer": "z4",
+          "letter": "2",
+          "to_buffer": "z6",
+          "output": "111",
+          "rule": "A-left-digit",
+          "parameters": {
+            "n": 4,
+            "m": 0
+          },
+          "steps": 13
+        },
+        {
+          "from_buffer": "z5",
+          "letter": "0",
+          "to_buffer": "z4",
+          "output": "1110",
+          "rule": "A-left-digit",
+          "parameters": {
+            "n": 2,
+            "m": 1
+          },
+          "steps": 11
+        },
+        {
+          "from_buffer": "z5",
+          "letter": "1",
+          "to_buffer": "z5",
+          "output": "1110",
+          "rule": "A-left-digit",
+          "parameters": {
+            "n": 3,
+            "m": 1
+          },
+          "steps": 12
+        },
+        {
+          "from_buffer": "z5",
+          "letter": "2",
+          "to_buffer": "z6",
+          "output": "1110",
+          "rule": "A-left-digit",
+          "parameters": {
+            "n": 4,
+            "m": 1
+          },
+          "steps": 13
+        },
+        {
+          "from_buffer": "z6",
+          "letter": "0",
+          "to_buffer": "z4",
+          "output": "11100",
+          "rule": "A-left-digit",
+          "parameters": {
+            "n": 2,
+            "m": 2
+          },
+          "steps": 11
+        },
+        {
+          "from_buffer": "z6",
+          "letter": "1",
+          "to_buffer": "z5",
+          "output": "11100",
+          "rule": "A-left-digit",
+          "parameters": {
+            "n": 3,
+            "m": 2
+          },
+          "steps": 12
+        },
+        {
+          "from_buffer": "z6",
+          "letter": "2",
+          "to_buffer": "z6",
+          "output": "11100",
+          "rule": "A-left-digit",
+          "parameters": {
+            "n": 4,
+            "m": 2
+          },
+          "steps": 13
+        }
+      ]
+    },
+    {
+      "id": "paired-redundant-digit-right-parser",
+      "kind": "right_word_transducer",
+      "state": "C",
+      "lookahead": "1",
+      "alphabet": {
+        "0": "111",
+        "1": "1110",
+        "02": "11111100"
+      },
+      "head_offsets": {
+        "R1": 1
+      },
+      "base": "empty word is identity",
+      "induction": "process first block; induction on remaining word",
+      "cases": [
+        {
+          "from_state": "R1",
+          "letter": "0",
+          "to_state": "R1",
+          "output": "110",
+          "rule": "parse-R1-0"
+        },
+        {
+          "from_state": "R1",
+          "letter": "1",
+          "to_state": "R1",
+          "output": "1101",
+          "rule": "parse-R1-1"
+        },
+        {
+          "from_state": "R1",
+          "letter": "02",
+          "to_state": "R1",
+          "output": "11101110",
+          "rule": "parse-R1-02"
+        }
+      ]
+    }
+  ],
+  "periodic_sweeps": [
+    {
+      "rule": "C111",
+      "direction": 1,
+      "base": "zero blocks is identity",
+      "induction": "checked first block; induction on remaining disjoint blocks",
+      "steps": {
+        "n": 3
+      },
+      "displacement": {
+        "n": 3
+      }
+    },
+    {
+      "rule": "C101",
+      "direction": 1,
+      "base": "zero blocks is identity",
+      "induction": "checked first block; induction on remaining disjoint blocks",
+      "steps": {
+        "n": 5
+      },
+      "displacement": {
+        "n": 3
+      }
+    },
+    {
+      "rule": "C1000",
+      "direction": 1,
+      "base": "zero blocks is identity",
+      "induction": "checked first block; induction on remaining disjoint blocks",
+      "steps": {
+        "n": 4
+      },
+      "displacement": {
+        "n": 4
+      }
+    },
+    {
+      "rule": "C1101",
+      "direction": 1,
+      "base": "zero blocks is identity",
+      "induction": "checked first block; induction on remaining disjoint blocks",
+      "steps": {
+        "n": 6
+      },
+      "displacement": {
+        "n": 4
+      }
+    }
+  ]
+}

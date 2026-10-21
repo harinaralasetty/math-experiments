@@ -1,0 +1,113 @@
+# HorizonMath batch A report
+
+## Verdict
+
+Best accepted DTS scope: **112**. Best accepted code size: **36**.
+Both canonical solutions are the extracted published witnesses unless the promotion log below identifies an improvement. No invalid tabu checkpoint is a solution.
+No new record was found. This search does not prove either baseline optimal.
+
+The searches were shorter than the requested wall-time budget. This is a limitation of the campaign reported here.
+
+## Status gate
+
+The gate was completed before construction search. See [STATUS.md](STATUS.md) for the exact queries, source URLs and limitations. No newer primary source beating either baseline was retrieved.
+[Shehadeh, Kingsford and Kschischang](https://arxiv.org/html/2502.19517v1) supplies the DTS witness. [Brouwer's table](https://aeb.win.tue.nl/codes/Andw.html) retains Bluskov's code bound and corrects an earlier unsupported larger lower bound. The [published code witness](https://aeb.win.tue.nl/codes/cwc/d8/a29.8.5.36) was downloaded directly.
+Source snapshots, their URLs and hashes are in `sources/manifest.json`. The benchmark revision and input hashes are in `sources/benchmark-manifest.json`.
+
+## Strict verifiers
+
+The DTS checker requires actual integers, normalized increasing rows and globally distinct exact positive differences. The code checker independently computes pairwise Hamming distances from sets of points. Neither reads a claimed score. The benchmark validators are imported without changes and with bytecode writes disabled.
+`make verify` passed 14 comparison cases. Published witnesses and canonical solutions were accepted; all deliberately broken cases below were rejected by both checkers. A forged claimed score was ignored.
+
+| Problem | Case | Strict valid | Benchmark valid | Derived score or rejection |
+|---|---|---|---|---|
+| dts_7_5_min_scope | published | true | true | 112 |
+| dts_7_5_min_scope | duplicate_difference | false | false | repeated positive differences: [11, 14, 17, 23, 37, 40, 47, 54, 58, 64, 75, 87, 98, 101, 112] |
+| dts_7_5_min_scope | repeated_mark | false | false | row 0: not normalized and strictly increasing |
+| dts_7_5_min_scope | not_normalized | false | false | row 0: not normalized and strictly increasing |
+| dts_7_5_min_scope | scaled_construction | true | true | 224 |
+| dts_7_5_min_scope | false_claimed_score_ignored | true | true | 112 |
+| dts_7_5_min_scope | solution | true | true | 112 |
+| cwcode_29_8_5 | published | true | true | 36 |
+| cwcode_29_8_5 | duplicate_block | false | false | blocks 0,1: Hamming distance 0 < 8 |
+| cwcode_29_8_5 | too_close_pair | false | false | blocks 0,1: Hamming distance 6 < 8 |
+| cwcode_29_8_5 | point_out_of_range | false | false | block 0: points must be integers in [0,28] |
+| cwcode_29_8_5 | shortened_code | true | true | 35 |
+| cwcode_29_8_5 | false_claimed_score_ignored | true | true | 36 |
+| cwcode_29_8_5 | solution | true | true | 36 |
+
+The complete real output is in [logs/make-verify.txt](logs/make-verify.txt). The machine-readable comparisons, including the benchmark's nested DTS metric, are in [logs/verification.json](logs/verification.json).
+
+Published witness output from the strict checkers:
+
+```json
+{"distinct_differences": 105, "num_differences": 105, "problem": "dts_7_5_min_scope", "scope": 112, "valid": true}
+{"min_distance": 8, "num_blocks": 36, "num_pairs_covered": 360, "problem": "cwcode_29_8_5", "valid": true}
+```
+
+## Search methods and actual results
+
+DTS work preceded code work. [METHODS.md](METHODS.md) describes the models, symmetry arguments, heuristic moves, restricted nature of neighborhood and orbit conclusions, and checkpoint limits. All scores below come from saved output or independent recomputation.
+The command plans are under `plans/`; `run_batch.py` records arguments, elapsed time and exit codes for those batches. Initial standalone runs are evidenced by their logs and solver result files. Each search job has an explicit finite time cap. The batch runner checks its declared total CPU cap before launching jobs.
+
+| Run | Result | Elapsed seconds | Evidence |
+|---|---|---:|---|
+| cw-cp-601 | UNKNOWN; target size 37 | 600.062 | `checkpoints/cw-cp-601.json` |
+| cw-cp-699 | OPTIMAL; target size 36; fixed published-witness calibration | 0.027 | `checkpoints/cw-cp-699.json` |
+| cw-orbits-3-9-fixed | FEASIBLE; 31 valid blocks in this restricted model | 603.989 | `checkpoints/cw-orbits-3-9-fixed.json` |
+| cw-orbits-3-9 | FEASIBLE; 34 valid blocks in this restricted model | 603.172 | `checkpoints/cw-orbits-3-9.json` |
+| cw-orbits-5-5 | FEASIBLE; 34 valid blocks in this restricted model | 601.175 | `checkpoints/cw-orbits-5-5.json` |
+| cw-repair-401 | 3600 neighborhoods; statuses {'OPTIMAL': 3524, 'UNKNOWN': 60, 'FEASIBLE': 16}; best valid size 36 | 601.952 | `checkpoints/cw-repair-401.json` |
+| cw-repair-final | 2979 neighborhoods; statuses {'OPTIMAL': 2911, 'UNKNOWN': 49, 'FEASIBLE': 19}; best valid size 36 | 599.997 | `checkpoints/cw-repair-final.json` |
+| cw-repair-near | 3143 neighborhoods; statuses {'OPTIMAL': 3074, 'UNKNOWN': 53, 'FEASIBLE': 16}; best valid size 36 | 600.002 | `checkpoints/cw-repair-near.json` |
+| cw-star-801 | UNKNOWN; target size 37 | 600.663 | `checkpoints/cw-star-801.json` |
+| cw-star-802 | UNKNOWN; target size 37; two full-replication points normalized | 601.558 | `checkpoints/cw-star-802.json` |
+| cw-star-899 | OPTIMAL; target size 36; fixed published-witness calibration | 0.533 | `checkpoints/cw-star-899.json` |
+| cw-star-900 | OPTIMAL; target size 36; fixed published-witness calibration; two full-replication points normalized | 0.716 | `checkpoints/cw-star-900.json` |
+| cw-tabu-701 | best collision energy 5; 303624843 iterations; 6072 restarts | 600.001 | `checkpoints/cw-tabu-701.json` |
+| cw-tabu-702 | best collision energy 3; 304197336 iterations; 6083 restarts | 600.001 | `checkpoints/cw-tabu-702.json` |
+| cw-tabu-703 | best collision energy 1; 281591612 iterations; 5631 restarts | 600.001 | `checkpoints/cw-tabu-703.json` |
+| cw-tabu-anneal-704 | best collision energy 1; 280809566 iterations; 5616 restarts | 600.001 | `checkpoints/cw-tabu-anneal-704.json` |
+| cw-tabu-anneal-705 | best collision energy 1; 280760936 iterations; 5615 restarts | 600.001 | `checkpoints/cw-tabu-anneal-705.json` |
+| cw-tabu-smoke | best collision energy 4; 934063 iterations; 18 restarts | 1.000 | `checkpoints/cw-tabu-smoke.json` |
+| dts-cp-102 | UNKNOWN; scope limit 111 | 600.072 | `checkpoints/dts-cp-102.json` |
+| dts-cp-calibration | OPTIMAL; scope limit 112; fixed published-witness calibration | 0.060 | `checkpoints/dts-cp-calibration.json` |
+| dts-cp | UNKNOWN; scope limit 111 | 600.029 | `checkpoints/dts-cp.json` |
+| dts-repair-elite | 69 neighborhoods; statuses {'INFEASIBLE': 27, 'UNKNOWN': 42} | 600.008 | `checkpoints/dts-repair-elite.json` |
+| dts-repair | 63 neighborhoods; statuses {'INFEASIBLE': 22, 'UNKNOWN': 41} | 501.156 | `checkpoints/dts-repair.json` |
+| dts-tabu-201 | best collision energy 5; 289623064 iterations; 24133 restarts | 600.001 | `checkpoints/dts-tabu-201.json` |
+| dts-tabu-202 | best collision energy 3; 281235964 iterations; 23434 restarts | 600.000 | `checkpoints/dts-tabu-202.json` |
+| dts-tabu-203 | best collision energy 2; 281303682 iterations; 23440 restarts | 600.000 | `checkpoints/dts-tabu-203.json` |
+| dts-tabu-221 | best collision energy 2; 260020200 iterations; 21666 restarts | 600.004 | `checkpoints/dts-tabu-221.json` |
+| dts-tabu-222 | best collision energy 2; 259346397 iterations; 21610 restarts | 600.004 | `checkpoints/dts-tabu-222.json` |
+| dts-tabu-resume-smoke | best collision energy 2; 521970 iterations; 43 restarts | 1.000 | `checkpoints/dts-tabu-resume-smoke.json` |
+
+Positive collision energies are invalid near misses, not improved scores. `UNKNOWN` means a solver time limit without a witness or infeasibility proof. Any `INFEASIBLE` neighborhood result concerns its frozen rows or blocks only. Orbit bounds concern only the prescribed permutation and any forced blocks listed in its result file.
+The full requested wall-time campaign was not exhausted. The measured per-run times above are the work actually performed; this report does not represent them as the requested campaign budget. The saved programs, plans and warm-start checkpoints support further runs.
+
+## Best constructions and checks
+
+- `solutions/dts_7_5_min_scope.json`: scope 112, 105 positive differences, all 105 distinct.
+- `solutions/cwcode_29_8_5.json`: 36 blocks, minimum Hamming distance 8, covering 360 distinct pairs.
+- Published inputs remain separately under `sources/`. `prepare_records.py` reproduces their extraction from the source snapshots.
+- `logs/artifact-audit.json` independently recomputes all tabu collision counts, checks orbit incumbents and input hashes, and checks canonical solutions.
+
+Promotion output:
+
+```
+{"problem": "dts_7_5_min_scope", "score": 112, "origin": "solutions/dts_7_5_min_scope.json"}
+{"problem": "cwcode_29_8_5", "score": 36, "origin": "solutions/cwcode_29_8_5.json"}
+```
+
+## Re-run
+
+```sh
+make verify
+make build
+.venv/bin/python run_batch.py plans/dts-followup.json
+.venv/bin/python run_batch.py plans/cw-primary.json
+python3 promote_solutions.py
+make verify
+```
+
+The batch runner skips completed jobs with successful exit codes. To run a new seed, copy a plan with new names, seeds and checkpoint paths. Heuristic checkpoints restart from the saved best configuration. CP-SAT internal trees are not serialized. No commit, publication or message to another person was made.
