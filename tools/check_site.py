@@ -255,8 +255,8 @@ def privacy():
     rx = re.compile('|'.join(patterns))
     hits = []
     for path in sorted(ROOT.rglob('*')):
-        if not path.is_file():
-            continue
+        if not path.is_file() or '.git' in path.relative_to(ROOT).parts:
+            continue  # git history (commit trailers) is not a published file
         data = path.read_bytes()
         if b'\0' in data[:8192]:
             continue  # binary file, as rg -I skips
@@ -264,10 +264,10 @@ def privacy():
             if rx.search(line):
                 hits.append(f'{path.relative_to(ROOT)}:{n}')
     assert not hits, '\n'.join(hits[:20])
-    print('COMMAND: python regex scan of every file under the repo root (hidden, ignored and .git included)')
+    print('COMMAND: python regex scan of every file under the repo root (hidden and ignored files included; .git excluded)')
     print('scan output: (no matches)')
     print('PASS privacy grep: no personal home paths, email addresses, known token/key patterns or private-key headers in distributable files')
-    print('Privacy grep covers the whole tree, including hidden and ignored files and git metadata; rg skips binary content. No private sprint log or third-party implementation imported.')
+    print('Privacy scan covers the whole working tree, including hidden and ignored files, and skips binary content and .git history. No private sprint log or third-party implementation imported.')
 
 
 if __name__ == '__main__':

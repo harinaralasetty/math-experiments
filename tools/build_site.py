@@ -8,6 +8,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT/'docs'
+AUTHOR = {'@type': 'Person', 'name': 'Hari Naralasetty', 'url': 'https://github.com/harinaralasetty', 'sameAs': ['https://github.com/harinaralasetty', 'https://www.linkedin.com/in/harinaralasetty']}
+AUTHOR_LINKS = f"<a href=\"{AUTHOR['url']}\">{AUTHOR['name']}</a> (<a href=\"https://github.com/harinaralasetty\">GitHub</a> · <a href=\"https://www.linkedin.com/in/harinaralasetty\">LinkedIn</a>)"
 BASE = 'https://harinaralasetty.github.io/math-experiments/'
 REPO = 'https://github.com/harinaralasetty/math-experiments'
 sources = json.loads((ROOT/'sources.json').read_text())
@@ -37,7 +39,7 @@ def page(path, title, description, body, schema):
     doc = f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)}</title><meta name="description" content="{esc(description)}">
+<title>{esc(title)}</title><meta name="description" content="{esc(description)}"><meta name="author" content="{AUTHOR['name']}">
 <link rel="canonical" href="{canonical}"><link rel="stylesheet" href="{prefix}assets/style.css">
 <meta property="og:type" content="website"><meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">
@@ -46,11 +48,11 @@ def page(path, title, description, body, schema):
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{BASE}assets/results.png">
 <meta name="twitter:image:alt" content="Verified research sprint results table.">
-<script type="application/ld+json">{json.dumps({'@context':'https://schema.org', **schema},ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps({'@context':'https://schema.org', **schema, 'author':AUTHOR},ensure_ascii=False)}</script>
 </head><body><a class="skip" href="#main">Skip to content</a>
 <header><a class="brand" href="{prefix}index.html">math-experiments</a><nav aria-label="Main navigation">{nav}</nav></header>
-<main id="main"><h1>{esc(title)}</h1>{body}</main>
-<footer><p>Snapshot of verified sprint work. <a href="{prefix}PROVENANCE.md">Claim provenance and source revisions</a> · <a href="{REPO}">Repository and code</a></p>
+<main id="main"><h1>{esc(title)}</h1><p class="byline">By {AUTHOR_LINKS}</p>{body}</main>
+<footer><p>By {AUTHOR_LINKS}. Snapshot of verified sprint work. <a href="{prefix}PROVENANCE.md">Claim provenance and source revisions</a> · <a href="{REPO}">Repository and code</a></p>
 <p>Original code: <a href="{REPO}/blob/main/LICENSE">MIT</a>. Original data and text: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Attributed quotations retain their source terms.</p></footer></body></html>'''
     out = DOCS/path; out.parent.mkdir(parents=True, exist_ok=True); out.write_text(doc)
     pages.append(path)
@@ -90,7 +92,7 @@ def main():
         new_lines = [line for line in values if line and not line.startswith('#') and int(line.split()[0])>seq['listed_last']]
         section += claim(a+'-terms','<h2>New b-file rows</h2><pre class="terms">'+esc('\n'.join(new_lines))+'</pre>',evidence)
         section += f'<h2>Reproduce</h2><p>From the repository root, run <code>make -C oeis verify</code>. It recomputes all extensions with both methods and compares every row, including the published overlap. C++ and Python are required.</p><p><a href="{REPO}/tree/main/oeis/code">Read the OEIS computation programs</a> and <a href="{REPO}/blob/main/oeis/verify.py">the portable verification runner</a>. <a href="../reproduce.html">Verification scope and dependencies</a>.</p>'
-        page('oeis/'+a+'.html',a+' verified term extension',f'{a} definition, published range, verified new b-file terms, two independent methods, recorded timings and reproduction commands.',section,{'@type':'Dataset','name':a+' computed term extension','description':meta['name'],'url':BASE+'oeis/'+a+'.html','license':'https://creativecommons.org/licenses/by/4.0/','isBasedOn':'https://oeis.org/'+a,'distribution':{'@type':'DataDownload','encodingFormat':'text/plain','contentUrl':BASE+'data/'+a+'.txt'},'creator':{'@type':'Organization','name':'math-experiments research sprint'}})
+        page('oeis/'+a+'.html',a+' verified term extension',f'{a} definition, published range, verified new b-file terms, two independent methods, recorded timings and reproduction commands.',section,{'@type':'Dataset','name':a+' computed term extension','description':meta['name'],'url':BASE+'oeis/'+a+'.html','license':'https://creativecommons.org/licenses/by/4.0/','isBasedOn':'https://oeis.org/'+a,'distribution':{'@type':'DataDownload','encodingFormat':'text/plain','contentUrl':BASE+'data/'+a+'.txt'},'creator':AUTHOR})
     body = claim('oeis-summary',f'<p class="lead">{total} new terms across {len(sequences)} sequences, with two independent methods agreeing on every row.</p><p>Terms are not yet submitted to the OEIS. The status gate checked the cached entries before extension and retained their requests for more terms. This is the source snapshot, not a live claim about today\'s OEIS listings.</p><div class="table-scroll"><table><caption>Sequence extensions</caption><thead><tr><th scope="col">Sequence</th><th scope="col">Previous indices</th><th scope="col">New indices</th><th scope="col">New terms</th></tr></thead><tbody>'+''.join(rows)+'</tbody></table></div>',['oeis/data/verification.json'])
     body += '<h2>Evidence and use</h2><p>Each sequence page includes the definition, new rows, method descriptions and measured timings. The <a href="../data/SHA256SUMS">b-file SHA-256 list</a> identifies the exact distributed bytes. <a href="../PROVENANCE.md">Source provenance</a> records the pinned revision and extraction fields.</p>'
     page('oeis/index.html','OEIS verified new terms','Verified extensions of five OEIS sequences, with complete b-files, independent programs, source hashes and reproduction instructions.',body,{'@type':'CollectionPage','name':'OEIS term extensions','url':BASE+'oeis/index.html'})
@@ -134,6 +136,8 @@ def main():
     (DOCS/'PROVENANCE.md').write_text(provenance)
     (DOCS/'github-topics.md').write_text('# Repository metadata suggestions\n\nDescription: Verified OEIS term extensions, BB(6) local proofs, and exact HorizonMath checks from an AI-managed research sprint.\n\nTopics: mathematics, oeis, busy-beaver, combinatorics, reproducible-research, computational-mathematics, github-pages, verification\n\nPages configuration: deploy from the main branch, /docs folder. The manager handles repository creation and publication.\n')
     (ROOT/'README.md').write_text(f'''# math-experiments
+
+By [Hari Naralasetty](https://github.com/harinaralasetty) · [GitHub](https://github.com/harinaralasetty) · [LinkedIn](https://www.linkedin.com/in/harinaralasetty).
 
 An AI coding agent managed by another AI worked on open problems whose answers can be checked by programs. Claude managed staged tasks; Codex computed candidates and wrote independent checkers. Published status was checked first. The manager reran verification, and no result was accepted without a check.
 

@@ -1,5 +1,7 @@
 # math-experiments
 
+By [Hari Naralasetty](https://github.com/harinaralasetty) · [GitHub](https://github.com/harinaralasetty) · [LinkedIn](https://www.linkedin.com/in/harinaralasetty).
+
 An AI coding agent managed by another AI worked on open problems whose answers can be checked by programs. Claude managed staged tasks; Codex computed candidates and wrote independent checkers. Published status was checked first. The manager reran verification, and no result was accepted without a check.
 
 | Project | Status | Verified outcome |
