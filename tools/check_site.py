@@ -158,7 +158,7 @@ def check_provenance():
         assert s['new_count'] == s['last'] - s['listed_last']
         file = DOCS/'data'/f'{s["id"]}.txt'
         rows = [line for line in file.read_text().splitlines() if line and not line.startswith('#')]
-        assert [int(line.split()[0]) for line in rows] == list(range(s['last']+1))
+        assert [int(line.split()[0]) for line in rows] == list(range(s.get('first', 0), s['last']+1))
         digest = hashlib.sha256(file.read_bytes()).hexdigest()
         assert f'{digest}  {file.name}' in (DOCS/'data/SHA256SUMS').read_text()
         print(f'{digest}  {file.relative_to(ROOT)}  SOURCE BYTE MATCH')

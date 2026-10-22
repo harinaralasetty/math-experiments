@@ -23,9 +23,9 @@ def main():
     total = sum(row['new_count'] for row in sequences)
     report = f'''# Verification report
 
-Math Experiments v2 is generated locally from pinned committed source snapshots. The OEIS stages together supply {total:,} new terms across {len(sequences)} sequences. No commit, push, publication or OEIS submission was performed.
+Math Experiments including OEIS stage 4 is generated locally from pinned committed source snapshots. The OEIS stages together supply {total:,} new terms across {len(sequences)} sequences. No commit, push, publication or OEIS submission was performed.
 
-The generator and stylesheet provide the announcement copy, per-sequence pages, two-significant-digit historical timings, complete downloads with 20-row previews, author credit, a visible FAQ and matching FAQPage, Article, WebSite, Dataset and breadcrumb JSON-LD, a refreshed social image, llms.txt and a sitemap. The README and all totals use the same combined sequence data.
+The generator and stylesheet provide the announcement copy, per-sequence pages, two-significant-digit historical timings, complete downloads with 20-row previews, author credit, a visible FAQ and matching FAQPage, Article, WebSite, Dataset and breadcrumb JSON-LD, a refreshed social image, llms.txt and a sitemap. The README and all totals use the same combined sequence data. The stage 4 import preserves the earlier pinned files and adds the manager-specified committed snapshot. Its programs and b-files remain byte-identical; the report's machine-home paths are redacted and its original hash is retained. The verification runner and site checks respect each sequence's original first index.
 
 ## Source revisions
 
@@ -40,7 +40,7 @@ Site validation uses the strict local validator for this generator's HTML5 subse
 
 Page modification dates use each imported file's last-change date from the pinned source git revision and the relevant generator/style dates. Uncommitted generator/style changes use filesystem modification dates. The dates are repeated consistently in the byline, structured data and sitemap. Dates therefore follow each page's dependencies rather than one fixed publication date.
 
-Responsive CSS wraps long numbers and inline code, keeps tables in scrollable boxes, lets navigation and cards wrap, and limits b-file previews to the first 20 rows. The 1200-by-630 social image was inspected directly. Browser automation was unavailable, so no rendered 390 px viewport or physical-phone test is claimed. The checks verify the relevant CSS and viewport rules.
+Responsive CSS wraps long numbers and inline code, keeps tables in scrollable boxes, lets navigation and cards wrap, and limits b-file previews to the first 20 rows. The 1200-by-630 social image was inspected directly. No rendered 390 px viewport or physical-phone test was performed. The checks verify the relevant CSS and viewport rules.
 
 Only allowlisted first-party source programs, evidence and text were imported; third-party papers, web snapshots, archives and implementations remain excluded. All complete b-files are byte-identical to the pinned source blobs. sources.json and docs/PROVENANCE.md record hashes, transformations and dates. The privacy scan below includes hidden and ignored working-tree files, excludes git history and skips binary content.
 

@@ -1,6 +1,6 @@
 {
   "revisions": {
-    "oeis": "3504def3c80d31ce2cacb94b9fa67843812518db",
+    "oeis": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
     "bb6": "228ba5559d062ca1f8fb5f6a21285fb9e80a6eb6",
     "hm-batchA": "b969a3c1429b2946ea10c3b365086d39bcc60ac7",
     "hm-batchB": "87d65db8e5b58a3e741c0bcfc3143bd44ce2609f",
@@ -1641,6 +1641,236 @@
       "target": "horizonmath/record-status.md",
       "source_sha256": "b07c6ce150b03b90852c5e4b1f70dd04c156ac60c58b75507dcc3f4d9b4c075c",
       "sha256": "b07c6ce150b03b90852c5e4b1f70dd04c156ac60c58b75507dcc3f4d9b4c075c",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/code/reference.py",
+      "last_modified": "2026-10-22",
+      "target": "oeis/code/stage4/reference.py",
+      "source_sha256": "a953ab424d3c7cbcab3890abd8f4fbcf1ead5d7b123131663f1b04540ec9ac4c",
+      "sha256": "a953ab424d3c7cbcab3890abd8f4fbcf1ead5d7b123131663f1b04540ec9ac4c",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/code/necklace_independent.py",
+      "last_modified": "2026-10-22",
+      "target": "oeis/code/stage4/necklace_independent.py",
+      "source_sha256": "87aedf829fda5c89c3de1040d6de8244238475bdbd41d94c5863d45a64667279",
+      "sha256": "87aedf829fda5c89c3de1040d6de8244238475bdbd41d94c5863d45a64667279",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/code/necklaces.cpp",
+      "last_modified": "2026-10-22",
+      "target": "oeis/code/stage4/necklaces.cpp",
+      "source_sha256": "8e9cb1f3e004be1583ac5cb653e139f10458a54b27bc63d1baf75f87f39e927b",
+      "sha256": "8e9cb1f3e004be1583ac5cb653e139f10458a54b27bc63d1baf75f87f39e927b",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/code/independent.cpp",
+      "last_modified": "2026-10-22",
+      "target": "oeis/code/stage4/independent.cpp",
+      "source_sha256": "15e94ace61c639a1b3c1832ea2a99cb312975a270b46f0eac81ce499ab6d8bc2",
+      "sha256": "15e94ace61c639a1b3c1832ea2a99cb312975a270b46f0eac81ce499ab6d8bc2",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/b304382.txt",
+      "last_modified": "2026-10-22",
+      "target": "docs/data/A304382.txt",
+      "source_sha256": "1453bc6f68e786674fafb074a728791e2b0d497bf558579e06ec7931145cb2db",
+      "sha256": "1453bc6f68e786674fafb074a728791e2b0d497bf558579e06ec7931145cb2db",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/A304382.py",
+      "last_modified": "2026-10-22",
+      "target": "oeis/code/stage4/drafts/A304382.py",
+      "source_sha256": "d3c151b8e40dcf3af1399097c0067183eed224301a410ec87a9646c4717d6ad1",
+      "sha256": "d3c151b8e40dcf3af1399097c0067183eed224301a410ec87a9646c4717d6ad1",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/data/A304382.json",
+      "last_modified": "2026-10-22",
+      "target": "oeis/data/A304382.json",
+      "source_sha256": "5f2316f987ab70dc1b510346b862397718f9753210dbe71cb11cafdef3982ce4",
+      "sha256": "6d92f7fd9c9c7cabaf904e2f9fb09d4fee6c4164c5e0f47edd5289dd8dd79b2b",
+      "transformed": true
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/b320052.txt",
+      "last_modified": "2026-10-22",
+      "target": "docs/data/A320052.txt",
+      "source_sha256": "42d701ff8b3cee8a13259a15d17f50497ce7b1a2bc88d207fd9dd9772d46d2cc",
+      "sha256": "42d701ff8b3cee8a13259a15d17f50497ce7b1a2bc88d207fd9dd9772d46d2cc",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/A320052.py",
+      "last_modified": "2026-10-22",
+      "target": "oeis/code/stage4/drafts/A320052.py",
+      "source_sha256": "f1674f81c623f7dfa5c913f2fef07977ce14945b14731e63d4929065f5a07375",
+      "sha256": "f1674f81c623f7dfa5c913f2fef07977ce14945b14731e63d4929065f5a07375",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/data/A320052.json",
+      "last_modified": "2026-10-22",
+      "target": "oeis/data/A320052.json",
+      "source_sha256": "c0211d5694034910f59aeb561d56c5f5a2d770a35ba9dceca274ee6e6bffd09c",
+      "sha256": "20da50be335d223d0963873b5930b9dff167f35e927edd8081d286324c053d59",
+      "transformed": true
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/b325549.txt",
+      "last_modified": "2026-10-22",
+      "target": "docs/data/A325549.txt",
+      "source_sha256": "e7a5b09c0e4997d36a7720e99577a6bf320ff95685cded26f753267615a9e3d9",
+      "sha256": "e7a5b09c0e4997d36a7720e99577a6bf320ff95685cded26f753267615a9e3d9",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/A325549.py",
+      "last_modified": "2026-10-22",
+      "target": "oeis/code/stage4/drafts/A325549.py",
+      "source_sha256": "e4a860d71be25528e1ead62b140876ac587d7525e3f1a10c3639ad86bb6380ee",
+      "sha256": "e4a860d71be25528e1ead62b140876ac587d7525e3f1a10c3639ad86bb6380ee",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/data/A325549.json",
+      "last_modified": "2026-10-22",
+      "target": "oeis/data/A325549.json",
+      "source_sha256": "268748947911bb0feaaca9d26c990e0b5bfb6495c49825cde443e8350d31ebfc",
+      "sha256": "df5af3c49dfc2161ddff02d021290b3ec4ae3604462379e07f348708f4a01b89",
+      "transformed": true
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/b336131.txt",
+      "last_modified": "2026-10-22",
+      "target": "docs/data/A336131.txt",
+      "source_sha256": "a2319370409368857497b77e51976b43cbc41f97f865f280bd5f36b2e6f24aed",
+      "sha256": "a2319370409368857497b77e51976b43cbc41f97f865f280bd5f36b2e6f24aed",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/A336131.py",
+      "last_modified": "2026-10-22",
+      "target": "oeis/code/stage4/drafts/A336131.py",
+      "source_sha256": "7b06362bd023c6e87e4d1eb0ef2d6c09ee76a65fa74c9394af6c51c3dfa8ca7a",
+      "sha256": "7b06362bd023c6e87e4d1eb0ef2d6c09ee76a65fa74c9394af6c51c3dfa8ca7a",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/data/A336131.json",
+      "last_modified": "2026-10-22",
+      "target": "oeis/data/A336131.json",
+      "source_sha256": "e272400792177909a95dcd7aad430da52ee99cda8fadb9857c7c0cea714682fc",
+      "sha256": "b214e7d4e474af1e6dc83af54c5d0e7464123d1c391645d795745aba3afcbbb7",
+      "transformed": true
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/b353426.txt",
+      "last_modified": "2026-10-22",
+      "target": "docs/data/A353426.txt",
+      "source_sha256": "96e6a8128ed07c103e715961a19f2eea0fa3315c7ab42766c9050297e89c9188",
+      "sha256": "96e6a8128ed07c103e715961a19f2eea0fa3315c7ab42766c9050297e89c9188",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/A353426.py",
+      "last_modified": "2026-10-22",
+      "target": "oeis/code/stage4/drafts/A353426.py",
+      "source_sha256": "70bfb32d5007f961596cb438001fb39bdaec2e73668bf61eb23ad8aa0a899b16",
+      "sha256": "70bfb32d5007f961596cb438001fb39bdaec2e73668bf61eb23ad8aa0a899b16",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/data/A353426.json",
+      "last_modified": "2026-10-22",
+      "target": "oeis/data/A353426.json",
+      "source_sha256": "791a375a81afeef7676a4e8b7b27f324a6a6ba99aa7c466f8f14023a159e261b",
+      "sha256": "014a625392135e9fe14e920d7ccfe97bc763fd691b14242ccc11b35f3f6cbff3",
+      "transformed": true
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/data/verification.json",
+      "last_modified": "2026-10-22",
+      "target": "oeis/data/stage4-verification.json",
+      "source_sha256": "c3eb8bc5d1aa5be9150ff192584f5204937ef7b60ca58e186b4a0f021f1858f0",
+      "sha256": "ae86ca12f8b2b55c3532f46413ca099f2d153672cf3569dcc1986aafac4f6f4c",
+      "transformed": true
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/REPORT.md",
+      "last_modified": "2026-10-22",
+      "target": "oeis/data/stage4-REPORT.txt",
+      "source_sha256": "622e208c5f5640c34dc8106274e699d36f7b82b054f0dedb109930aab9cfc97f",
+      "sha256": "db994c1c41a05d7f5a81fab225455c8965620593146200a25cd48ee9766dc967",
+      "transformed": true
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/STATUS.md",
+      "last_modified": "2026-10-22",
+      "target": "oeis/data/stage4-STATUS.txt",
+      "source_sha256": "0411a421d985dd2710a3e947cc3ce3e912d29e2903ba8313edf55e0d22eb1b83",
+      "sha256": "0411a421d985dd2710a3e947cc3ce3e912d29e2903ba8313edf55e0d22eb1b83",
+      "transformed": false
+    },
+    {
+      "workspace": "oeis",
+      "revision": "05ce39322c21fd37febd55601fbb27d7f92bc8fe",
+      "source": "stage4/results/SUBMISSION-DRAFTS.md",
+      "last_modified": "2026-10-22",
+      "target": "oeis/data/stage4-SUBMISSION-DRAFTS.txt",
+      "source_sha256": "ae3121e8b3a78c4e3c844f7d0207502384ea9265a67e2450892c70036b1b2442",
+      "sha256": "ae3121e8b3a78c4e3c844f7d0207502384ea9265a67e2450892c70036b1b2442",
       "transformed": false
     }
   ],

@@ -1,0 +1,337 @@
+# Draft extensions for manager review
+
+These are local drafts. Nothing was committed, submitted to OEIS, or posted. The manager supplies contributor name and submission date. Each complete b-file starts with all existing terms.
+
+## A325549
+
+[OEIS entry](https://oeis.org/A325549) and [complete b-file](b325549.txt).
+
+New indices 26 through 40, 15 terms.
+
+```text
+26 17883
+27 25840
+28 37612
+29 53889
+30 78195
+31 111936
+32 161453
+33 230237
+34 330480
+35 469719
+36 668245
+37 945690
+38 1345298
+39 1894220
+40 2678043
+```
+
+Method: C++ recursively enumerates compositions beginning with a least part, rejects repeated adjacent differences, tests lexicographic minimality over rotations, and checks the closing difference. Independent check: Python enumerates all rooted compositions with distinct circular differences, counts them separately by length k, and sums count(k)/k. A nontrivial period would repeat a circular difference, so the rotation action is free for length > 1. Singleton compositions also have orbit size one.
+
+Program in OEIS Python style:
+
+```python
+# (Python)
+
+import collections, itertools, math
+
+from functools import lru_cache
+
+def term(n):
+ counts=[0]*(n+1)
+ def rec(left,first,last,length,diffs):
+  if left==0:
+   if first-last not in diffs:counts[length]+=1
+   return
+  for x in range(1,left+1):
+   d=x-last
+   if d not in diffs:rec(left-x,first,x,length+1,diffs|{d})
+ for first in range(1,n+1):rec(n-first,first,first,1,set())
+ assert all(v%k==0 for k,v in enumerate(counts) if k)
+ return sum(v//k for k,v in enumerate(counts) if k)
+
+def a(n):
+    return term(n)
+```
+
+Draft extension note: `a(26)-a(40) from _[contributor name]_, [submission date].`
+
+## A336131
+
+[OEIS entry](https://oeis.org/A336131) and [complete b-file](b336131.txt).
+
+New indices 18 through 30, 13 terms.
+
+```text
+18 20606
+19 31666
+20 48802
+21 80393
+22 115838
+23 179364
+24 267275
+25 402692
+26 584969
+27 877266
+28 1332166
+29 1924651
+30 2810128
+```
+
+Method: Python enumerates integer partitions and recursively chooses the endpoint of each segment, retaining a set of earlier segment sums. Reversing a partition reverses each split bijectively, so the ascending generator counts the OEIS descending convention. Independent check: C++ independently enumerates descending partitions. It processes gaps as cut or join decisions, carrying a streaming current sum and a bitmask of completed sums. Every gap choice is visited, and only distinct completed sums survive.
+
+Program in OEIS Python style:
+
+```python
+# (Python)
+
+import collections, itertools, math
+
+from functools import lru_cache
+
+def partitions(n,lo=1,strict=False):
+ if n==0:yield ()
+ for k in range(lo,n+1):
+  for q in partitions(n-k,k+int(strict),strict):yield (k,)+q
+
+def split_count(p):
+ def rec(i,used):
+  if i==len(p):return 1
+  out=s=0
+  for j in range(i,len(p)):
+   s+=p[j]
+   if s not in used:out+=rec(j+1,used|{s})
+  return out
+ return rec(0,set())
+
+def a(n):
+    return sum(split_count(p) for p in partitions(n))
+```
+
+Draft extension note: `a(18)-a(30) from _[contributor name]_, [submission date].`
+
+## A353426
+
+[OEIS entry](https://oeis.org/A353426) and [complete b-file](b353426.txt).
+
+New indices 41 through 60, 20 terms.
+
+```text
+41 132
+42 180
+43 221
+44 267
+45 328
+46 409
+47 467
+48 561
+49 662
+50 751
+51 868
+52 1001
+53 1112
+54 1248
+55 1427
+56 1575
+57 1761
+58 1963
+59 2156
+60 2346
+```
+
+Method: Python enumerates ascending integer partitions. Counter objects give multiplicities and test multiset containment; the predicate recurses on the sorted multiplicities until a singleton or the empty partition. Independent check: C++ independently enumerates descending partitions and iteratively transforms ordered frequency maps. At each step it compares required multiplicities against available counts. No Python generator or predicate is reused.
+
+Program in OEIS Python style:
+
+```python
+# (Python)
+
+import collections, itertools, math
+
+from functools import lru_cache
+
+def partitions(n,lo=1,strict=False):
+ if n==0:yield ()
+ for k in range(lo,n+1):
+  for q in partitions(n-k,k+int(strict),strict):yield (k,)+q
+
+def recursive_mult(p):
+ if len(p)<=1:return True
+ c=collections.Counter(p);m=tuple(sorted(c.values()));cm=collections.Counter(m)
+ return all(c[k]>=v for k,v in cm.items()) and recursive_mult(m)
+
+def a(n):
+    return sum(recursive_mult(p) for p in partitions(n))
+```
+
+Draft extension note: `a(41)-a(60) from _[contributor name]_, [submission date].`
+
+## A320052
+
+[OEIS entry](https://oeis.org/A320052) and [complete b-file](b320052.txt).
+
+New indices 13 through 35, 23 terms.
+
+```text
+13 13
+14 12
+15 13
+16 16
+17 23
+18 22
+19 30
+20 24
+21 38
+22 37
+23 48
+24 39
+25 58
+26 61
+27 74
+28 67
+29 98
+30 75
+31 119
+32 105
+33 132
+34 137
+35 158
+```
+
+Method: Python obtains all multiset partitions by inserting the last element into a block or starting a new block, sorting and deduplicating the resulting block tuples. It considers each distinct submultiset and rejects any repeated product of block sums. A part equal to one is rejected immediately because it duplicates the empty product. Independent check: C++ enumerates possible block multiplicity vectors directly. A nondecreasing list of block-vector indices gives each multiset of blocks once; unused multiplicities are the omitted submultiset. It inserts every product, including the empty product, into a set and rejects the first collision. No labeled-insertion generator or Python code is shared.
+
+Program in OEIS Python style:
+
+```python
+# (Python)
+
+import collections, itertools, math
+
+from functools import lru_cache
+
+def partitions(n,lo=1,strict=False):
+ if n==0:yield ()
+ for k in range(lo,n+1):
+  for q in partitions(n-k,k+int(strict),strict):yield (k,)+q
+
+@lru_cache(None)
+def multiset_partitions(p):
+ if not p:return ((),)
+ v=p[-1];out=set()
+ for b in multiset_partitions(p[:-1]):
+  out.add(tuple(sorted(b+((v,),))))
+  for i in range(len(b)):
+   out.add(tuple(sorted(b[:i]+b[i+1:]+(tuple(sorted(b[i]+(v,))),))))
+ return tuple(out)
+
+def submultisets(p):
+ c=collections.Counter(p)
+ for cs in itertools.product(*(range(v+1) for v in c.values())):
+  yield tuple(x for (x,_),k in zip(c.items(),cs) for _ in range(k))
+
+def knapsack(p,product_sum=True,spanning=False):
+ if product_sum and not spanning and 1 in p:return False
+ seen=set()
+ for q in ([p] if spanning else submultisets(p)):
+  for b in multiset_partitions(q):
+   v=math.prod(map(sum,b)) if product_sum else sum(map(math.prod,b))
+   if v in seen:return False
+   seen.add(v)
+ return True
+
+def a(n):
+    return sum(knapsack(p) for p in partitions(n))
+```
+
+Draft extension note: `a(13)-a(35) from _[contributor name]_, [submission date].`
+
+## A304382
+
+[OEIS entry](https://oeis.org/A304382) and [complete b-file](b304382.txt).
+
+New indices 51 through 85, 35 terms.
+
+```text
+51 30
+52 40
+53 32
+54 48
+55 49
+56 48
+57 46
+58 59
+59 57
+60 73
+61 58
+62 75
+63 69
+64 86
+65 83
+66 97
+67 89
+68 118
+69 111
+70 121
+71 118
+72 147
+73 139
+74 154
+75 139
+76 181
+77 187
+78 203
+79 187
+80 231
+81 231
+82 258
+83 239
+84 285
+85 296
+```
+
+Method: Python enumerates strict integer partitions, rejects divisibility between parts, checks gcd-graph connectivity, and evaluates sum(omega(part)-1)-omega(lcm(parts)) = -1. Singletons follow the published program and count even for n=1. Independent check: C++ independently enumerates strict descending partitions. It rejects divisibility, forms the incidence graph between parts and their distinct prime factors, and uses union-find to require a connected acyclic graph. If it has r part vertices and q prime vertices, the density condition is exactly E-r-q=-1, the tree condition.
+
+Program in OEIS Python style:
+
+```python
+# (Python)
+
+import collections, itertools, math
+
+from functools import lru_cache
+
+def partitions(n,lo=1,strict=False):
+ if n==0:yield ()
+ for k in range(lo,n+1):
+  for q in partitions(n-k,k+int(strict),strict):yield (k,)+q
+
+@lru_cache(None)
+def prime_support(n):
+ out=[];d=2
+ while d*d<=n:
+  if n%d==0:
+   out.append(d)
+   while n%d==0:n//=d
+  d+=1
+ if n>1:out.append(n)
+ return frozenset(out)
+
+def ztree(p):
+ if len(p)==1:return True
+ if any(b%a==0 for a,b in itertools.combinations(p,2)):return False
+ supports=[prime_support(x) for x in p]
+ if sum(len(s)-1 for s in supports)-len(set().union(*supports))!=-1:return False
+ reached={0}
+ while True:
+  more={j for i in reached for j in range(len(p)) if math.gcd(p[i],p[j])>1}
+  nxt=reached|more
+  if nxt==reached:break
+  reached=nxt
+ return len(reached)==len(p)
+
+def a(n):
+    return sum(ztree(p) for p in partitions(n, strict=True))
+```
+
+Draft extension note: `a(51)-a(85) from _[contributor name]_, [submission date].`
+

@@ -1,0 +1,7 @@
+{
+  "number": 336131,
+  "name": "Number of ways to split an integer partition of n into contiguous subsequences all having different sums.",
+  "data": "1,1,2,6,9,20,44,74,123,231,441,681,1188,1889,3110,5448,8310,13046",
+  "offset": "0,3",
+  "keyword": "nonn,more"
+}

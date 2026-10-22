@@ -4,10 +4,11 @@ from decimal import Decimal
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+VERIFICATION_FILES = ('verification.json', 'stage3-verification.json', 'stage4-verification.json')
 
 def load_verification(root=ROOT):
     runs = [json.loads((root/'oeis/data'/name).read_text())
-            for name in ['verification.json', 'stage3-verification.json']]
+            for name in VERIFICATION_FILES]
     return {key: [row for run in runs for row in run[key]] for key in ['sequences', 'methods']}
 
 def duration(seconds):

@@ -2,11 +2,11 @@
 
 By [Hari Naralasetty](https://github.com/harinaralasetty) · [GitHub](https://github.com/harinaralasetty) · [LinkedIn](https://www.linkedin.com/in/harinaralasetty).
 
-Working with AI agents, Hari Naralasetty computed 1,350 new terms for 10 OEIS sequences. Each term was produced by two independent programs that agree exactly. This experimental mathematics project also checked partial BB(6) results and found no new records in three record-search batches. The published status of each problem was checked first, and no result is reported without a re-run check.
+Working with AI agents, Hari Naralasetty computed 1,456 new terms for 15 OEIS sequences. Each term was produced by two independent programs that agree exactly. This experimental mathematics project also checked partial BB(6) results and found no new records in three record-search batches. The published status of each problem was checked first, and no result is reported without a re-run check.
 
 | Project | Status | Verified outcome |
 |---|---|---|
-| OEIS | New result | 1,350 new terms across 10 sequences; not yet submitted to OEIS |
+| OEIS | New result | 1,456 new terms across 15 sequences; not yet submitted to OEIS |
 | BB(6) | Partial progress | 48 initial local lemmas for candidates 24 and 444, plus 118 new rules for candidate 24; undecided after six hours; 470 new corruption controls rejected |
 | HorizonMath A, B and C | No improvement | Published baselines retained: DTS scope 112, constant-weight code size 36, covering size 30, Schur coloring through 536, W(7,2) colouring length 3703 and A(21,10) code size 42 with minimum distance 10 |
 

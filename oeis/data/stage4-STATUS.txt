@@ -1,0 +1,357 @@
+# Candidate status
+
+Generated 2026-10-22T03:49:19.219937+00:00.
+
+Raw JSON, internal records, full edit histories, and complete b-file responses are retained in `data/`. Cache metadata record URLs, UTC retrieval times, HTTP statuses, hashes, and sizes. A synthesized b-file is not an uploaded extension. Every shortlisted b-file agrees with every DATA term and has no additional row. Histories include all older pages from `data/*-history-older-*.html`; these older revisions were archived after screening, while the latest revision of each selected target and terms were checked immediately before its extension.
+
+| Candidate | Listed terms | Range | Latest edit | Revision | more | B-file rows | Decision |
+|---|---:|---|---|---:|---|---:|---|
+| [A321728](https://oeis.org/A321728) | 14 | 0..13 | 2021-01-05T21:34:08-05:00 | 13 | yes | 14 | Reproduced reserve; related half-loop degree tables merit a separate novelty review |
+| [A321729](https://oeis.org/A321729) | 14 | 0..13 | 2021-01-05T21:34:18-05:00 | 10 | yes | 14 | Reproduced reserve; related half-loop degree tables merit a separate novelty review |
+| [A336131](https://oeis.org/A336131) | 18 | 0..17 | 2020-07-11T07:38:43-04:00 | 5 | yes | 18 | Selected |
+| [A353426](https://oeis.org/A353426) | 41 | 0..40 | 2022-05-20T08:51:22-04:00 | 10 | yes | 41 | Selected |
+| [A320052](https://oeis.org/A320052) | 13 | 0..12 | 2018-10-05T11:11:55-04:00 | 8 | yes | 13 | Selected |
+| [A320053](https://oeis.org/A320053) | 13 | 0..12 | 2018-10-05T11:12:03-04:00 | 9 | yes | 13 | Reproduced reserve; selected five cover more families |
+| [A320054](https://oeis.org/A320054) | 13 | 0..12 | 2018-10-05T11:12:12-04:00 | 11 | yes | 13 | Reproduced reserve; selected five cover more families |
+| [A304382](https://oeis.org/A304382) | 50 | 1..50 | 2025-02-03T09:38:23-05:00 | 25 | yes | 50 | Selected |
+| [A325549](https://oeis.org/A325549) | 25 | 1..25 | 2019-05-11T18:31:41-04:00 | 6 | yes | 25 | Selected |
+| [A325554](https://oeis.org/A325554) | 25 | 1..25 | 2019-05-12T08:21:07-04:00 | 5 | yes | 25 | Reproduced reserve; selected five cover more families |
+| [A339655](https://oeis.org/A339655) | 26 | 0..25 | 2025-02-16T08:34:01-05:00 | 14 | yes | 26 | Reproduced reserve; selected five cover more families |
+| [A339656](https://oeis.org/A339656) | 26 | 0..25 | 2025-02-16T08:34:01-05:00 | 29 | yes | 26 | Reproduced reserve; selected five cover more families |
+| [A332278](https://oeis.org/A332278) | 79 | 0..78 | 2021-03-11T18:15:54-05:00 | 16 | yes | 79 | Reproduced reserve; selected five cover more families |
+| [A332292](https://oeis.org/A332292) | 78 | 0..77 | 2020-06-26T12:57:36-04:00 | 11 | yes | 78 | Reproduced reserve; selected five cover more families |
+| [A332297](https://oeis.org/A332297) | 81 | 0..80 | 2020-06-26T06:05:46-04:00 | 9 | yes | 81 | Reproduced reserve; selected five cover more families |
+
+Earlier completed targets were excluded. A112907 retains its earlier rejection because A112908 already encodes the next quotient. A383708 retains its offset mismatch. Earlier multiset-isomorphism and interpretation obstacles remain excluded. No anti-run leader or disjoint strict partition sibling was selected. A336127, A336128, A336132, A320055, A320056, and A320057 were inspected but do not have `more` in the current JSON, so they were excluded from the fifteen-candidate shortlist.
+
+## External extension checks
+
+Search query responses are retained in `data/webstatus*.json`. The exact last-term and next-index queries are below. Some exact queries found no matching result; broad results included unrelated A-numbers. Searches cannot prove the absence of an unpublished or unindexed table. No longer explicit table was found for a selected target in the sources checked.
+
+| Target | Queries | Findings |
+|---|---|---|
+| [A325549](https://oeis.org/A325549) | `"A325549" "12375"`; `"A325549" "a(26)"` | OEIS and Sequence Machine expose only 1..25. Search hits for A325553 and A325556 have longer ranges but require distinct absolute differences, a stricter property. The linked differences classification lists A-numbers, not further values. |
+| [A336131](https://oeis.org/A336131) | `"A336131" "13046"`; `"A336131" "a(18)"` | OEIS exposes only 0..17. The linked multiset-partition classification lists A-numbers and definitions, not additional values. A336127 and A336132 count different starting objects. |
+| [A353426](https://oeis.org/A353426) | `"A353426" "105"`; `"A353426" "a(41)"`; `"A353426" extension terms` | Sequence Machine reproduces the 41-term list ending in 105. The A353393 Heinz ranking has 10000 entries through 99877, a finite bound on Heinz number, not a complete table by partition weight. It does not provide a longer count table for A353426. |
+| [A320052](https://oeis.org/A320052) | `"A320052" "8" "product-sum"`; `"A320052" "a(13)"` | OEIS exposes only 0..12. A320056 ranks qualifying partitions by Heinz number and lists 61 values through 143; that is not a complete census by weight beyond 12. A267597 has more terms but counts sums of products, a different definition. |
+| [A304382](https://oeis.org/A304382) | `"A304382" "35"`; `"A304382" "a(51)"` | OEIS exposes only 1..50. A303674 has a longer list but permits repeated parts. The complete text of the linked Bacher paper concerns labelled hypertrees and bipartite trees; it has no table of further arithmetic z-tree counts by sum. |
+
+Sources include [Sequence Machine A325549](https://sequencedb.net/s/A325549), [Sequence Machine A353426](https://sequencedb.net/index.html?p=257&s=oeis), [the difference classification](https://oeis.org/A325325/a325325.txt), [the multiset classification](https://oeis.org/A038041/a038041.txt), [A353393 ranking](https://oeis.org/A353393/b353393.txt), [A320056](https://oeis.org/A320056), and [Bacher arXiv:1102.2708](https://arxiv.org/abs/1102.2708). Linked references are cached, including the complete paper and its text extraction.
+
+## Full-history evidence
+
+### A321728
+
+[JSON](https://oeis.org/search?q=id%3AA321728&fmt=json), [internal](https://oeis.org/A321728/internal), [full history](https://oeis.org/history?seq=A321728), [b-file](https://oeis.org/A321728/b321728.txt).
+
+Latest comment or extension in JSON order: Conjecture: a(n) is the number of non-half-loop-graphical partitions of n. An integer partition is half-loop-graphical if it comprises the multiset of vertex-degrees of some graph with half-loops, where a half-loop is an edge with one vertex, to be distinguished from a full loop, which has two equal vertices.
+
+Revisions and changed fields, newest first:
+
+- #13 by N. J. A. Sloane at Tue Jan 05 21:34:08 EST 2021; fields: STATUS.
+- #12 by Gus Wiseman at Tue Jan 05 19:26:48 EST 2021; fields: STATUS.
+- #11 by Gus Wiseman at Tue Jan 05 19:24:18 EST 2021; fields: COMMENTS.
+- #10 by Gus Wiseman at Tue Jan 05 17:52:16 EST 2021; fields: CROSSREFS.
+- #9 by Gus Wiseman at Tue Jan 05 17:51:30 EST 2021; fields: CROSSREFS.
+- #8 by Gus Wiseman at Tue Jan 05 17:45:30 EST 2021; fields: COMMENTS.
+- #7 by Gus Wiseman at Tue Jan 05 17:44:03 EST 2021; fields: COMMENTS, LINKS, EXAMPLE, CROSSREFS, STATUS.
+- #6 by Susanna Cuyler at Mon Nov 19 07:21:32 EST 2018; fields: STATUS.
+- #5 by Gus Wiseman at Mon Nov 19 00:46:15 EST 2018; fields: STATUS.
+- #4 by Gus Wiseman at Sun Nov 18 21:49:59 EST 2018; fields: FORMULA.
+- #3 by Gus Wiseman at Sun Nov 18 21:41:54 EST 2018; fields: NAME, DATA, OFFSET, COMMENTS, FORMULA, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #2 by Gus Wiseman at Sat Nov 17 21:45:08 EST 2018; fields: KEYWORD.
+- #1 by Gus Wiseman at Sat Nov 17 21:45:08 EST 2018; fields: NAME, KEYWORD, STATUS.
+### A321729
+
+[JSON](https://oeis.org/search?q=id%3AA321729&fmt=json), [internal](https://oeis.org/A321729/internal), [full history](https://oeis.org/history?seq=A321729), [b-file](https://oeis.org/A321729/b321729.txt).
+
+Latest comment or extension in JSON order: Conjecture: a(n) is the number of half-loop-graphical partitions of n. An integer partition is half-loop-graphical if it comprises the multiset of vertex-degrees of some graph with half-loops, where a half-loop is an edge with one vertex, to be distinguished from a full loop, which has two equal vertices.
+
+Revisions and changed fields, newest first:
+
+- #10 by N. J. A. Sloane at Tue Jan 05 21:34:18 EST 2021; fields: STATUS.
+- #9 by Gus Wiseman at Tue Jan 05 19:22:18 EST 2021; fields: STATUS.
+- #8 by Gus Wiseman at Tue Jan 05 19:20:31 EST 2021; fields: COMMENTS.
+- #7 by Gus Wiseman at Tue Jan 05 19:20:01 EST 2021; fields: COMMENTS.
+- #6 by Gus Wiseman at Tue Jan 05 18:10:30 EST 2021; fields: COMMENTS, EXAMPLE, CROSSREFS, STATUS.
+- #5 by Susanna Cuyler at Mon Nov 19 07:21:41 EST 2018; fields: STATUS.
+- #4 by Gus Wiseman at Mon Nov 19 00:47:44 EST 2018; fields: STATUS.
+- #3 by Gus Wiseman at Sun Nov 18 21:49:28 EST 2018; fields: FORMULA.
+- #2 by Gus Wiseman at Sun Nov 18 21:46:45 EST 2018; fields: NAME, DATA, OFFSET, COMMENTS, FORMULA, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Sat Nov 17 21:45:08 EST 2018; fields: NAME, KEYWORD, STATUS.
+### A336131
+
+[JSON](https://oeis.org/search?q=id%3AA336131&fmt=json), [internal](https://oeis.org/A336131/internal), [full history](https://oeis.org/history?seq=A336131), [b-file](https://oeis.org/A336131/b336131.txt).
+
+Latest comment or extension in JSON order: No comment or extension field.
+
+Revisions and changed fields, newest first:
+
+- #5 by Susanna Cuyler at Sat Jul 11 07:38:43 EDT 2020; fields: STATUS.
+- #4 by Gus Wiseman at Sat Jul 11 05:16:39 EDT 2020; fields: STATUS.
+- #3 by Gus Wiseman at Sat Jul 11 04:00:53 EDT 2020; fields: COMMENTS.
+- #2 by Gus Wiseman at Sat Jul 11 03:56:53 EDT 2020; fields: NAME, DATA, OFFSET, COMMENTS, LINKS, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Thu Jul 09 13:27:18 EDT 2020; fields: NAME, KEYWORD, STATUS.
+
+Immediately before the extension run, at 2026-10-22T03:42:50.727190+00:00, all four endpoints were re-fetched. `more` remains present; revision, DATA, offset, and full b-file are unchanged. No later term extension or b-file upload is visible in this fresh history. Evidence: `data/A336131-start-*`.
+### A353426
+
+[JSON](https://oeis.org/search?q=id%3AA353426&fmt=json), [internal](https://oeis.org/A353426/internal), [full history](https://oeis.org/history?seq=A353426), [b-file](https://oeis.org/A353426/b353426.txt).
+
+Latest comment or extension in JSON order: a(n) is number of integer partitions of n whose Heinz number belongs to A353393, where the Heinz number of a partition (y_1,...,y_k) is prime(y_1)*...*prime(y_k).
+
+Revisions and changed fields, newest first:
+
+- #10 by Michael De Vlieger at Fri May 20 08:51:22 EDT 2022; fields: STATUS.
+- #9 by Gus Wiseman at Thu May 19 19:42:23 EDT 2022; fields: STATUS.
+- #8 by Gus Wiseman at Thu May 19 19:13:59 EDT 2022; fields: NAME, STATUS.
+- #7 by Michael De Vlieger at Mon May 16 22:17:14 EDT 2022; fields: STATUS.
+- #6 by Gus Wiseman at Mon May 16 22:15:40 EDT 2022; fields: STATUS.
+- #5 by Gus Wiseman at Mon May 16 22:15:15 EDT 2022; fields: NAME, COMMENTS, EXAMPLE, KEYWORD.
+- #4 by Gus Wiseman at Mon May 16 18:08:34 EDT 2022; fields: CROSSREFS.
+- #3 by Gus Wiseman at Mon May 16 11:16:18 EDT 2022; fields: NAME, DATA, OFFSET, COMMENTS, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #2 by Gus Wiseman at Tue Apr 19 01:29:41 EDT 2022; fields: KEYWORD.
+- #1 by Gus Wiseman at Tue Apr 19 01:29:41 EDT 2022; fields: NAME, KEYWORD, STATUS.
+
+Immediately before the extension run, at 2026-10-22T03:43:01.016071+00:00, all four endpoints were re-fetched. `more` remains present; revision, DATA, offset, and full b-file are unchanged. No later term extension or b-file upload is visible in this fresh history. Evidence: `data/A353426-start-*`.
+### A320052
+
+[JSON](https://oeis.org/search?q=id%3AA320052&fmt=json), [internal](https://oeis.org/A320052/internal), [full history](https://oeis.org/history?seq=A320052), [b-file](https://oeis.org/A320052/b320052.txt).
+
+Latest comment or extension in JSON order: No comment or extension field.
+
+Revisions and changed fields, newest first:
+
+- #8 by Susanna Cuyler at Fri Oct 05 11:11:55 EDT 2018; fields: STATUS.
+- #7 by Gus Wiseman at Fri Oct 05 09:39:58 EDT 2018; fields: STATUS.
+- #6 by Gus Wiseman at Fri Oct 05 09:20:50 EDT 2018; fields: EXAMPLE.
+- #5 by Gus Wiseman at Fri Oct 05 08:31:46 EDT 2018; fields: EXAMPLE.
+- #4 by Gus Wiseman at Fri Oct 05 08:30:31 EDT 2018; fields: EXAMPLE.
+- #3 by Gus Wiseman at Thu Oct 04 14:43:20 EDT 2018; fields: CROSSREFS.
+- #2 by Gus Wiseman at Thu Oct 04 14:05:09 EDT 2018; fields: NAME, DATA, OFFSET, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Thu Oct 04 14:05:09 EDT 2018; fields: NAME, KEYWORD, STATUS.
+
+Immediately before the extension run, at 2026-10-22T03:43:39.584109+00:00, all four endpoints were re-fetched. `more` remains present; revision, DATA, offset, and full b-file are unchanged. No later term extension or b-file upload is visible in this fresh history. Evidence: `data/A320052-start-*`.
+### A320053
+
+[JSON](https://oeis.org/search?q=id%3AA320053&fmt=json), [internal](https://oeis.org/A320053/internal), [full history](https://oeis.org/history?seq=A320053), [b-file](https://oeis.org/A320053/b320053.txt).
+
+Latest comment or extension in JSON order: No comment or extension field.
+
+Revisions and changed fields, newest first:
+
+- #9 by Susanna Cuyler at Fri Oct 05 11:12:03 EDT 2018; fields: STATUS.
+- #8 by Gus Wiseman at Fri Oct 05 09:48:04 EDT 2018; fields: STATUS.
+- #7 by Gus Wiseman at Fri Oct 05 09:46:55 EDT 2018; fields: EXAMPLE.
+- #6 by Gus Wiseman at Fri Oct 05 09:41:45 EDT 2018; fields: EXAMPLE.
+- #5 by Gus Wiseman at Fri Oct 05 09:05:10 EDT 2018; fields: EXAMPLE.
+- #4 by Gus Wiseman at Fri Oct 05 08:41:22 EDT 2018; fields: EXAMPLE.
+- #3 by Gus Wiseman at Thu Oct 04 14:43:36 EDT 2018; fields: CROSSREFS.
+- #2 by Gus Wiseman at Thu Oct 04 14:08:26 EDT 2018; fields: NAME, DATA, OFFSET, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Thu Oct 04 14:08:26 EDT 2018; fields: NAME, KEYWORD, STATUS.
+### A320054
+
+[JSON](https://oeis.org/search?q=id%3AA320054&fmt=json), [internal](https://oeis.org/A320054/internal), [full history](https://oeis.org/history?seq=A320054), [b-file](https://oeis.org/A320054/b320054.txt).
+
+Latest comment or extension in JSON order: No comment or extension field.
+
+Revisions and changed fields, newest first:
+
+- #11 by Susanna Cuyler at Fri Oct 05 11:12:12 EDT 2018; fields: STATUS.
+- #10 by Gus Wiseman at Fri Oct 05 09:45:55 EDT 2018; fields: STATUS.
+- #9 by Gus Wiseman at Fri Oct 05 09:45:44 EDT 2018; fields: EXAMPLE, STATUS.
+- #8 by Gus Wiseman at Fri Oct 05 09:44:37 EDT 2018; fields: STATUS.
+- #7 by Gus Wiseman at Fri Oct 05 09:42:30 EDT 2018; fields: NAME.
+- #6 by Gus Wiseman at Fri Oct 05 09:25:20 EDT 2018; fields: NAME, DATA, OFFSET.
+- #5 by Gus Wiseman at Fri Oct 05 09:12:46 EDT 2018; fields: DATA, OFFSET, EXAMPLE.
+- #4 by Gus Wiseman at Fri Oct 05 08:53:23 EDT 2018; fields: NAME, DATA, OFFSET, EXAMPLE.
+- #3 by Gus Wiseman at Thu Oct 04 14:44:00 EDT 2018; fields: CROSSREFS.
+- #2 by Gus Wiseman at Thu Oct 04 14:10:41 EDT 2018; fields: NAME, DATA, OFFSET, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Thu Oct 04 14:10:41 EDT 2018; fields: NAME, KEYWORD, STATUS.
+### A304382
+
+[JSON](https://oeis.org/search?q=id%3AA304382&fmt=json), [internal](https://oeis.org/A304382/internal), [full history](https://oeis.org/history?seq=A304382), [b-file](https://oeis.org/A304382/b304382.txt).
+
+Latest comment or extension in JSON order: The clutter density of a multiset S of positive integers is Sum_{s in S} (omega(s) - 1) - omega(LCM(S)).
+
+Revisions and changed fields, newest first:
+
+- #25 by Michael De Vlieger at Mon Feb 03 09:38:23 EST 2025; fields: STATUS.
+- #24 by Andrew Howroyd at Mon Feb 03 09:37:51 EST 2025; fields: STATUS.
+- #23 by Michel Marcus at Mon Feb 03 03:31:40 EST 2025; fields: STATUS.
+- #22 by Michel Marcus at Mon Feb 03 03:31:30 EST 2025; fields: LINKS, KEYWORD, STATUS.
+- #21 by Susanna Cuyler at Sun May 27 14:43:11 EDT 2018; fields: STATUS.
+- #20 by Gus Wiseman at Sun May 27 11:53:02 EDT 2018; fields: STATUS.
+- #19 by Gus Wiseman at Sun May 27 11:52:53 EDT 2018; fields: CROSSREFS.
+- #18 by Gus Wiseman at Mon May 21 17:05:15 EDT 2018; fields: CROSSREFS.
+- #17 by Gus Wiseman at Mon May 21 17:04:34 EDT 2018; fields: EXAMPLE.
+- #16 by Gus Wiseman at Mon May 21 17:01:19 EDT 2018; fields: NAME, DATA, OFFSET, COMMENTS, LINKS, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #15 by Gus Wiseman at Mon May 21 17:01:19 EDT 2018; fields: NAME, KEYWORD.
+- #14 by Alois P. Heinz at Mon May 21 16:31:51 EDT 2018; fields: STATUS.
+- #13 by Joerg Arndt at Mon May 21 07:09:12 EDT 2018; fields: STATUS.
+- #12 by Andrey Zabolotskiy at Mon May 21 07:05:58 EDT 2018; fields: STATUS.
+- #11 by Andrey Zabolotskiy at Mon May 21 07:05:48 EDT 2018; fields: NAME, DATA, OFFSET, COMMENTS, REFERENCES, MAPLE, PROG, CROSSREFS, KEYWORD, AUTHOR, EXTENSIONS.
+- #10 by N. J. A. Sloane at Sun May 13 20:03:04 EDT 2018; fields: EXTENSIONS, STATUS.
+- #9 by Emeric Deutsch at Sun May 13 18:59:24 EDT 2018; fields: STATUS.
+- #8 by Muniru A Asiru at Sun May 13 17:37:39 EDT 2018; fields: STATUS.
+- #7 by Muniru A Asiru at Sun May 13 17:37:22 EDT 2018; fields: PROG, STATUS.
+- #6 by Emeric Deutsch at Sun May 13 15:10:05 EDT 2018; fields: STATUS.
+- #5 by Jon E. Schoenfield at Sun May 13 14:29:43 EDT 2018; fields: STATUS.
+- #4 by Jon E. Schoenfield at Sun May 13 14:29:40 EDT 2018; fields: CROSSREFS, STATUS.
+- #3 by Emeric Deutsch at Sun May 13 13:16:02 EDT 2018; fields: STATUS.
+- #2 by Emeric Deutsch at Sun May 13 13:15:56 EDT 2018; fields: NAME, DATA, OFFSET, COMMENTS, REFERENCES, MAPLE, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Emeric Deutsch at Sat May 12 03:54:09 EDT 2018; fields: NAME, KEYWORD, STATUS.
+
+Immediately before the extension run, at 2026-10-22T03:43:44.157714+00:00, all four endpoints were re-fetched. `more` remains present; revision, DATA, offset, and full b-file are unchanged. No later term extension or b-file upload is visible in this fresh history. Evidence: `data/A304382-start-*`.
+### A325549
+
+[JSON](https://oeis.org/search?q=id%3AA325549&fmt=json), [internal](https://oeis.org/A325549/internal), [full history](https://oeis.org/history?seq=A325549), [b-file](https://oeis.org/A325549/b325549.txt).
+
+Latest comment or extension in JSON order: The circular differences of a composition c of length k are c_{i + 1} - c_i for i < k and c_1 - c_i for i = k. For example, the circular differences of (1,2,1,3) are (1,-1,2,-2).
+
+Revisions and changed fields, newest first:
+
+- #6 by Susanna Cuyler at Sat May 11 18:31:41 EDT 2019; fields: STATUS.
+- #5 by Gus Wiseman at Sat May 11 15:02:47 EDT 2019; fields: STATUS.
+- #4 by Gus Wiseman at Sat May 11 15:02:44 EDT 2019; fields: KEYWORD, STATUS.
+- #3 by Gus Wiseman at Sat May 11 14:57:14 EDT 2019; fields: STATUS.
+- #2 by Gus Wiseman at Fri May 10 03:26:06 EDT 2019; fields: NAME, DATA, OFFSET, COMMENTS, LINKS, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Thu May 09 14:29:56 EDT 2019; fields: NAME, KEYWORD, STATUS.
+
+Immediately before the extension run, at 2026-10-22T03:39:16.503705+00:00, all four endpoints were re-fetched. `more` remains present; revision, DATA, offset, and full b-file are unchanged. No later term extension or b-file upload is visible in this fresh history. Evidence: `data/A325549-start-*`.
+### A325554
+
+[JSON](https://oeis.org/search?q=id%3AA325554&fmt=json), [internal](https://oeis.org/A325554/internal), [full history](https://oeis.org/history?seq=A325554), [b-file](https://oeis.org/A325554/b325554.txt).
+
+Latest comment or extension in JSON order: The differences of a sequence are defined as if the sequence were increasing, so for example the differences of (3,1,2) are (-2,1).
+
+Revisions and changed fields, newest first:
+
+- #5 by Susanna Cuyler at Sun May 12 08:21:07 EDT 2019; fields: STATUS.
+- #4 by Gus Wiseman at Sun May 12 00:35:54 EDT 2019; fields: STATUS.
+- #3 by Gus Wiseman at Sun May 12 00:35:52 EDT 2019; fields: MATHEMATICA.
+- #2 by Gus Wiseman at Sat May 11 22:00:04 EDT 2019; fields: NAME, DATA, OFFSET, COMMENTS, LINKS, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Thu May 09 14:29:56 EDT 2019; fields: NAME, KEYWORD, STATUS.
+### A339655
+
+[JSON](https://oeis.org/search?q=id%3AA339655&fmt=json), [internal](https://oeis.org/A339655/internal), [full history](https://oeis.org/history?seq=A339655), [b-file](https://oeis.org/A339655/b339655.txt).
+
+Latest comment or extension in JSON order: a(7)-a(25) from _Andrew Howroyd_, Jan 10 2024
+
+Revisions and changed fields, newest first:
+
+- #14 by Charles R Greathouse IV at Sun Feb 16 08:34:01 EST 2025; fields: LINKS.
+- #13 by Michael De Vlieger at Thu Jan 11 10:58:35 EST 2024; fields: STATUS.
+- #12 by Andrew Howroyd at Thu Jan 11 10:48:19 EST 2024; fields: STATUS.
+- #11 by Andrew Howroyd at Thu Jan 11 10:38:55 EST 2024; fields: DATA, EXTENSIONS.
+- #10 by Andrew Howroyd at Wed Jan 10 22:12:12 EST 2024; fields: DATA, EXTENSIONS, STATUS.
+- #9 by Susanna Cuyler at Fri Dec 18 07:59:34 EST 2020; fields: STATUS.
+- #8 by Gus Wiseman at Tue Dec 15 04:47:46 EST 2020; fields: STATUS.
+- #7 by Gus Wiseman at Tue Dec 15 04:46:55 EST 2020; fields: COMMENTS.
+- #6 by Gus Wiseman at Tue Dec 15 04:44:44 EST 2020; fields: COMMENTS, CROSSREFS.
+- #5 by Gus Wiseman at Tue Dec 15 04:31:52 EST 2020; fields: CROSSREFS.
+- #4 by Gus Wiseman at Mon Dec 14 17:33:14 EST 2020; fields: FORMULA.
+- #3 by Gus Wiseman at Mon Dec 14 06:47:58 EST 2020; fields: NAME, DATA, OFFSET, COMMENTS, LINKS, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #2 by Gus Wiseman at Fri Dec 11 20:14:20 EST 2020; fields: KEYWORD.
+- #1 by Gus Wiseman at Fri Dec 11 20:14:20 EST 2020; fields: NAME, KEYWORD, STATUS.
+### A339656
+
+[JSON](https://oeis.org/search?q=id%3AA339656&fmt=json), [internal](https://oeis.org/A339656/internal), [full history](https://oeis.org/history?seq=A339656), [b-file](https://oeis.org/A339656/b339656.txt).
+
+Latest comment or extension in JSON order: a(8)-a(25) from _Andrew Howroyd_, Jan 10 2024
+
+Revisions and changed fields, newest first:
+
+- #29 by Charles R Greathouse IV at Sun Feb 16 08:34:01 EST 2025; fields: LINKS.
+- #28 by Michael De Vlieger at Thu Jan 11 10:58:31 EST 2024; fields: STATUS.
+- #27 by Andrew Howroyd at Thu Jan 11 10:48:29 EST 2024; fields: STATUS.
+- #26 by Andrew Howroyd at Thu Jan 11 10:35:22 EST 2024; fields: DATA, EXTENSIONS.
+- #25 by Andrew Howroyd at Wed Jan 10 22:09:58 EST 2024; fields: DATA, EXTENSIONS, STATUS.
+- #24 by N. J. A. Sloane at Tue Jan 05 21:34:53 EST 2021; fields: STATUS.
+- #23 by Gus Wiseman at Tue Jan 05 18:46:24 EST 2021; fields: STATUS.
+- #22 by Gus Wiseman at Tue Jan 05 18:40:00 EST 2021; fields: CROSSREFS.
+- #21 by Gus Wiseman at Tue Jan 05 16:45:37 EST 2021; fields: CROSSREFS, STATUS.
+- #20 by N. J. A. Sloane at Tue Jan 05 14:53:33 EST 2021; fields: STATUS.
+- #19 by N. J. A. Sloane at Tue Jan 05 14:53:31 EST 2021; fields: CROSSREFS, STATUS.
+- #18 by Susanna Cuyler at Sun Dec 20 22:24:40 EST 2020; fields: STATUS.
+- #17 by Gus Wiseman at Sun Dec 20 11:28:25 EST 2020; fields: STATUS.
+- #16 by Gus Wiseman at Sun Dec 20 11:28:22 EST 2020; fields: COMMENTS, CROSSREFS.
+- #15 by Gus Wiseman at Sun Dec 20 10:26:05 EST 2020; fields: CROSSREFS.
+- #14 by Gus Wiseman at Sun Dec 20 09:34:37 EST 2020; fields: CROSSREFS.
+- #13 by Gus Wiseman at Sun Dec 20 09:19:57 EST 2020; fields: CROSSREFS.
+- #12 by Gus Wiseman at Sun Dec 20 09:07:51 EST 2020; fields: CROSSREFS.
+- #11 by Gus Wiseman at Sun Dec 20 08:24:43 EST 2020; fields: EXAMPLE.
+- #10 by Gus Wiseman at Sun Dec 20 08:14:24 EST 2020; fields: COMMENTS.
+- #9 by Gus Wiseman at Sun Dec 20 08:12:31 EST 2020; fields: COMMENTS.
+- #8 by Gus Wiseman at Thu Dec 17 22:15:59 EST 2020; fields: CROSSREFS, STATUS.
+- #7 by Gus Wiseman at Tue Dec 15 05:09:45 EST 2020; fields: STATUS.
+- #6 by Gus Wiseman at Tue Dec 15 05:09:12 EST 2020; fields: CROSSREFS.
+- #5 by Gus Wiseman at Tue Dec 15 05:05:05 EST 2020; fields: EXAMPLE, MATHEMATICA.
+- #4 by Gus Wiseman at Tue Dec 15 05:01:42 EST 2020; fields: EXAMPLE.
+- #3 by Gus Wiseman at Tue Dec 15 04:55:05 EST 2020; fields: COMMENTS, CROSSREFS.
+- #2 by Gus Wiseman at Mon Dec 14 17:32:28 EST 2020; fields: NAME, DATA, OFFSET, COMMENTS, LINKS, FORMULA, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Fri Dec 11 20:14:20 EST 2020; fields: NAME, KEYWORD, STATUS.
+### A332278
+
+[JSON](https://oeis.org/search?q=id%3AA332278&fmt=json), [internal](https://oeis.org/A332278/internal), [full history](https://oeis.org/history?seq=A332278), [b-file](https://oeis.org/A332278/b332278.txt).
+
+Latest comment or extension in JSON order: a(71)-a(78) from _Jinyuan Wang_, Jun 26 2020
+
+Revisions and changed fields, newest first:
+
+- #16 by Peter Luschny at Thu Mar 11 18:15:54 EST 2021; fields: STATUS.
+- #15 by Peter Luschny at Thu Mar 11 18:15:45 EST 2021; fields: CROSSREFS, STATUS.
+- #14 by Joerg Arndt at Thu Mar 11 01:53:29 EST 2021; fields: STATUS.
+- #13 by Jon E. Schoenfield at Thu Mar 11 01:06:38 EST 2021; fields: STATUS.
+- #12 by Jon E. Schoenfield at Thu Mar 11 01:06:27 EST 2021; fields: CROSSREFS, STATUS.
+- #11 by Peter Luschny at Fri Jun 26 07:30:59 EDT 2020; fields: STATUS.
+- #10 by Joerg Arndt at Fri Jun 26 07:19:20 EDT 2020; fields: STATUS.
+- #9 by Jinyuan Wang at Fri Jun 26 06:11:58 EDT 2020; fields: STATUS.
+- #8 by Jinyuan Wang at Fri Jun 26 06:11:26 EDT 2020; fields: DATA, EXTENSIONS, STATUS.
+- #7 by Susanna Cuyler at Thu Mar 05 22:56:35 EST 2020; fields: STATUS.
+- #6 by Gus Wiseman at Thu Mar 05 15:28:34 EST 2020; fields: STATUS.
+- #5 by Gus Wiseman at Thu Mar 05 15:27:33 EST 2020; fields: COMMENTS.
+- #4 by Gus Wiseman at Thu Mar 05 10:36:23 EST 2020; fields: COMMENTS.
+- #3 by Gus Wiseman at Thu Mar 05 10:34:28 EST 2020; fields: KEYWORD.
+- #2 by Gus Wiseman at Thu Mar 05 10:34:15 EST 2020; fields: NAME, DATA, OFFSET, COMMENTS, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Sat Feb 08 23:13:02 EST 2020; fields: NAME, KEYWORD, STATUS.
+### A332292
+
+[JSON](https://oeis.org/search?q=id%3AA332292&fmt=json), [internal](https://oeis.org/A332292/internal), [full history](https://oeis.org/history?seq=A332292), [b-file](https://oeis.org/A332292/b332292.txt).
+
+Latest comment or extension in JSON order: a(71)-a(77) from _Jinyuan Wang_, Jun 26 2020
+
+Revisions and changed fields, newest first:
+
+- #11 by Peter Luschny at Fri Jun 26 12:57:36 EDT 2020; fields: STATUS.
+- #10 by Michel Marcus at Fri Jun 26 12:02:15 EDT 2020; fields: STATUS.
+- #9 by Jinyuan Wang at Fri Jun 26 05:46:33 EDT 2020; fields: STATUS.
+- #8 by Jinyuan Wang at Fri Jun 26 05:46:21 EDT 2020; fields: DATA, EXTENSIONS, STATUS.
+- #7 by Susanna Cuyler at Tue Feb 18 04:47:37 EST 2020; fields: STATUS.
+- #6 by Gus Wiseman at Mon Feb 17 18:53:23 EST 2020; fields: STATUS.
+- #5 by Gus Wiseman at Mon Feb 17 18:52:31 EST 2020; fields: CROSSREFS.
+- #4 by Gus Wiseman at Mon Feb 17 18:45:15 EST 2020; fields: EXAMPLE.
+- #3 by Gus Wiseman at Sun Feb 16 20:27:39 EST 2020; fields: EXAMPLE.
+- #2 by Gus Wiseman at Sun Feb 16 20:21:39 EST 2020; fields: NAME, DATA, OFFSET, COMMENTS, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Sat Feb 08 23:13:02 EST 2020; fields: NAME, KEYWORD, STATUS.
+### A332297
+
+[JSON](https://oeis.org/search?q=id%3AA332297&fmt=json), [internal](https://oeis.org/A332297/internal), [full history](https://oeis.org/history?seq=A332297), [b-file](https://oeis.org/A332297/b332297.txt).
+
+Latest comment or extension in JSON order: a(60)-a(80) from _Jinyuan Wang_, Jun 26 2020
+
+Revisions and changed fields, newest first:
+
+- #9 by Peter Luschny at Fri Jun 26 06:05:46 EDT 2020; fields: STATUS.
+- #8 by Joerg Arndt at Fri Jun 26 05:35:36 EDT 2020; fields: STATUS.
+- #7 by Jinyuan Wang at Fri Jun 26 05:01:56 EDT 2020; fields: STATUS.
+- #6 by Jinyuan Wang at Fri Jun 26 05:01:40 EDT 2020; fields: DATA, EXTENSIONS, STATUS.
+- #5 by Susanna Cuyler at Sun Feb 16 07:55:05 EST 2020; fields: STATUS.
+- #4 by Gus Wiseman at Sun Feb 16 05:14:05 EST 2020; fields: STATUS.
+- #3 by Gus Wiseman at Sun Feb 16 05:13:37 EST 2020; fields: CROSSREFS.
+- #2 by Gus Wiseman at Sat Feb 15 07:29:55 EST 2020; fields: NAME, DATA, OFFSET, COMMENTS, EXAMPLE, MATHEMATICA, CROSSREFS, KEYWORD, AUTHOR, STATUS.
+- #1 by Gus Wiseman at Sat Feb 08 23:13:02 EST 2020; fields: NAME, KEYWORD, STATUS.
+
+Ranking-bound check for A353426 at index 41: the accepted partition [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6] has Heinz number 2724321600, exceeding the related published ranking endpoint 99877. Thus that finite ranking does not contain even every accepted object at the first new weight. Command-produced evidence is in `data/A353426-ranking-bound.json`.
+
+Ranking-bound check for A320052 at index 13: the accepted partition [3, 5, 5] has Heinz number 605, exceeding the related published ranking endpoint 143. Thus that finite ranking does not contain even every accepted object at the first new weight. Command-produced evidence is in `data/A320052-ranking-bound.json`.

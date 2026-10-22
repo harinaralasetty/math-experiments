@@ -1,12 +1,12 @@
 # Verification report
 
-Math Experiments v2 is generated locally from pinned committed source snapshots. The OEIS stages together supply 1,350 new terms across 10 sequences. No commit, push, publication or OEIS submission was performed.
+Math Experiments including OEIS stage 4 is generated locally from pinned committed source snapshots. The OEIS stages together supply 1,456 new terms across 15 sequences. No commit, push, publication or OEIS submission was performed.
 
-The generator and stylesheet provide the announcement copy, per-sequence pages, two-significant-digit historical timings, complete downloads with 20-row previews, author credit, a visible FAQ and matching FAQPage, Article, WebSite, Dataset and breadcrumb JSON-LD, a refreshed social image, llms.txt and a sitemap. The README and all totals use the same combined sequence data.
+The generator and stylesheet provide the announcement copy, per-sequence pages, two-significant-digit historical timings, complete downloads with 20-row previews, author credit, a visible FAQ and matching FAQPage, Article, WebSite, Dataset and breadcrumb JSON-LD, a refreshed social image, llms.txt and a sitemap. The README and all totals use the same combined sequence data. The stage 4 import preserves the earlier pinned files and adds the manager-specified committed snapshot. Its programs and b-files remain byte-identical; the report's machine-home paths are redacted and its original hash is retained. The verification runner and site checks respect each sequence's original first index.
 
 ## Source revisions
 
-- `oeis`: `3504def3c80d31ce2cacb94b9fa67843812518db`
+- `oeis`: `05ce39322c21fd37febd55601fbb27d7f92bc8fe`
 - `bb6`: `228ba5559d062ca1f8fb5f6a21285fb9e80a6eb6`
 - `hm-batchA`: `b969a3c1429b2946ea10c3b365086d39bcc60ac7`
 - `hm-batchB`: `87d65db8e5b58a3e741c0bcfc3143bd44ce2609f`
@@ -20,7 +20,7 @@ Site validation uses the strict local validator for this generator's HTML5 subse
 
 Page modification dates use each imported file's last-change date from the pinned source git revision and the relevant generator/style dates. Uncommitted generator/style changes use filesystem modification dates. The dates are repeated consistently in the byline, structured data and sitemap. Dates therefore follow each page's dependencies rather than one fixed publication date.
 
-Responsive CSS wraps long numbers and inline code, keeps tables in scrollable boxes, lets navigation and cards wrap, and limits b-file previews to the first 20 rows. The 1200-by-630 social image was inspected directly. Browser automation was unavailable, so no rendered 390 px viewport or physical-phone test is claimed. The checks verify the relevant CSS and viewport rules.
+Responsive CSS wraps long numbers and inline code, keeps tables in scrollable boxes, lets navigation and cards wrap, and limits b-file previews to the first 20 rows. The 1200-by-630 social image was inspected directly. No rendered 390 px viewport or physical-phone test was performed. The checks verify the relevant CSS and viewport rules.
 
 Only allowlisted first-party source programs, evidence and text were imported; third-party papers, web snapshots, archives and implementations remain excluded. All complete b-files are byte-identical to the pinned source blobs. sources.json and docs/PROVENANCE.md record hashes, transformations and dates. The privacy scan below includes hidden and ignored working-tree files, excludes git history and skips binary content.
 
@@ -30,7 +30,7 @@ Command: `make build`
 
 ```text
 python3 tools/build_site.py
-Generated 15 HTML pages, provenance, sitemap, README and social image.
+Generated 20 HTML pages, provenance, sitemap, README and social image.
 ```
 
 ## Site, FAQ, provenance, metadata, links and privacy
@@ -39,15 +39,15 @@ Command: `make verify-site`
 
 ```text
 python3 -m unittest discover -s tools -p 'test_*.py'
-...............
+................
 ----------------------------------------------------------------------
-Ran 15 tests in 1.105s
+Ran 16 tests in 2.011s
 
 OK
 python3 tools/check_site.py
-PASS imported source hashes and pinned source bytes: 163 files
+PASS imported source hashes and pinned source bytes: 186 files
 PASS final stage2c summary: rule, corruption and concrete totals match source certificates; decision registry empty
-PASS numeric claim ledger: 51 source-backed sections; derived totals and ranges checked
+PASS numeric claim ledger: 71 source-backed sections; derived totals and ranges checked
 c8254c6946c5081c7a98bef5db1c49ee7274a5b1c9db25b316af740fcb8e212a  docs/data/A391646.txt  SOURCE BYTE MATCH
 cb6407dce9262780347ede1f01552c286ba7f69f8cdf393df1ae17625df50607  docs/data/A383533.txt  SOURCE BYTE MATCH
 0cae08d930abb2f7a9c27690792e6da326a323b1804dd6dee0c3fa173a962fc3  docs/data/A374679.txt  SOURCE BYTE MATCH
@@ -58,14 +58,19 @@ cb6407dce9262780347ede1f01552c286ba7f69f8cdf393df1ae17625df50607  docs/data/A383
 c723aac27e7467e8bcf65eee9dd2c467697f81def286f2093ee5e0018a3fc7ff  docs/data/A374682.txt  SOURCE BYTE MATCH
 38e674a6ecc63b74c8b468dd02200b3d51d31c53efa3c45ccfa8f0b8803d7e6e  docs/data/A383710.txt  SOURCE BYTE MATCH
 8c7ab3d49b82270d9a010ddbee632cf6a829f18352ecf3fc4a79f6d89a80e816  docs/data/A383711.txt  SOURCE BYTE MATCH
-PASS local HTML5 subset validator: 15 pages, strict nesting, attributes, content models, one h1 and semantic structure
-PASS internal link checker: 198 links and assets, including fragments
-PASS unique titles/descriptions, canonical URLs, Open Graph, Twitter cards and parsed JSON-LD: 15 pages
-PASS sitemap exact coverage: 15 pages; robots sitemap reference
+e7a5b09c0e4997d36a7720e99577a6bf320ff95685cded26f753267615a9e3d9  docs/data/A325549.txt  SOURCE BYTE MATCH
+a2319370409368857497b77e51976b43cbc41f97f865f280bd5f36b2e6f24aed  docs/data/A336131.txt  SOURCE BYTE MATCH
+96e6a8128ed07c103e715961a19f2eea0fa3315c7ab42766c9050297e89c9188  docs/data/A353426.txt  SOURCE BYTE MATCH
+42d701ff8b3cee8a13259a15d17f50497ce7b1a2bc88d207fd9dd9772d46d2cc  docs/data/A320052.txt  SOURCE BYTE MATCH
+1453bc6f68e786674fafb074a728791e2b0d497bf558579e06ec7931145cb2db  docs/data/A304382.txt  SOURCE BYTE MATCH
+PASS local HTML5 subset validator: 20 pages, strict nesting, attributes, content models, one h1 and semantic structure
+PASS internal link checker: 268 links and assets, including fragments
+PASS unique titles/descriptions, canonical URLs, Open Graph, Twitter cards and parsed JSON-LD: 20 pages
+PASS sitemap exact coverage: 20 pages; robots sitemap reference
 PASS visible FAQ matches parsed FAQPage JSON-LD; author, Article, Dataset and breadcrumbs; per-page modification dates and llms.txt coverage
 PASS responsive viewport and CSS; no runtime scripts, remote fonts, trackers or large page assets
 PASS social image: 1200x630; results table drawn from the shared source model
-PASS repository Markdown internal links: 16 targets
+PASS repository Markdown internal links: 15 targets
 PASS no vendored papers, PDFs, source archives or copied web pages; imported code is byte-identical allowlisted first-party code; batch C sources folder excluded
 COMMAND: python regex scan of every file under the repo root (hidden and ignored files included; .git excluded)
 scan output: (no matches)
@@ -80,31 +85,39 @@ Command: `make verify-math`
 
 ```text
 /Library/Developer/CommandLineTools/usr/bin/make -C oeis verify
-clang++ -O3 -std=c++17 -Wall -Wextra code/new_powerful.cpp -o code/new_powerful
-clang++ -O3 -std=c++17 -Wall -Wextra code/new_patterns.cpp -o code/new_patterns
-clang++ -O3 -std=c++17 -Wall -Wextra code/cut_runs.cpp -o code/cut_runs
-clang++ -O3 -std=c++17 -Wall -Wextra code/new_runs.cpp -o code/new_runs
+clang++ -O3 -std=c++17 -Wall -Wextra code/stage4/necklaces.cpp -o code/stage4/necklaces
+clang++ -O3 -std=c++17 -Wall -Wextra code/stage4/independent.cpp -o code/stage4/independent
 python3 -u verify.py
-A391646 reference indices=0..37 PASS wall_seconds=0.062775
-A391646 independent indices=0..37 PASS wall_seconds=0.735525
-A374679 independent indices=0..512 PASS wall_seconds=3.338294
-A374679 reference indices=0..512 PASS wall_seconds=17.497081
-A383533 reference indices=0..75 PASS wall_seconds=83.054962
-A335457 reference indices=0..26 PASS wall_seconds=57.928392
-A353390 reference indices=0..32 PASS wall_seconds=190.461001
-A374680 reference indices=0..256 PASS wall_seconds=1.861636
-A374680 independent indices=0..256 PASS wall_seconds=0.978749
-A374681 reference indices=0..256 PASS wall_seconds=1.897893
-A374681 independent indices=0..256 PASS wall_seconds=1.404770
-A374682 reference indices=0..256 PASS wall_seconds=1.875518
-A374682 independent indices=0..256 PASS wall_seconds=1.976311
-A353390 independent indices=0..32 PASS wall_seconds=255.390424
-A383710 reference indices=0..65 PASS wall_seconds=83.903052
-A383711 reference indices=0..65 PASS wall_seconds=12.255656
-A383710 independent indices=0..65 PASS wall_seconds=71.512934
-A383711 independent indices=0..65 PASS wall_seconds=68.046216
-A383533 independent indices=0..75 PASS wall_seconds=501.919625
-A335457 independent indices=0..26 PASS wall_seconds=874.489557
+A391646 reference indices=0..37 PASS wall_seconds=0.039561
+A391646 independent indices=0..37 PASS wall_seconds=0.091883
+A374679 independent indices=0..512 PASS wall_seconds=2.690731
+A374679 reference indices=0..512 PASS wall_seconds=18.421017
+A383533 reference indices=0..75 PASS wall_seconds=89.164565
+A335457 reference indices=0..26 PASS wall_seconds=76.211564
+A353390 reference indices=0..32 PASS wall_seconds=242.098546
+A374680 reference indices=0..256 PASS wall_seconds=2.171452
+A374680 independent indices=0..256 PASS wall_seconds=1.154800
+A374681 reference indices=0..256 PASS wall_seconds=2.005922
+A374681 independent indices=0..256 PASS wall_seconds=1.659203
+A374682 reference indices=0..256 PASS wall_seconds=2.297736
+A374682 independent indices=0..256 PASS wall_seconds=2.875411
+A353390 independent indices=0..32 PASS wall_seconds=324.281159
+A383710 reference indices=0..65 PASS wall_seconds=101.989617
+A383711 reference indices=0..65 PASS wall_seconds=15.097380
+A383710 independent indices=0..65 PASS wall_seconds=93.925655
+A325549 reference indices=1..40 PASS wall_seconds=4.168812
+A383711 independent indices=0..65 PASS wall_seconds=90.847697
+A336131 reference indices=0..30 PASS wall_seconds=8.875611
+A336131 independent indices=0..30 PASS wall_seconds=0.335943
+A353426 reference indices=0..60 PASS wall_seconds=43.707569
+A353426 independent indices=0..60 PASS wall_seconds=5.612912
+A320052 reference indices=0..35 PASS wall_seconds=0.619107
+A320052 independent indices=0..35 PASS wall_seconds=0.709744
+A304382 reference indices=1..85 PASS wall_seconds=5.785781
+A304382 independent indices=1..85 PASS wall_seconds=0.199566
+A383533 independent indices=0..75 PASS wall_seconds=643.852526
+A325549 independent indices=1..40 PASS wall_seconds=282.956249
+A335457 independent indices=0..26 PASS wall_seconds=941.890301
 PASS all extended b-files recomputed by both methods
 /Library/Developer/CommandLineTools/usr/bin/make -C bb6 verify
 python3 -u verify.py
@@ -130,4 +143,4 @@ PASS 15 exact verifier cases; no new record claimed
 
 ## Delivery
 
-All 10 b-files and sequence pages are included. The licence holder remains Hari Naralasetty; original code is MIT and original data/text are CC BY 4.0, with existing attribution retained. The changes are left uncommitted for manager review.
+All 15 b-files and sequence pages are included. The licence holder remains Hari Naralasetty; original code is MIT and original data/text are CC BY 4.0, with existing attribution retained. The changes are left uncommitted for manager review.

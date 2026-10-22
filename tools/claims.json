@@ -1,10 +1,11 @@
 [
   {
     "id": "key-results",
-    "html": "<h2>Key results</h2><div class=\"cards\"><div class=\"card\"><p class=\"num\">1,350</p><p class=\"label\">new OEIS terms across 10 sequences, each checked by two independent methods</p><p><span class=\"status new\">New result</span></p></div><div class=\"card\"><p class=\"num\">BB(6)</p><p class=\"label\">Checked partial results for one of the hardest open cases; not yet decided.</p><p><span class=\"status partial\">Partial progress</span></p></div><div class=\"card\"><p class=\"num\">0</p><p class=\"label\">new records; best known values confirmed in the saved constructions</p><p><span class=\"status none\">No improvement</span></p></div></div>",
+    "html": "<h2>Key results</h2><div class=\"cards\"><div class=\"card\"><p class=\"num\">1,456</p><p class=\"label\">new OEIS terms across 15 sequences, each checked by two independent methods</p><p><span class=\"status new\">New result</span></p></div><div class=\"card\"><p class=\"num\">BB(6)</p><p class=\"label\">Checked partial results for one of the hardest open cases; not yet decided.</p><p><span class=\"status partial\">Partial progress</span></p></div><div class=\"card\"><p class=\"num\">0</p><p class=\"label\">new records; best known values confirmed in the saved constructions</p><p><span class=\"status none\">No improvement</span></p></div></div>",
     "evidence": [
       "oeis/data/verification.json",
       "oeis/data/stage3-verification.json",
+      "oeis/data/stage4-verification.json",
       "bb6/REPORT.txt",
       "bb6/data/stage2c/summary.json",
       "horizonmath/hm-batchA/REPORT.txt",
@@ -14,10 +15,11 @@
   },
   {
     "id": "results-table",
-    "html": "<h2>All results</h2><div class=\"table-scroll\"><table><caption>Results from the pinned source snapshots</caption>\n<thead><tr><th scope=\"col\">Project</th><th scope=\"col\">Status</th><th scope=\"col\">Verified outcome</th></tr></thead><tbody>\n<tr><th scope=\"row\"><a href=\"oeis/index.html\">OEIS extensions</a></th><td><span class=\"status new\">New result</span></td><td>1,350 new terms; not yet submitted to OEIS</td></tr>\n<tr><th scope=\"row\"><a href=\"bb6.html\">BB(6) holdouts</a></th><td><span class=\"status partial\">Partial progress</span></td><td>48 initial lemmas plus 118 new local rules; no global decision</td></tr>\n<tr><th scope=\"row\"><a href=\"horizonmath.html\">HorizonMath A, B and C</a></th><td><span class=\"status none\">No improvement</span></td><td>Published baselines retained, including colouring length 3703 and code size 42 with minimum distance 10; no new record</td></tr></tbody></table></div>",
+    "html": "<h2>All results</h2><div class=\"table-scroll\"><table><caption>Results from the pinned source snapshots</caption>\n<thead><tr><th scope=\"col\">Project</th><th scope=\"col\">Status</th><th scope=\"col\">Verified outcome</th></tr></thead><tbody>\n<tr><th scope=\"row\"><a href=\"oeis/index.html\">OEIS extensions</a></th><td><span class=\"status new\">New result</span></td><td>1,456 new terms; not yet submitted to OEIS</td></tr>\n<tr><th scope=\"row\"><a href=\"bb6.html\">BB(6) holdouts</a></th><td><span class=\"status partial\">Partial progress</span></td><td>48 initial lemmas plus 118 new local rules; no global decision</td></tr>\n<tr><th scope=\"row\"><a href=\"horizonmath.html\">HorizonMath A, B and C</a></th><td><span class=\"status none\">No improvement</span></td><td>Published baselines retained, including colouring length 3703 and code size 42 with minimum distance 10; no new record</td></tr></tbody></table></div>",
     "evidence": [
       "oeis/data/verification.json",
       "oeis/data/stage3-verification.json",
+      "oeis/data/stage4-verification.json",
       "bb6/REPORT.txt",
       "bb6/data/stage2c/summary.json",
       "horizonmath/hm-batchA/REPORT.txt",
@@ -366,11 +368,182 @@
     ]
   },
   {
+    "id": "A325549-definition",
+    "html": "<h2>Definition</h2><blockquote><p>Number of necklace compositions of n with distinct circular differences.</p></blockquote><p>Quoted from <a href=\"https://oeis.org/A325549\">OEIS A325549</a>, as cached in the source workspace.</p>",
+    "evidence": [
+      "oeis/data/A325549.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A325549.txt"
+    ]
+  },
+  {
+    "id": "A325549-range",
+    "html": "<h2>Published range and extension</h2><p>The cached published range was 1 through 25. The extension adds indices 26 through 40, giving 15 new terms. These terms have not yet been submitted to the OEIS.</p><p><a href=\"../data/A325549.txt\">Download the complete A325549 b-file, published and new rows</a>.</p>",
+    "evidence": [
+      "oeis/data/A325549.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A325549.txt"
+    ]
+  },
+  {
+    "id": "A325549-timings",
+    "html": "<h2>Recorded timings</h2><p>Wall seconds from the committed source verification run, not a benchmark of this website build.</p><ul><li>reference: 2 s</li><li>independent: 3.4 min</li></ul>",
+    "evidence": [
+      "oeis/data/stage4-verification.json"
+    ]
+  },
+  {
+    "id": "A325549-terms",
+    "html": "<h2>B-file preview</h2><p>The first 20 rows of the complete b-file are shown below. <a href=\"../data/A325549.txt\">Download all published and new rows for A325549</a>.</p><pre class=\"terms\">1 1\n2 1\n3 2\n4 3\n5 5\n6 4\n7 10\n8 16\n9 23\n10 34\n11 53\n12 66\n13 113\n14 164\n15 262\n16 380\n17 567\n18 821\n19 1217\n20 1778</pre>",
+    "evidence": [
+      "oeis/data/A325549.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A325549.txt"
+    ]
+  },
+  {
+    "id": "A336131-definition",
+    "html": "<h2>Definition</h2><blockquote><p>Number of ways to split an integer partition of n into contiguous subsequences all having different sums.</p></blockquote><p>Quoted from <a href=\"https://oeis.org/A336131\">OEIS A336131</a>, as cached in the source workspace.</p>",
+    "evidence": [
+      "oeis/data/A336131.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A336131.txt"
+    ]
+  },
+  {
+    "id": "A336131-range",
+    "html": "<h2>Published range and extension</h2><p>The cached published range was 0 through 17. The extension adds indices 18 through 30, giving 13 new terms. These terms have not yet been submitted to the OEIS.</p><p><a href=\"../data/A336131.txt\">Download the complete A336131 b-file, published and new rows</a>.</p>",
+    "evidence": [
+      "oeis/data/A336131.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A336131.txt"
+    ]
+  },
+  {
+    "id": "A336131-timings",
+    "html": "<h2>Recorded timings</h2><p>Wall seconds from the committed source verification run, not a benchmark of this website build.</p><ul><li>reference: 7.1 s</li><li>independent: 0.55 s</li></ul>",
+    "evidence": [
+      "oeis/data/stage4-verification.json"
+    ]
+  },
+  {
+    "id": "A336131-terms",
+    "html": "<h2>B-file preview</h2><p>The first 20 rows of the complete b-file are shown below. <a href=\"../data/A336131.txt\">Download all published and new rows for A336131</a>.</p><pre class=\"terms\">0 1\n1 1\n2 2\n3 6\n4 9\n5 20\n6 44\n7 74\n8 123\n9 231\n10 441\n11 681\n12 1188\n13 1889\n14 3110\n15 5448\n16 8310\n17 13046\n18 20606\n19 31666</pre>",
+    "evidence": [
+      "oeis/data/A336131.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A336131.txt"
+    ]
+  },
+  {
+    "id": "A353426-definition",
+    "html": "<h2>Definition</h2><blockquote><p>Number of integer partitions of n that are empty or a singleton or whose multiplicities are a sub-multiset that is already counted.</p></blockquote><p>Quoted from <a href=\"https://oeis.org/A353426\">OEIS A353426</a>, as cached in the source workspace.</p>",
+    "evidence": [
+      "oeis/data/A353426.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A353426.txt"
+    ]
+  },
+  {
+    "id": "A353426-range",
+    "html": "<h2>Published range and extension</h2><p>The cached published range was 0 through 40. The extension adds indices 41 through 60, giving 20 new terms. These terms have not yet been submitted to the OEIS.</p><p><a href=\"../data/A353426.txt\">Download the complete A353426 b-file, published and new rows</a>.</p>",
+    "evidence": [
+      "oeis/data/A353426.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A353426.txt"
+    ]
+  },
+  {
+    "id": "A353426-timings",
+    "html": "<h2>Recorded timings</h2><p>Wall seconds from the committed source verification run, not a benchmark of this website build.</p><ul><li>reference: 34 s</li><li>independent: 2.9 s</li></ul>",
+    "evidence": [
+      "oeis/data/stage4-verification.json"
+    ]
+  },
+  {
+    "id": "A353426-terms",
+    "html": "<h2>B-file preview</h2><p>The first 20 rows of the complete b-file are shown below. <a href=\"../data/A353426.txt\">Download all published and new rows for A353426</a>.</p><pre class=\"terms\">0 1\n1 1\n2 1\n3 1\n4 2\n5 1\n6 2\n7 1\n8 1\n9 2\n10 2\n11 1\n12 2\n13 2\n14 3\n15 3\n16 5\n17 4\n18 6\n19 5</pre>",
+    "evidence": [
+      "oeis/data/A353426.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A353426.txt"
+    ]
+  },
+  {
+    "id": "A320052-definition",
+    "html": "<h2>Definition</h2><blockquote><p>Number of product-sum knapsack partitions of n. Number of integer partitions y of n such that every product of sums of the parts of a multiset partition of any submultiset of y is distinct.</p></blockquote><p>Quoted from <a href=\"https://oeis.org/A320052\">OEIS A320052</a>, as cached in the source workspace.</p>",
+    "evidence": [
+      "oeis/data/A320052.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A320052.txt"
+    ]
+  },
+  {
+    "id": "A320052-range",
+    "html": "<h2>Published range and extension</h2><p>The cached published range was 0 through 12. The extension adds indices 13 through 35, giving 23 new terms. These terms have not yet been submitted to the OEIS.</p><p><a href=\"../data/A320052.txt\">Download the complete A320052 b-file, published and new rows</a>.</p>",
+    "evidence": [
+      "oeis/data/A320052.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A320052.txt"
+    ]
+  },
+  {
+    "id": "A320052-timings",
+    "html": "<h2>Recorded timings</h2><p>Wall seconds from the committed source verification run, not a benchmark of this website build.</p><ul><li>reference: 0.32 s</li><li>independent: 0.42 s</li></ul>",
+    "evidence": [
+      "oeis/data/stage4-verification.json"
+    ]
+  },
+  {
+    "id": "A320052-terms",
+    "html": "<h2>B-file preview</h2><p>The first 20 rows of the complete b-file are shown below. <a href=\"../data/A320052.txt\">Download all published and new rows for A320052</a>.</p><pre class=\"terms\">0 1\n1 0\n2 1\n3 1\n4 1\n5 2\n6 3\n7 3\n8 4\n9 4\n10 6\n11 8\n12 8\n13 13\n14 12\n15 13\n16 16\n17 23\n18 22\n19 30</pre>",
+    "evidence": [
+      "oeis/data/A320052.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A320052.txt"
+    ]
+  },
+  {
+    "id": "A304382-definition",
+    "html": "<h2>Definition</h2><blockquote><p>Number of z-trees summing to n. Number of connected strict integer partitions of n with pairwise indivisible parts and clutter density -1.</p></blockquote><p>Quoted from <a href=\"https://oeis.org/A304382\">OEIS A304382</a>, as cached in the source workspace.</p>",
+    "evidence": [
+      "oeis/data/A304382.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A304382.txt"
+    ]
+  },
+  {
+    "id": "A304382-range",
+    "html": "<h2>Published range and extension</h2><p>The cached published range was 1 through 50. The extension adds indices 51 through 85, giving 35 new terms. These terms have not yet been submitted to the OEIS.</p><p><a href=\"../data/A304382.txt\">Download the complete A304382 b-file, published and new rows</a>.</p>",
+    "evidence": [
+      "oeis/data/A304382.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A304382.txt"
+    ]
+  },
+  {
+    "id": "A304382-timings",
+    "html": "<h2>Recorded timings</h2><p>Wall seconds from the committed source verification run, not a benchmark of this website build.</p><ul><li>reference: 3.8 s</li><li>independent: 0.12 s</li></ul>",
+    "evidence": [
+      "oeis/data/stage4-verification.json"
+    ]
+  },
+  {
+    "id": "A304382-terms",
+    "html": "<h2>B-file preview</h2><p>The first 20 rows of the complete b-file are shown below. <a href=\"../data/A304382.txt\">Download all published and new rows for A304382</a>.</p><pre class=\"terms\">1 1\n2 1\n3 1\n4 1\n5 1\n6 1\n7 1\n8 1\n9 1\n10 2\n11 1\n12 1\n13 1\n14 3\n15 2\n16 2\n17 1\n18 3\n19 2\n20 4</pre>",
+    "evidence": [
+      "oeis/data/A304382.json",
+      "oeis/data/stage4-verification.json",
+      "docs/data/A304382.txt"
+    ]
+  },
+  {
     "id": "oeis-summary",
-    "html": "<p class=\"lead\">This collection provides 1,350 new terms across 10 OEIS sequences, with two independent methods agreeing on every row.</p><p>Terms are not yet submitted to the OEIS. The status gate checked the cached entries before extension and retained their requests for more terms. This is the source snapshot, not a live claim about today's OEIS listings.</p><div class=\"table-scroll\"><table><caption>Sequence extensions</caption><thead><tr><th scope=\"col\">Sequence</th><th scope=\"col\">Previous indices</th><th scope=\"col\">New indices</th><th scope=\"col\">New terms</th></tr></thead><tbody><tr><th scope=\"row\"><a href=\"A391646.html\">A391646</a></th><td>0 through 13</td><td>14 through 37</td><td>24</td></tr><tr><th scope=\"row\"><a href=\"A383533.html\">A383533</a></th><td>0 through 30</td><td>31 through 75</td><td>45</td></tr><tr><th scope=\"row\"><a href=\"A374679.html\">A374679</a></th><td>0 through 25</td><td>26 through 512</td><td>487</td></tr><tr><th scope=\"row\"><a href=\"A353390.html\">A353390</a></th><td>0 through 17</td><td>18 through 32</td><td>15</td></tr><tr><th scope=\"row\"><a href=\"A335457.html\">A335457</a></th><td>0 through 20</td><td>21 through 26</td><td>6</td></tr><tr><th scope=\"row\"><a href=\"A374680.html\">A374680</a></th><td>0 through 25</td><td>26 through 256</td><td>231</td></tr><tr><th scope=\"row\"><a href=\"A374681.html\">A374681</a></th><td>0 through 25</td><td>26 through 256</td><td>231</td></tr><tr><th scope=\"row\"><a href=\"A374682.html\">A374682</a></th><td>0 through 25</td><td>26 through 256</td><td>231</td></tr><tr><th scope=\"row\"><a href=\"A383710.html\">A383710</a></th><td>0 through 20</td><td>21 through 65</td><td>45</td></tr><tr><th scope=\"row\"><a href=\"A383711.html\">A383711</a></th><td>0 through 30</td><td>31 through 65</td><td>35</td></tr></tbody></table></div>",
+    "html": "<p class=\"lead\">This collection provides 1,456 new terms across 15 OEIS sequences, with two independent methods agreeing on every row.</p><p>Terms are not yet submitted to the OEIS. The status gate checked the cached entries before extension and retained their requests for more terms. This is the source snapshot, not a live claim about today's OEIS listings.</p><div class=\"table-scroll\"><table><caption>Sequence extensions</caption><thead><tr><th scope=\"col\">Sequence</th><th scope=\"col\">Previous indices</th><th scope=\"col\">New indices</th><th scope=\"col\">New terms</th></tr></thead><tbody><tr><th scope=\"row\"><a href=\"A391646.html\">A391646</a></th><td>0 through 13</td><td>14 through 37</td><td>24</td></tr><tr><th scope=\"row\"><a href=\"A383533.html\">A383533</a></th><td>0 through 30</td><td>31 through 75</td><td>45</td></tr><tr><th scope=\"row\"><a href=\"A374679.html\">A374679</a></th><td>0 through 25</td><td>26 through 512</td><td>487</td></tr><tr><th scope=\"row\"><a href=\"A353390.html\">A353390</a></th><td>0 through 17</td><td>18 through 32</td><td>15</td></tr><tr><th scope=\"row\"><a href=\"A335457.html\">A335457</a></th><td>0 through 20</td><td>21 through 26</td><td>6</td></tr><tr><th scope=\"row\"><a href=\"A374680.html\">A374680</a></th><td>0 through 25</td><td>26 through 256</td><td>231</td></tr><tr><th scope=\"row\"><a href=\"A374681.html\">A374681</a></th><td>0 through 25</td><td>26 through 256</td><td>231</td></tr><tr><th scope=\"row\"><a href=\"A374682.html\">A374682</a></th><td>0 through 25</td><td>26 through 256</td><td>231</td></tr><tr><th scope=\"row\"><a href=\"A383710.html\">A383710</a></th><td>0 through 20</td><td>21 through 65</td><td>45</td></tr><tr><th scope=\"row\"><a href=\"A383711.html\">A383711</a></th><td>0 through 30</td><td>31 through 65</td><td>35</td></tr><tr><th scope=\"row\"><a href=\"A325549.html\">A325549</a></th><td>1 through 25</td><td>26 through 40</td><td>15</td></tr><tr><th scope=\"row\"><a href=\"A336131.html\">A336131</a></th><td>0 through 17</td><td>18 through 30</td><td>13</td></tr><tr><th scope=\"row\"><a href=\"A353426.html\">A353426</a></th><td>0 through 40</td><td>41 through 60</td><td>20</td></tr><tr><th scope=\"row\"><a href=\"A320052.html\">A320052</a></th><td>0 through 12</td><td>13 through 35</td><td>23</td></tr><tr><th scope=\"row\"><a href=\"A304382.html\">A304382</a></th><td>1 through 50</td><td>51 through 85</td><td>35</td></tr></tbody></table></div>",
     "evidence": [
       "oeis/data/verification.json",
-      "oeis/data/stage3-verification.json"
+      "oeis/data/stage3-verification.json",
+      "oeis/data/stage4-verification.json"
     ]
   },
   {

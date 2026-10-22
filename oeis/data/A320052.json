@@ -1,0 +1,7 @@
+{
+  "number": 320052,
+  "name": "Number of product-sum knapsack partitions of n. Number of integer partitions y of n such that every product of sums of the parts of a multiset partition of any submultiset of y is distinct.",
+  "data": "1,0,1,1,1,2,3,3,4,4,6,8,8",
+  "offset": "0,6",
+  "keyword": "nonn,more"
+}

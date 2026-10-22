@@ -2,9 +2,9 @@
 
 By Hari Naralasetty, working with AI agents.
 
-The work added 1,350 new terms to 10 OEIS sequences, made partial progress on BB(6), and found no new records in the three record-search batches. Every new term is checked by two independent programs. The terms have not yet been submitted to the OEIS. BB(6) remains undecided; no record improvement is claimed.
+The work added 1,456 new terms to 15 OEIS sequences, made partial progress on BB(6), and found no new records in the three record-search batches. Every new term is checked by two independent programs. The terms have not yet been submitted to the OEIS. BB(6) remains undecided; no record improvement is claimed.
 
-- AI Agents Find 1,350 New Terms for Open Math Sequences: https://harinaralasetty.github.io/math-experiments/
+- AI Agents Find 1,456 New Terms for Open Math Sequences: https://harinaralasetty.github.io/math-experiments/
 - New terms for OEIS A391646: least integers with a specified sum of prime-factor remainders: https://harinaralasetty.github.io/math-experiments/oeis/A391646.html
 - New terms for OEIS A383533: partitions without ones admitting disjoint strict refinements: https://harinaralasetty.github.io/math-experiments/oeis/A383533.html
 - New terms for OEIS A374679: compositions with strictly increasing anti-run leaders: https://harinaralasetty.github.io/math-experiments/oeis/A374679.html
@@ -15,6 +15,11 @@ The work added 1,350 new terms to 10 OEIS sequences, made partial progress on BB
 - New terms for OEIS A374682: compositions with weakly decreasing anti-run leaders: https://harinaralasetty.github.io/math-experiments/oeis/A374682.html
 - New terms for OEIS A383710: partitions admitting no disjoint strict refinements: https://harinaralasetty.github.io/math-experiments/oeis/A383710.html
 - New terms for OEIS A383711: partitions without ones admitting no disjoint strict refinements: https://harinaralasetty.github.io/math-experiments/oeis/A383711.html
+- New terms for OEIS A325549: circular compositions with distinct neighboring differences: https://harinaralasetty.github.io/math-experiments/oeis/A325549.html
+- New terms for OEIS A336131: partition splits into consecutive groups with different sums: https://harinaralasetty.github.io/math-experiments/oeis/A336131.html
+- New terms for OEIS A353426: partitions that recursively contain their multiplicities: https://harinaralasetty.github.io/math-experiments/oeis/A353426.html
+- New terms for OEIS A320052: partitions with distinct products of grouped sums: https://harinaralasetty.github.io/math-experiments/oeis/A320052.html
+- New terms for OEIS A304382: partitions with indivisible parts linked by a tree of prime factors: https://harinaralasetty.github.io/math-experiments/oeis/A304382.html
 - OEIS sequences extended: https://harinaralasetty.github.io/math-experiments/oeis/index.html
 - Busy Beaver BB(6): partial progress: https://harinaralasetty.github.io/math-experiments/bb6.html
 - Record searches: no new records: https://harinaralasetty.github.io/math-experiments/horizonmath.html

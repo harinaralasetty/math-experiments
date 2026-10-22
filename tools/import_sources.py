@@ -1,7 +1,9 @@
 """Import an explicit allowlist from committed source trees. Never import vendors."""
 import hashlib
 import json
+import re
 import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -33,7 +35,44 @@ def encode(obj):
     return (json.dumps(obj, indent=2) + '\n').encode()
 
 
+def import_stage4():
+    for name in ['reference.py', 'necklace_independent.py', 'necklaces.cpp', 'independent.cpp']:
+        write('oeis', 'stage4/code/'+name, 'oeis/code/stage4/'+name)
+    for a in ['A304382', 'A320052', 'A325549', 'A336131', 'A353426']:
+        write('oeis', f'stage4/results/b{a[1:]}.txt', f'docs/data/{a}.txt')
+        write('oeis', f'stage4/results/{a}.py', f'oeis/code/stage4/drafts/{a}.py')
+        write('oeis', f'stage4/data/{a}.json', f'oeis/data/{a}.json',
+              lambda b: encode({k: json.loads(b)[k] for k in ['number', 'name', 'data', 'offset', 'keyword']}))
+    def verification(b):
+        data = json.loads(b)
+        return encode(dict(completed_utc=max(x['completed_utc'] for x in data),
+            sequences=[dict(id=x['id'], first=x['first'], listed_last=x['previous_last'],
+                            last=x['last'], new_count=x['new_count']) for x in data],
+            methods=[dict(id=x['id'], method=method, wall_seconds=run['wall_seconds'])
+                     for x in data for method, run in zip(['reference', 'independent'], x['methods'])]))
+    write('oeis', 'stage4/data/verification.json', 'oeis/data/stage4-verification.json', verification)
+    for original, target in [('REPORT.md', 'REPORT.txt'), ('STATUS.md', 'STATUS.txt'),
+                             ('results/SUBMISSION-DRAFTS.md', 'SUBMISSION-DRAFTS.txt')]:
+        # Source logs contain absolute command paths. Keep all evidence, replacing
+        # only that machine's home directory with a neutral placeholder.
+        write('oeis', 'stage4/'+original, 'oeis/data/stage4-'+target,
+              (lambda b: re.sub(rb'[/]Users[/][^/\s]+', b'<source-home>', b))
+              if original == 'REPORT.md' else None)
+
+
 if __name__ == '__main__':
+    if sys.argv[1:] == ['--stage4-only']:
+        saved = json.loads((ROOT/'sources.json').read_text())
+        manifest.extend(f for f in saved['files'] if not f['source'].startswith('stage4/'))
+        revisions.update(saved['revisions'])
+        revisions['oeis'] = '05ce39322c21fd37febd55601fbb27d7f92bc8fe'
+        import_stage4()
+        saved.update(files=manifest, revisions=revisions)
+        saved['revision_dates']['oeis'] = subprocess.check_output(
+            ['git', '-C', str(ROOT.parent/'oeis'), 'show', '-s', '--format=%cs', revisions['oeis']], text=True).strip()
+        (ROOT/'sources.json').write_bytes(encode(saved))
+        print(f'Imported stage 4; {len(manifest)} total allowlisted files from pinned sources.')
+        sys.exit(0)
     ids = ['A391646', 'A383533', 'A374679', 'A353390', 'A335457']
     for name in ['compute_new.py', 'reference.py', 'independent.py', 'new_reference.py',
                  'new_independent.py', 'new_powerful.cpp', 'new_patterns.cpp',
@@ -67,6 +106,7 @@ if __name__ == '__main__':
     for source_path, target in [('REPORT.md', 'REPORT.txt'), ('STATUS.md', 'STATUS.txt'),
                            ('results/SUBMISSION-DRAFTS.md', 'SUBMISSION-DRAFTS.txt')]:
         write('oeis', 'stage3/'+source_path, 'oeis/data/stage3-'+target)
+    import_stage4()
     # Original first-party checker and proof objects; no external simulator code.
     write('bb6', 'tools/check_symbolic.py', 'bb6/tools/check_symbolic.py')
     write('bb6', 'tools/stage2b_verify.py', 'bb6/tools/stage2b_verify.py')

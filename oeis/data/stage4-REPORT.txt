@@ -1,0 +1,392 @@
+# OEIS stage 4 results
+
+All fifteen references reproduce every listed term. Five targets have 106 new terms, each reproduced by two independent implementations and compared exactly with the delivered b-file. Work is local to `stage4/`; no commit or OEIS submission was made.
+
+The targets cover necklace rotation classes, contiguous partition splits, recursive multiplicity predicates, product-sum knapsack partitions, and arithmetic z-trees. None is an anti-run leader or disjoint strict partition sibling.
+
+Host: macOS-27.0-arm64-arm-64bit-Mach-O. Python: 3.13.4 (v3.13.4:8a526ec7cbe, Jun  3 2025, 21:14:54) [Clang 16.0.0 (clang-1600.0.26.6)].
+
+## Re-run
+
+From the repository root:
+
+```sh
+make -C stage4 clean verify
+```
+
+This rebuilds both C++ programs, reproduces the fifteen listed ranges, then recomputes every selected sequence from scratch in separate clean processes for each method. It compares every index and each complete b-file, then audits source caches and manifests. It uses no network and one computation process at a time. `make -C stage4 extend` explicitly refreshes online status and regenerates results. Each computational subprocess has a timeout below the inherited command limit.
+
+See [STATUS.md](STATUS.md) for source URLs, current keywords, full edit histories, last-term and next-index searches, and related-table checks.
+
+| Target | Previous range | New range | New terms | Method 1 wall seconds | Method 2 wall seconds |
+|---|---|---|---:|---:|---:|
+| [A325549](https://oeis.org/A325549) | 1..25 | 26..40 | 15 | 3.136913 | 218.631371 |
+| [A336131](https://oeis.org/A336131) | 0..17 | 18..30 | 13 | 3.762382 | 0.949358 |
+| [A353426](https://oeis.org/A353426) | 0..40 | 41..60 | 20 | 25.106351 | 3.639136 |
+| [A320052](https://oeis.org/A320052) | 0..12 | 13..35 | 23 | 0.335697 | 0.373284 |
+| [A304382](https://oeis.org/A304382) | 1..50 | 51..85 | 35 | 4.539077 | 0.190799 |
+
+## A325549
+
+> Number of necklace compositions of n with distinct circular differences.
+
+[A325549](https://oeis.org/A325549).
+
+Previous range 1..25. New range 26..40. [Complete b-file](results/b325549.txt).
+
+Method 1: C++ recursively enumerates compositions beginning with a least part, rejects repeated adjacent differences, tests lexicographic minimality over rotations, and checks the closing difference.
+
+Method 2: Python enumerates all rooted compositions with distinct circular differences, counts them separately by length k, and sums count(k)/k. A nontrivial period would repeat a circular difference, so the rotation action is free for length > 1. Singleton compositions also have orbit size one.
+
+Verification wall seconds: method 1 3.136913; method 2 218.631371. Timings are measured wall time, not CPU estimates.
+
+Exact sequence-only re-run:
+
+```sh
+python3 stage4/code/verify.py --id A325549
+```
+
+
+## A336131
+
+> Number of ways to split an integer partition of n into contiguous subsequences all having different sums.
+
+[A336131](https://oeis.org/A336131).
+
+Previous range 0..17. New range 18..30. [Complete b-file](results/b336131.txt).
+
+Method 1: Python enumerates integer partitions and recursively chooses the endpoint of each segment, retaining a set of earlier segment sums. Reversing a partition reverses each split bijectively, so the ascending generator counts the OEIS descending convention.
+
+Method 2: C++ independently enumerates descending partitions. It processes gaps as cut or join decisions, carrying a streaming current sum and a bitmask of completed sums. Every gap choice is visited, and only distinct completed sums survive.
+
+Verification wall seconds: method 1 3.762382; method 2 0.949358. Timings are measured wall time, not CPU estimates.
+
+Exact sequence-only re-run:
+
+```sh
+python3 stage4/code/verify.py --id A336131
+```
+
+
+## A353426
+
+> Number of integer partitions of n
+
+[A353426](https://oeis.org/A353426).
+
+The entry counts the empty partition, singletons, and partitions whose multiplicity multiset is contained in the partition and recursively satisfies the same condition.
+
+Previous range 0..40. New range 41..60. [Complete b-file](results/b353426.txt).
+
+Method 1: Python enumerates ascending integer partitions. Counter objects give multiplicities and test multiset containment; the predicate recurses on the sorted multiplicities until a singleton or the empty partition.
+
+Method 2: C++ independently enumerates descending partitions and iteratively transforms ordered frequency maps. At each step it compares required multiplicities against available counts. No Python generator or predicate is reused.
+
+Verification wall seconds: method 1 25.106351; method 2 3.639136. Timings are measured wall time, not CPU estimates.
+
+Exact sequence-only re-run:
+
+```sh
+python3 stage4/code/verify.py --id A353426
+```
+
+
+## A320052
+
+> Number of product-sum knapsack partitions of n.
+
+[A320052](https://oeis.org/A320052).
+
+Previous range 0..12. New range 13..35. [Complete b-file](results/b320052.txt).
+
+Method 1: Python obtains all multiset partitions by inserting the last element into a block or starting a new block, sorting and deduplicating the resulting block tuples. It considers each distinct submultiset and rejects any repeated product of block sums. A part equal to one is rejected immediately because it duplicates the empty product.
+
+Method 2: C++ enumerates possible block multiplicity vectors directly. A nondecreasing list of block-vector indices gives each multiset of blocks once; unused multiplicities are the omitted submultiset. It inserts every product, including the empty product, into a set and rejects the first collision. No labeled-insertion generator or Python code is shared.
+
+Verification wall seconds: method 1 0.335697; method 2 0.373284. Timings are measured wall time, not CPU estimates.
+
+Exact sequence-only re-run:
+
+```sh
+python3 stage4/code/verify.py --id A320052
+```
+
+
+## A304382
+
+> Number of z-trees summing to n. Number of connected strict integer partitions of n with pairwise indivisible parts and clutter density -1.
+
+[A304382](https://oeis.org/A304382).
+
+Previous range 1..50. New range 51..85. [Complete b-file](results/b304382.txt).
+
+Method 1: Python enumerates strict integer partitions, rejects divisibility between parts, checks gcd-graph connectivity, and evaluates sum(omega(part)-1)-omega(lcm(parts)) = -1. Singletons follow the published program and count even for n=1.
+
+Method 2: C++ independently enumerates strict descending partitions. It rejects divisibility, forms the incidence graph between parts and their distinct prime factors, and uses union-find to require a connected acyclic graph. If it has r part vertices and q prime vertices, the density condition is exactly E-r-q=-1, the tree condition.
+
+Verification wall seconds: method 1 4.539077; method 2 0.190799. Timings are measured wall time, not CPU estimates.
+
+Exact sequence-only re-run:
+
+```sh
+python3 stage4/code/verify.py --id A304382
+```
+
+## Fifteen-candidate reproduction and growth
+
+Every listed value and b-file row was checked. `data/references.json` contains full expected arrays, actual arrays, and per-index times from the latest offline verification. The separate screening run output below has its own measured times. Planning projections below are estimates, not measurements of future terms. The model is four times the largest last-four time, multiplied by g, g^2, or g^3, where g is at least two and at least every adjacent ratio in that window.
+
+| Candidate | Listed range | Reference seconds | Last four per-index seconds | Projected next three seconds | Choice |
+|---|---|---:|---|---|---|
+| [A321728](https://oeis.org/A321728) | 0..13 | 0.001445 | 10:0.000155, 11:0.000217, 12:0.000315, 13:0.000437 | 0.00349566, 0.00699133, 0.0139827 | reserve |
+| [A321729](https://oeis.org/A321729) | 0..13 | 0.001418 | 10:0.000152, 11:0.000216, 12:0.000313, 13:0.000435 | 0.00347834, 0.00695667, 0.0139133 | reserve |
+| [A336131](https://oeis.org/A336131) | 0..17 | 0.024882 | 14:0.002270, 15:0.003698, 16:0.006010, 17:0.009198 | 0.0735837, 0.147167, 0.294335 | selected |
+| [A353426](https://oeis.org/A353426) | 0..40 | 1.016579 | 37:0.101209, 38:0.122128, 39:0.159216, 40:0.188074 | 1.50459, 3.00918, 6.01836 | selected |
+| [A320052](https://oeis.org/A320052) | 0..12 | 0.000995 | 9:0.000100, 10:0.000139, 11:0.000194, 12:0.000274 | 0.00218966, 0.00437933, 0.00875866 | selected |
+| [A320053](https://oeis.org/A320053) | 0..12 | 0.010445 | 9:0.000533, 10:0.001279, 11:0.003627, 12:0.004036 | 0.045783, 0.129823, 0.368128 | reserve |
+| [A320054](https://oeis.org/A320054) | 0..12 | 0.001133 | 9:0.000105, 10:0.000180, 11:0.000243, 12:0.000371 | 0.00297, 0.00594, 0.01188 | reserve |
+| [A304382](https://oeis.org/A304382) | 1..50 | 0.091168 | 47:0.007384, 48:0.008335, 49:0.009530, 50:0.012286 | 0.0982907, 0.196581, 0.393163 | selected |
+| [A325549](https://oeis.org/A325549) | 1..25 | 0.094906 | 22:0.000841, 23:0.001269, 24:0.001932, 25:0.002979 | 0.0238314, 0.0476627, 0.0953254 | selected |
+| [A325554](https://oeis.org/A325554) | 1..25 | 0.012687 | 22:0.000835, 23:0.001279, 24:0.001954, 25:0.003010 | 0.024082, 0.048164, 0.096328 | reserve |
+| [A339655](https://oeis.org/A339655) | 0..25 | 5.630140 | 22:0.567969, 23:0.740498, 24:1.150611, 25:1.758441 | 14.0675, 28.1351, 56.2701 | reserve |
+| [A339656](https://oeis.org/A339656) | 0..25 | 5.731859 | 22:0.562001, 23:0.959672, 24:1.267268, 25:1.820092 | 14.5607, 29.1215, 58.2429 | reserve |
+| [A332278](https://oeis.org/A332278) | 0..78 | 6.889981 | 75:0.482246, 76:0.532177, 77:0.655649, 78:0.671594 | 5.37275, 10.7455, 21.491 | reserve |
+| [A332292](https://oeis.org/A332292) | 0..77 | 6.574913 | 74:0.493678, 75:0.509865, 76:0.615160, 77:0.853602 | 6.82882, 13.6576, 27.3153 | reserve |
+| [A332297](https://oeis.org/A332297) | 0..80 | 9.299815 | 77:0.646844, 78:0.718630, 79:0.781410, 80:0.959496 | 7.67597, 15.3519, 30.7039 | reserve |
+
+The final indices are chosen, verified frontiers. They do not establish a computational limit or exhaustion of the CPU allowance. All reported terms were computed by both methods. C++ integer totals fit the unsigned integer type throughout the delivered ranges; independent Python integers are unbounded. Necklace difference masks use 128 bits, and the chosen range lies within their bounds.
+
+## Real command output
+
+```sh
+python3 stage4/code/references.py
+```
+
+```text
+A321728 range=0..13 terms=14 match=True seconds=0.001544
+expected=0,0,1,1,2,3,5,7,10,14,20,28,37,50
+actual  =0,0,1,1,2,3,5,7,10,14,20,28,37,50
+growth=n=10:0.000154s,n=11:0.000218s,n=12:0.000356s,n=13:0.000465s
+A321729 range=0..13 terms=14 match=True seconds=0.001813
+expected=1,1,1,2,3,4,6,8,12,16,22,28,40,51
+actual  =1,1,1,2,3,4,6,8,12,16,22,28,40,51
+growth=n=10:0.000154s,n=11:0.000289s,n=12:0.000400s,n=13:0.000629s
+A336131 range=0..17 terms=18 match=True seconds=0.027624
+expected=1,1,2,6,9,20,44,74,123,231,441,681,1188,1889,3110,5448,8310,13046
+actual  =1,1,2,6,9,20,44,74,123,231,441,681,1188,1889,3110,5448,8310,13046
+growth=n=14:0.002478s,n=15:0.004059s,n=16:0.006643s,n=17:0.010737s
+A353426 range=0..40 terms=41 match=True seconds=1.211685
+expected=1,1,1,1,2,1,2,1,1,2,2,1,2,2,3,3,5,4,6,5,6,6,7,8,10,12,12,14,13,13,18,15,16,19,20,20,32,37,53,74,105
+actual  =1,1,1,1,2,1,2,1,1,2,2,1,2,2,3,3,5,4,6,5,6,6,7,8,10,12,12,14,13,13,18,15,16,19,20,20,32,37,53,74,105
+growth=n=37:0.109972s,n=38:0.145416s,n=39:0.212243s,n=40:0.293137s
+A320052 range=0..12 terms=13 match=True seconds=0.003041
+expected=1,0,1,1,1,2,3,3,4,4,6,8,8
+actual  =1,0,1,1,1,2,3,3,4,4,6,8,8
+growth=n=9:0.000289s,n=10:0.000444s,n=11:0.000629s,n=12:0.000800s
+A320053 range=0..12 terms=13 match=True seconds=0.012189
+expected=1,1,2,3,2,3,4,5,6,8,9,12,14
+actual  =1,1,2,3,2,3,4,5,6,8,9,12,14
+growth=n=9:0.000700s,n=10:0.001318s,n=11:0.003123s,n=12:0.006217s
+A320054 range=0..12 terms=13 match=True seconds=0.001515
+expected=1,1,2,3,2,4,5,8,10,12,16,17,25
+actual  =1,1,2,3,2,4,5,8,10,12,16,17,25
+growth=n=9:0.000130s,n=10:0.000289s,n=11:0.000330s,n=12:0.000481s
+A304382 range=1..50 terms=50 match=True seconds=0.119623
+expected=1,1,1,1,1,1,1,1,1,2,1,1,1,3,2,2,1,3,2,4,3,5,2,5,4,6,3,7,6,8,4,9,8,13,9,15,8,14,12,16,12,20,20,24,15,27,20,33,27,35
+actual  =1,1,1,1,1,1,1,1,1,2,1,1,1,3,2,2,1,3,2,4,3,5,2,5,4,6,3,7,6,8,4,9,8,13,9,15,8,14,12,16,12,20,20,24,15,27,20,33,27,35
+growth=n=47:0.010090s,n=48:0.011867s,n=49:0.013091s,n=50:0.013062s
+A325549 range=1..25 terms=25 match=True seconds=0.016808
+expected=1,1,2,3,5,4,10,16,23,34,53,66,113,164,262,380,567,821,1217,1778,2702,3919,5760,8520,12375
+actual  =1,1,2,3,5,4,10,16,23,34,53,66,113,164,262,380,567,821,1217,1778,2702,3919,5760,8520,12375
+growth=n=22:0.000922s,n=23:0.001398s,n=24:0.002089s,n=25:0.003405s
+A325554 range=1..25 terms=25 match=True seconds=0.015025
+expected=1,2,2,4,5,6,11,18,26,38,60,90,139,213,329,501,747,1144,1712,2548,3836,5732,8442,12654,18624
+actual  =1,2,2,4,5,6,11,18,26,38,60,90,139,213,329,501,747,1144,1712,2548,3836,5732,8442,12654,18624
+growth=n=22:0.000958s,n=23:0.001437s,n=24:0.002148s,n=25:0.003285s
+A339655 range=0..25 terms=26 match=True seconds=7.833828
+expected=0,0,1,3,7,14,28,51,91,156,260,425,680,1068,1654,2524,3802,5668,8350,12190,17634,25306,36011,50902,71441,99642
+actual  =0,0,1,3,7,14,28,51,91,156,260,425,680,1068,1654,2524,3802,5668,8350,12190,17634,25306,36011,50902,71441,99642
+growth=n=22:0.851063s,n=23:1.092651s,n=24:1.580219s,n=25:2.327349s
+A339656 range=0..25 terms=26 match=True seconds=5.751517
+expected=1,2,4,8,15,28,49,84,140,229,367,577,895,1368,2064,3080,4547,6642,9627,13825,19704,27868,39164,54656,75832,104584
+actual  =1,2,4,8,15,28,49,84,140,229,367,577,895,1368,2064,3080,4547,6642,9627,13825,19704,27868,39164,54656,75832,104584
+growth=n=22:0.612614s,n=23:0.839881s,n=24:1.150998s,n=25:1.876557s
+A332278 range=0..78 terms=79 match=True seconds=7.395924
+expected=1,1,1,2,2,1,2,1,1,2,3,1,1,1,1,2,1,1,1,1,2,2,1,1,1,1,1,1,3,1,1,1,1,1,1,2,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2
+actual  =1,1,1,2,2,1,2,1,1,2,3,1,1,1,1,2,1,1,1,1,2,2,1,1,1,1,1,1,3,1,1,1,1,1,1,2,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2
+growth=n=75:0.564937s,n=76:0.556049s,n=77:0.705557s,n=78:0.798858s
+A332292 range=0..77 terms=78 match=True seconds=7.413638
+expected=1,1,1,2,1,2,2,1,1,2,2,1,1,1,2,2,1,1,1,1,1,3,1,1,1,1,1,1,2,1,2,1,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,1,1
+actual  =1,1,1,2,1,2,2,1,1,2,2,1,1,1,2,2,1,1,1,1,1,3,1,1,1,1,1,1,2,1,2,1,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,1,1
+growth=n=74:0.684891s,n=75:0.633923s,n=76:0.710254s,n=77:0.718766s
+A332297 range=0..80 terms=81 match=True seconds=8.863225
+expected=1,1,2,3,2,3,3,2,2,2,3,3,2,2,3,3,2,2,2,2,2,3,2,2,2,2,2,2,3,2,3,2,2,2,2,2,3,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,4,3,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,3,2,2
+actual  =1,1,2,3,2,3,3,2,2,2,3,3,2,2,3,3,2,2,2,2,2,3,2,2,2,2,2,2,3,2,3,2,2,2,2,2,3,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,4,3,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,3,2,2
+growth=n=77:0.672318s,n=78:0.603656s,n=79:0.673289s,n=80:0.868949s
+REFERENCES 15 / 15
+```
+
+```sh
+python3 stage4/code/compute.py --write --refresh
+```
+
+```text
+STATUS BEFORE START A325549 more=yes revision=6 DATA and b-file unchanged=yes time=2026-10-22T03:39:16.503705+00:00
+RUN A325549 method=1 <source-home>/Development Work/research-sprint/oeis/stage4/code/necklaces 40
+METHOD PASS A325549 1 listed=25 range=1..40 wall_seconds=2.524108
+RUN A325549 method=2 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/necklace_independent.py 1 40
+METHOD PASS A325549 2 listed=25 range=1..40 wall_seconds=207.086849
+AGREEMENT PASS A325549 new_terms=15 new_range=26..40 last=2678043
+STATUS BEFORE START A336131 more=yes revision=5 DATA and b-file unchanged=yes time=2026-10-22T03:42:50.727190+00:00
+RUN A336131 method=1 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/reference.py A336131 0 30
+METHOD PASS A336131 1 listed=18 range=0..30 wall_seconds=6.095415
+RUN A336131 method=2 <source-home>/Development Work/research-sprint/oeis/stage4/code/independent A336131 0 30
+METHOD PASS A336131 2 listed=18 range=0..30 wall_seconds=0.554816
+AGREEMENT PASS A336131 new_terms=13 new_range=18..30 last=2810128
+STATUS BEFORE START A353426 more=yes revision=10 DATA and b-file unchanged=yes time=2026-10-22T03:43:01.016071+00:00
+RUN A353426 method=1 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/reference.py A353426 0 60
+METHOD PASS A353426 1 listed=41 range=0..60 wall_seconds=30.904141
+RUN A353426 method=2 <source-home>/Development Work/research-sprint/oeis/stage4/code/independent A353426 0 60
+METHOD PASS A353426 2 listed=41 range=0..60 wall_seconds=3.997657
+AGREEMENT PASS A353426 new_terms=20 new_range=41..60 last=2346
+STATUS BEFORE START A320052 more=yes revision=8 DATA and b-file unchanged=yes time=2026-10-22T03:43:39.584109+00:00
+RUN A320052 method=1 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/reference.py A320052 0 35
+METHOD PASS A320052 1 listed=13 range=0..35 wall_seconds=0.450719
+RUN A320052 method=2 <source-home>/Development Work/research-sprint/oeis/stage4/code/independent A320052 0 35
+METHOD PASS A320052 2 listed=13 range=0..35 wall_seconds=0.492579
+AGREEMENT PASS A320052 new_terms=23 new_range=13..35 last=158
+STATUS BEFORE START A304382 more=yes revision=25 DATA and b-file unchanged=yes time=2026-10-22T03:43:44.157714+00:00
+RUN A304382 method=1 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/reference.py A304382 1 85
+METHOD PASS A304382 1 listed=50 range=1..85 wall_seconds=3.889098
+RUN A304382 method=2 <source-home>/Development Work/research-sprint/oeis/stage4/code/independent A304382 1 85
+METHOD PASS A304382 2 listed=50 range=1..85 wall_seconds=0.159013
+AGREEMENT PASS A304382 new_terms=35 new_range=51..85 last=296
+ALL PASS 5 targets 106 new terms
+```
+
+```sh
+make -C stage4 clean verify
+```
+
+```text
+rm -f code/independent code/necklaces
+clang++ -std=c++17 -O3 -Wall -Wextra code/independent.cpp -o code/independent
+clang++ -std=c++17 -O3 -Wall -Wextra code/necklaces.cpp -o code/necklaces
+python3 code/verify.py
+A321728 range=0..13 terms=14 match=True seconds=0.001445
+expected=0,0,1,1,2,3,5,7,10,14,20,28,37,50
+actual  =0,0,1,1,2,3,5,7,10,14,20,28,37,50
+growth=n=10:0.000155s,n=11:0.000217s,n=12:0.000315s,n=13:0.000437s
+A321729 range=0..13 terms=14 match=True seconds=0.001418
+expected=1,1,1,2,3,4,6,8,12,16,22,28,40,51
+actual  =1,1,1,2,3,4,6,8,12,16,22,28,40,51
+growth=n=10:0.000152s,n=11:0.000216s,n=12:0.000313s,n=13:0.000435s
+A336131 range=0..17 terms=18 match=True seconds=0.024882
+expected=1,1,2,6,9,20,44,74,123,231,441,681,1188,1889,3110,5448,8310,13046
+actual  =1,1,2,6,9,20,44,74,123,231,441,681,1188,1889,3110,5448,8310,13046
+growth=n=14:0.002270s,n=15:0.003698s,n=16:0.006010s,n=17:0.009198s
+A353426 range=0..40 terms=41 match=True seconds=1.016579
+expected=1,1,1,1,2,1,2,1,1,2,2,1,2,2,3,3,5,4,6,5,6,6,7,8,10,12,12,14,13,13,18,15,16,19,20,20,32,37,53,74,105
+actual  =1,1,1,1,2,1,2,1,1,2,2,1,2,2,3,3,5,4,6,5,6,6,7,8,10,12,12,14,13,13,18,15,16,19,20,20,32,37,53,74,105
+growth=n=37:0.101209s,n=38:0.122128s,n=39:0.159216s,n=40:0.188074s
+A320052 range=0..12 terms=13 match=True seconds=0.000995
+expected=1,0,1,1,1,2,3,3,4,4,6,8,8
+actual  =1,0,1,1,1,2,3,3,4,4,6,8,8
+growth=n=9:0.000100s,n=10:0.000139s,n=11:0.000194s,n=12:0.000274s
+A320053 range=0..12 terms=13 match=True seconds=0.010445
+expected=1,1,2,3,2,3,4,5,6,8,9,12,14
+actual  =1,1,2,3,2,3,4,5,6,8,9,12,14
+growth=n=9:0.000533s,n=10:0.001279s,n=11:0.003627s,n=12:0.004036s
+A320054 range=0..12 terms=13 match=True seconds=0.001133
+expected=1,1,2,3,2,4,5,8,10,12,16,17,25
+actual  =1,1,2,3,2,4,5,8,10,12,16,17,25
+growth=n=9:0.000105s,n=10:0.000180s,n=11:0.000243s,n=12:0.000371s
+A304382 range=1..50 terms=50 match=True seconds=0.091168
+expected=1,1,1,1,1,1,1,1,1,2,1,1,1,3,2,2,1,3,2,4,3,5,2,5,4,6,3,7,6,8,4,9,8,13,9,15,8,14,12,16,12,20,20,24,15,27,20,33,27,35
+actual  =1,1,1,1,1,1,1,1,1,2,1,1,1,3,2,2,1,3,2,4,3,5,2,5,4,6,3,7,6,8,4,9,8,13,9,15,8,14,12,16,12,20,20,24,15,27,20,33,27,35
+growth=n=47:0.007384s,n=48:0.008335s,n=49:0.009530s,n=50:0.012286s
+A325549 range=1..25 terms=25 match=True seconds=0.094906
+expected=1,1,2,3,5,4,10,16,23,34,53,66,113,164,262,380,567,821,1217,1778,2702,3919,5760,8520,12375
+actual  =1,1,2,3,5,4,10,16,23,34,53,66,113,164,262,380,567,821,1217,1778,2702,3919,5760,8520,12375
+growth=n=22:0.000841s,n=23:0.001269s,n=24:0.001932s,n=25:0.002979s
+A325554 range=1..25 terms=25 match=True seconds=0.012687
+expected=1,2,2,4,5,6,11,18,26,38,60,90,139,213,329,501,747,1144,1712,2548,3836,5732,8442,12654,18624
+actual  =1,2,2,4,5,6,11,18,26,38,60,90,139,213,329,501,747,1144,1712,2548,3836,5732,8442,12654,18624
+growth=n=22:0.000835s,n=23:0.001279s,n=24:0.001954s,n=25:0.003010s
+A339655 range=0..25 terms=26 match=True seconds=5.630140
+expected=0,0,1,3,7,14,28,51,91,156,260,425,680,1068,1654,2524,3802,5668,8350,12190,17634,25306,36011,50902,71441,99642
+actual  =0,0,1,3,7,14,28,51,91,156,260,425,680,1068,1654,2524,3802,5668,8350,12190,17634,25306,36011,50902,71441,99642
+growth=n=22:0.567969s,n=23:0.740498s,n=24:1.150611s,n=25:1.758441s
+A339656 range=0..25 terms=26 match=True seconds=5.731859
+expected=1,2,4,8,15,28,49,84,140,229,367,577,895,1368,2064,3080,4547,6642,9627,13825,19704,27868,39164,54656,75832,104584
+actual  =1,2,4,8,15,28,49,84,140,229,367,577,895,1368,2064,3080,4547,6642,9627,13825,19704,27868,39164,54656,75832,104584
+growth=n=22:0.562001s,n=23:0.959672s,n=24:1.267268s,n=25:1.820092s
+A332278 range=0..78 terms=79 match=True seconds=6.889981
+expected=1,1,1,2,2,1,2,1,1,2,3,1,1,1,1,2,1,1,1,1,2,2,1,1,1,1,1,1,3,1,1,1,1,1,1,2,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2
+actual  =1,1,1,2,2,1,2,1,1,2,3,1,1,1,1,2,1,1,1,1,2,2,1,1,1,1,1,1,3,1,1,1,1,1,1,2,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2
+growth=n=75:0.482246s,n=76:0.532177s,n=77:0.655649s,n=78:0.671594s
+A332292 range=0..77 terms=78 match=True seconds=6.574913
+expected=1,1,1,2,1,2,2,1,1,2,2,1,1,1,2,2,1,1,1,1,1,3,1,1,1,1,1,1,2,1,2,1,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,1,1
+actual  =1,1,1,2,1,2,2,1,1,2,2,1,1,1,2,2,1,1,1,1,1,3,1,1,1,1,1,1,2,1,2,1,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,1,1
+growth=n=74:0.493678s,n=75:0.509865s,n=76:0.615160s,n=77:0.853602s
+A332297 range=0..80 terms=81 match=True seconds=9.299815
+expected=1,1,2,3,2,3,3,2,2,2,3,3,2,2,3,3,2,2,2,2,2,3,2,2,2,2,2,2,3,2,3,2,2,2,2,2,3,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,4,3,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,3,2,2
+actual  =1,1,2,3,2,3,3,2,2,2,3,3,2,2,3,3,2,2,2,2,2,3,2,2,2,2,2,2,3,2,3,2,2,2,2,2,3,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,4,3,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,3,2,2
+growth=n=77:0.646844s,n=78:0.718630s,n=79:0.781410s,n=80:0.959496s
+REFERENCES 15 / 15
+RUN A325549 method=1 <source-home>/Development Work/research-sprint/oeis/stage4/code/necklaces 40
+METHOD PASS A325549 1 listed=25 range=1..40 wall_seconds=3.136913
+RUN A325549 method=2 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/necklace_independent.py 1 40
+METHOD PASS A325549 2 listed=25 range=1..40 wall_seconds=218.631371
+AGREEMENT PASS A325549 new_terms=15 new_range=26..40 last=2678043
+RUN A336131 method=1 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/reference.py A336131 0 30
+METHOD PASS A336131 1 listed=18 range=0..30 wall_seconds=3.762382
+RUN A336131 method=2 <source-home>/Development Work/research-sprint/oeis/stage4/code/independent A336131 0 30
+METHOD PASS A336131 2 listed=18 range=0..30 wall_seconds=0.949358
+AGREEMENT PASS A336131 new_terms=13 new_range=18..30 last=2810128
+RUN A353426 method=1 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/reference.py A353426 0 60
+METHOD PASS A353426 1 listed=41 range=0..60 wall_seconds=25.106351
+RUN A353426 method=2 <source-home>/Development Work/research-sprint/oeis/stage4/code/independent A353426 0 60
+METHOD PASS A353426 2 listed=41 range=0..60 wall_seconds=3.639136
+AGREEMENT PASS A353426 new_terms=20 new_range=41..60 last=2346
+RUN A320052 method=1 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/reference.py A320052 0 35
+METHOD PASS A320052 1 listed=13 range=0..35 wall_seconds=0.335697
+RUN A320052 method=2 <source-home>/Development Work/research-sprint/oeis/stage4/code/independent A320052 0 35
+METHOD PASS A320052 2 listed=13 range=0..35 wall_seconds=0.373284
+AGREEMENT PASS A320052 new_terms=23 new_range=13..35 last=158
+RUN A304382 method=1 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 <source-home>/Development Work/research-sprint/oeis/stage4/code/reference.py A304382 1 85
+METHOD PASS A304382 1 listed=50 range=1..85 wall_seconds=4.539077
+RUN A304382 method=2 <source-home>/Development Work/research-sprint/oeis/stage4/code/independent A304382 1 85
+METHOD PASS A304382 2 listed=50 range=1..85 wall_seconds=0.190799
+AGREEMENT PASS A304382 new_terms=35 new_range=51..85 last=296
+VERIFIED 5 targets 106 new terms wall_seconds=296.136393
+HISTORY AUDIT PASS all candidate revisions archived
+AUDIT PASS A325549 rows=40 new=15 sha256=e7a5b09c0e4997d36a7720e99577a6bf320ff95685cded26f753267615a9e3d9
+AUDIT PASS A336131 rows=31 new=13 sha256=a2319370409368857497b77e51976b43cbc41f97f865f280bd5f36b2e6f24aed
+AUDIT PASS A353426 rows=61 new=20 sha256=96e6a8128ed07c103e715961a19f2eea0fa3315c7ab42766c9050297e89c9188
+AUDIT PASS A320052 rows=36 new=23 sha256=42d701ff8b3cee8a13259a15d17f50497ce7b1a2bc88d207fd9dd9772d46d2cc
+AUDIT PASS A304382 rows=85 new=35 sha256=1453bc6f68e786674fafb074a728791e2b0d497bf558579e06ec7931145cb2db
+CACHE AUDIT responses=146 oeis_requests=145 min_start_gap_seconds=0.000000 subsecond_gaps=10
+CORRECTED CLIENT PASS min_start_gap_seconds=1.100313 requests=54
+AUDIT COMPLETE references=15 targets=5 new_terms=106
+```
+
+```sh
+python3 stage4/code/drafts.py
+```
+
+```text
+DRAFT PROGRAM PASS A325549 range=1..26 seconds=0.850343
+DRAFT PROGRAM PASS A336131 range=0..18 seconds=0.077612
+DRAFT PROGRAM PASS A353426 range=0..41 seconds=1.314999
+DRAFT PROGRAM PASS A320052 range=0..13 seconds=0.037689
+DRAFT PROGRAM PASS A304382 range=1..51 seconds=0.149574
+```
+
+## Time, resources, and limits
+
+Recorded work window: 2026-10-22T03:25:17.347406+00:00 to 2026-10-22T03:49:19.293776+00:00, 1441.946370 wall seconds. The start is the earliest recorded network request and excludes the initial specification reads. The spec permits finishing before eight hours once all five targets are complete and verified. That exception applies. No helper agents were started. Computations are single-threaded; the final verifier runs them sequentially. Earlier independent probes ran concurrently within the core allowance.
+
+An early discovery mistake violated the request-spacing rule: two discovery processes used the copied stage-1 client without a file lock. The cache audit prints the actual minimum gap and number of subsecond gaps. All metadata are retained. The client was replaced with the stage-3 lock-based client before final target snapshots and extensions; no overlapping requests are issued by the corrected client. This historical rate-limit lapse cannot be undone and is not presented as compliance.
+
+External search establishes only what was visible in the checked sources at the recorded times. Search coverage can miss unindexed work. The manager should refresh status before submitting. Draft contributor names and dates are explicit placeholders for manager review. The extracted standalone draft programs were executed through every existing term and the first new index; the full extensions were checked with the two original clean-process methods.

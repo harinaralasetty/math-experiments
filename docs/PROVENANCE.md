@@ -2,11 +2,11 @@
 
 All research quantities in the rendered pages are copied from the pinned files below or computed as counts, sums and range endpoints from those files. Sequence identifiers are source labels. Technical metadata dimensions, schema versions, URLs, hashes and licence versions come from the worker brief or the file formats, not research measurements.
 
-The total new-term count is the sum of `new_count` in `oeis/data/verification.json` and `oeis/data/stage3-verification.json`. The initial 48 BB6 lemmas and 198 rejected corruptions are sums across the stage2b local verification files. The additional 118 rules, 470 rejected corruptions and 3973 concrete instantiations are sums across the certificates in bb6/data/stage2c/local-verification.json and match its final summary. The six-hour duration is the recorded elapsed seconds in time-discipline.json; it is a rounded description, not a fresh timing measurement. Batch C scores, minimum distance and active wall seconds come from its REPORT.txt and exact construction files. New starting indices equal `listed_last + 1`. Timings are rounded to two significant digits with seconds or minutes; the exact measurements remain in the source verification manifests. Page modification dates use the latest relevant data or generator/style change: committed git dates, or filesystem modification dates for uncommitted local generator/style changes. Imported data retains the date of its last change in the pinned source git revision. Article publication date uses the first git addition of the home page, falling back to its modification date for a new page. Both OEIS stages contribute to every displayed term and sequence total. The social image uses the same totals and result statuses as the home page.
+The total new-term count is the sum of `new_count` in `oeis/data/verification.json`, `oeis/data/stage3-verification.json` and `oeis/data/stage4-verification.json`. The initial 48 BB6 lemmas and 198 rejected corruptions are sums across the stage2b local verification files. The additional 118 rules, 470 rejected corruptions and 3973 concrete instantiations are sums across the certificates in bb6/data/stage2c/local-verification.json and match its final summary. The six-hour duration is the recorded elapsed seconds in time-discipline.json; it is a rounded description, not a fresh timing measurement. Batch C scores, minimum distance and active wall seconds come from its REPORT.txt and exact construction files. New starting indices equal `listed_last + 1`. Timings are rounded to two significant digits with seconds or minutes; the exact measurements remain in the source verification manifests. Page modification dates use the latest relevant data or generator/style change: committed git dates, or filesystem modification dates for uncommitted local generator/style changes. Imported data retains the date of its last change in the pinned source git revision. Article publication date uses the first git addition of the home page, falling back to its modification date for a new page. All OEIS stages contribute to every displayed term and sequence total. The social image uses the same totals and result statuses as the home page.
 
 ## Pinned revisions
 
-- `oeis`: `3504def3c80d31ce2cacb94b9fa67843812518db`
+- `oeis`: `05ce39322c21fd37febd55601fbb27d7f92bc8fe`
 - `bb6`: `228ba5559d062ca1f8fb5f6a21285fb9e80a6eb6`
 - `hm-batchA`: `b969a3c1429b2946ea10c3b365086d39bcc60ac7`
 - `hm-batchB`: `87d65db8e5b58a3e741c0bcfc3143bd44ce2609f`
@@ -16,15 +16,15 @@ The total new-term count is the sum of `new_count` in `oeis/data/verification.js
 
 ### key-results
 
-Numbers and identifiers: `0`, `6`, `10`, `1350`.
+Numbers and identifiers: `0`, `6`, `15`, `1456`.
 
-Evidence: `oeis/data/verification.json`, `oeis/data/stage3-verification.json`, `bb6/REPORT.txt`, `bb6/data/stage2c/summary.json`, `horizonmath/hm-batchA/REPORT.txt`, `horizonmath/hm-batchB/REPORT.txt`, `horizonmath/hm-batchC/REPORT.txt`.
+Evidence: `oeis/data/verification.json`, `oeis/data/stage3-verification.json`, `oeis/data/stage4-verification.json`, `bb6/REPORT.txt`, `bb6/data/stage2c/summary.json`, `horizonmath/hm-batchA/REPORT.txt`, `horizonmath/hm-batchB/REPORT.txt`, `horizonmath/hm-batchC/REPORT.txt`.
 
 ### results-table
 
-Numbers and identifiers: `6`, `10`, `42`, `48`, `118`, `1350`, `3703`.
+Numbers and identifiers: `6`, `10`, `42`, `48`, `118`, `1456`, `3703`.
 
-Evidence: `oeis/data/verification.json`, `oeis/data/stage3-verification.json`, `bb6/REPORT.txt`, `bb6/data/stage2c/summary.json`, `horizonmath/hm-batchA/REPORT.txt`, `horizonmath/hm-batchB/REPORT.txt`, `horizonmath/hm-batchC/REPORT.txt`.
+Evidence: `oeis/data/verification.json`, `oeis/data/stage3-verification.json`, `oeis/data/stage4-verification.json`, `bb6/REPORT.txt`, `bb6/data/stage2c/summary.json`, `horizonmath/hm-batchA/REPORT.txt`, `horizonmath/hm-batchB/REPORT.txt`, `horizonmath/hm-batchC/REPORT.txt`.
 
 ### A391646-definition
 
@@ -266,11 +266,131 @@ Numbers and identifiers: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`,
 
 Evidence: `oeis/data/A383711.json`, `oeis/data/stage3-verification.json`, `docs/data/A383711.txt`.
 
+### A325549-definition
+
+Numbers and identifiers: `325549`.
+
+Evidence: `oeis/data/A325549.json`, `oeis/data/stage4-verification.json`, `docs/data/A325549.txt`.
+
+### A325549-range
+
+Numbers and identifiers: `1`, `15`, `25`, `26`, `40`, `325549`.
+
+Evidence: `oeis/data/A325549.json`, `oeis/data/stage4-verification.json`, `docs/data/A325549.txt`.
+
+### A325549-timings
+
+Numbers and identifiers: `2`, `3.4`.
+
+Evidence: `oeis/data/stage4-verification.json`.
+
+### A325549-terms
+
+Numbers and identifiers: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `23`, `34`, `53`, `66`, `113`, `164`, `262`, `380`, `567`, `821`, `1217`, `1778`, `325549`.
+
+Evidence: `oeis/data/A325549.json`, `oeis/data/stage4-verification.json`, `docs/data/A325549.txt`.
+
+### A336131-definition
+
+Numbers and identifiers: `336131`.
+
+Evidence: `oeis/data/A336131.json`, `oeis/data/stage4-verification.json`, `docs/data/A336131.txt`.
+
+### A336131-range
+
+Numbers and identifiers: `0`, `13`, `17`, `18`, `30`, `336131`.
+
+Evidence: `oeis/data/A336131.json`, `oeis/data/stage4-verification.json`, `docs/data/A336131.txt`.
+
+### A336131-timings
+
+Numbers and identifiers: `7.1`, `0.55`.
+
+Evidence: `oeis/data/stage4-verification.json`.
+
+### A336131-terms
+
+Numbers and identifiers: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `44`, `74`, `123`, `231`, `441`, `681`, `1188`, `1889`, `3110`, `5448`, `8310`, `13046`, `20606`, `31666`, `336131`.
+
+Evidence: `oeis/data/A336131.json`, `oeis/data/stage4-verification.json`, `docs/data/A336131.txt`.
+
+### A353426-definition
+
+Numbers and identifiers: `353426`.
+
+Evidence: `oeis/data/A353426.json`, `oeis/data/stage4-verification.json`, `docs/data/A353426.txt`.
+
+### A353426-range
+
+Numbers and identifiers: `0`, `20`, `40`, `41`, `60`, `353426`.
+
+Evidence: `oeis/data/A353426.json`, `oeis/data/stage4-verification.json`, `docs/data/A353426.txt`.
+
+### A353426-timings
+
+Numbers and identifiers: `34`, `2.9`.
+
+Evidence: `oeis/data/stage4-verification.json`.
+
+### A353426-terms
+
+Numbers and identifiers: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `353426`.
+
+Evidence: `oeis/data/A353426.json`, `oeis/data/stage4-verification.json`, `docs/data/A353426.txt`.
+
+### A320052-definition
+
+Numbers and identifiers: `320052`.
+
+Evidence: `oeis/data/A320052.json`, `oeis/data/stage4-verification.json`, `docs/data/A320052.txt`.
+
+### A320052-range
+
+Numbers and identifiers: `0`, `12`, `13`, `23`, `35`, `320052`.
+
+Evidence: `oeis/data/A320052.json`, `oeis/data/stage4-verification.json`, `docs/data/A320052.txt`.
+
+### A320052-timings
+
+Numbers and identifiers: `0.32`, `0.42`.
+
+Evidence: `oeis/data/stage4-verification.json`.
+
+### A320052-terms
+
+Numbers and identifiers: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `22`, `23`, `30`, `320052`.
+
+Evidence: `oeis/data/A320052.json`, `oeis/data/stage4-verification.json`, `docs/data/A320052.txt`.
+
+### A304382-definition
+
+Numbers and identifiers: `1`, `304382`.
+
+Evidence: `oeis/data/A304382.json`, `oeis/data/stage4-verification.json`, `docs/data/A304382.txt`.
+
+### A304382-range
+
+Numbers and identifiers: `1`, `35`, `50`, `51`, `85`, `304382`.
+
+Evidence: `oeis/data/A304382.json`, `oeis/data/stage4-verification.json`, `docs/data/A304382.txt`.
+
+### A304382-timings
+
+Numbers and identifiers: `3.8`, `0.12`.
+
+Evidence: `oeis/data/stage4-verification.json`.
+
+### A304382-terms
+
+Numbers and identifiers: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `304382`.
+
+Evidence: `oeis/data/A304382.json`, `oeis/data/stage4-verification.json`, `docs/data/A304382.txt`.
+
 ### oeis-summary
 
-Numbers and identifiers: `0`, `6`, `10`, `13`, `14`, `15`, `17`, `18`, `20`, `21`, `24`, `25`, `26`, `30`, `31`, `32`, `35`, `37`, `45`, `65`, `75`, `231`, `256`, `487`, `512`, `1350`, `335457`, `353390`, `374679`, `374680`, `374681`, `374682`, `383533`, `383710`, `383711`, `391646`.
+Numbers and identifiers: `0`, `1`, `6`, `12`, `13`, `14`, `15`, `17`, `18`, `20`, `21`, `23`, `24`, `25`, `26`, `30`, `31`, `32`, `35`, `37`, `40`, `41`, `45`, `50`, `51`, `60`, `65`, `75`, `85`, `231`, `256`, `487`, `512`, `1456`, `304382`, `320052`, `325549`, `335457`, `336131`, `353390`, `353426`, `374679`, `374680`, `374681`, `374682`, `383533`, `383710`, `383711`, `391646`.
 
-Evidence: `oeis/data/verification.json`, `oeis/data/stage3-verification.json`.
+Evidence: `oeis/data/verification.json`, `oeis/data/stage3-verification.json`, `oeis/data/stage4-verification.json`.
 
 ### bb-status
 
@@ -487,6 +607,29 @@ Evidence: `horizonmath/hm-batchC/REPORT.txt`, `horizonmath/hm-batchC/solutions/v
 | `hm-batchC/solutions/A21_10_binary_code.json` | `horizonmath/hm-batchC/solutions/A21_10_binary_code.json` | `804fdfe06bcc2b173cc29e458b5fe6955b5941805884b4e83980f797cf6ad8c2` | 2026-10-21 | None; byte-identical |
 | `hm-batchC/REPORT.md` | `horizonmath/hm-batchC/REPORT.txt` | `bf72e90dab18345ce500fbfdb6bc2cd6d89900afe89868b43e2a3bfd6bb9281d` | 2026-10-21 | None; byte-identical |
 | `notes/horizonmath-records.md` | `horizonmath/record-status.md` | `b07c6ce150b03b90852c5e4b1f70dd04c156ac60c58b75507dcc3f4d9b4c075c` | 2026-10-20 | None; byte-identical |
+| `oeis/stage4/code/reference.py` | `oeis/code/stage4/reference.py` | `a953ab424d3c7cbcab3890abd8f4fbcf1ead5d7b123131663f1b04540ec9ac4c` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/code/necklace_independent.py` | `oeis/code/stage4/necklace_independent.py` | `87aedf829fda5c89c3de1040d6de8244238475bdbd41d94c5863d45a64667279` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/code/necklaces.cpp` | `oeis/code/stage4/necklaces.cpp` | `8e9cb1f3e004be1583ac5cb653e139f10458a54b27bc63d1baf75f87f39e927b` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/code/independent.cpp` | `oeis/code/stage4/independent.cpp` | `15e94ace61c639a1b3c1832ea2a99cb312975a270b46f0eac81ce499ab6d8bc2` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/results/b304382.txt` | `docs/data/A304382.txt` | `1453bc6f68e786674fafb074a728791e2b0d497bf558579e06ec7931145cb2db` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/results/A304382.py` | `oeis/code/stage4/drafts/A304382.py` | `d3c151b8e40dcf3af1399097c0067183eed224301a410ec87a9646c4717d6ad1` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/data/A304382.json` | `oeis/data/A304382.json` | `5f2316f987ab70dc1b510346b862397718f9753210dbe71cb11cafdef3982ce4` | 2026-10-22 | Selected fields only; original hash retained |
+| `oeis/stage4/results/b320052.txt` | `docs/data/A320052.txt` | `42d701ff8b3cee8a13259a15d17f50497ce7b1a2bc88d207fd9dd9772d46d2cc` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/results/A320052.py` | `oeis/code/stage4/drafts/A320052.py` | `f1674f81c623f7dfa5c913f2fef07977ce14945b14731e63d4929065f5a07375` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/data/A320052.json` | `oeis/data/A320052.json` | `c0211d5694034910f59aeb561d56c5f5a2d770a35ba9dceca274ee6e6bffd09c` | 2026-10-22 | Selected fields only; original hash retained |
+| `oeis/stage4/results/b325549.txt` | `docs/data/A325549.txt` | `e7a5b09c0e4997d36a7720e99577a6bf320ff95685cded26f753267615a9e3d9` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/results/A325549.py` | `oeis/code/stage4/drafts/A325549.py` | `e4a860d71be25528e1ead62b140876ac587d7525e3f1a10c3639ad86bb6380ee` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/data/A325549.json` | `oeis/data/A325549.json` | `268748947911bb0feaaca9d26c990e0b5bfb6495c49825cde443e8350d31ebfc` | 2026-10-22 | Selected fields only; original hash retained |
+| `oeis/stage4/results/b336131.txt` | `docs/data/A336131.txt` | `a2319370409368857497b77e51976b43cbc41f97f865f280bd5f36b2e6f24aed` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/results/A336131.py` | `oeis/code/stage4/drafts/A336131.py` | `7b06362bd023c6e87e4d1eb0ef2d6c09ee76a65fa74c9394af6c51c3dfa8ca7a` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/data/A336131.json` | `oeis/data/A336131.json` | `e272400792177909a95dcd7aad430da52ee99cda8fadb9857c7c0cea714682fc` | 2026-10-22 | Selected fields only; original hash retained |
+| `oeis/stage4/results/b353426.txt` | `docs/data/A353426.txt` | `96e6a8128ed07c103e715961a19f2eea0fa3315c7ab42766c9050297e89c9188` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/results/A353426.py` | `oeis/code/stage4/drafts/A353426.py` | `70bfb32d5007f961596cb438001fb39bdaec2e73668bf61eb23ad8aa0a899b16` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/data/A353426.json` | `oeis/data/A353426.json` | `791a375a81afeef7676a4e8b7b27f324a6a6ba99aa7c466f8f14023a159e261b` | 2026-10-22 | Selected fields only; original hash retained |
+| `oeis/stage4/data/verification.json` | `oeis/data/stage4-verification.json` | `c3eb8bc5d1aa5be9150ff192584f5204937ef7b60ca58e186b4a0f021f1858f0` | 2026-10-22 | Selected fields only; original hash retained |
+| `oeis/stage4/REPORT.md` | `oeis/data/stage4-REPORT.txt` | `622e208c5f5640c34dc8106274e699d36f7b82b054f0dedb109930aab9cfc97f` | 2026-10-22 | Machine-home paths redacted; original hash retained |
+| `oeis/stage4/STATUS.md` | `oeis/data/stage4-STATUS.txt` | `0411a421d985dd2710a3e947cc3ce3e912d29e2903ba8313edf55e0d22eb1b83` | 2026-10-22 | None; byte-identical |
+| `oeis/stage4/results/SUBMISSION-DRAFTS.md` | `oeis/data/stage4-SUBMISSION-DRAFTS.txt` | `ae3121e8b3a78c4e3c844f7d0207502384ea9265a67e2450892c70036b1b2442` | 2026-10-22 | None; byte-identical |
 
 ## Limitations and attribution
 
